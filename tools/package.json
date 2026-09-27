@@ -1,0 +1,13 @@
+{
+  "name": "isoh-research-tools",
+  "description": "Build-time helpers for the research site. Not served; Netlify has no build step.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "coverage": "node check-font-coverage.mjs",
+    "data-notice": "node build-data-notice.mjs"
+  },
+  "devDependencies": {
+    "fontkit": "^2.0.4"
+  }
+}

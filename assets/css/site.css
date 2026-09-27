@@ -24,7 +24,7 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { -webkit-text-size-adjust: 100%; }
-body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; }
 a { color: var(--green); text-decoration: none; }
 a:hover { text-decoration: underline; }
 a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 4px; }
@@ -110,7 +110,7 @@ button { font: inherit; }
 body.drawer-open { overflow: hidden; }
 
 /* ---------- Page frame ---------- */
-main { padding-top: 136px; }
+main { padding-top: 136px; flex: 1 0 auto; }
 .page { max-width: var(--measure); margin: 0 auto; padding: 0 1.5rem; }
 
 /* ---------- Masthead (mockup_v2/institute_site_top_*) ---------- */
@@ -143,7 +143,7 @@ section.sec { padding: 2.75rem 0; border-bottom: 1px solid var(--border); }
 
 /* ---------- Footer (mockup_v2/institute_site_footer_*) ---------- */
 .site-footer {
-  margin-top: 4rem; background: var(--card); color: var(--text);
+  margin-top: 4rem; flex-shrink: 0; background: var(--card); color: var(--text);
   border: 1px solid var(--border); border-bottom: 0; border-radius: 48px 48px 0 0; padding: 48px 80px 40px;
   display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px;
 }
@@ -170,3 +170,61 @@ section.sec { padding: 2.75rem 0; border-bottom: 1px solid var(--border); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
 }
+
+/* ---------- White paper page (yapper-research-mockup-v5.html, without the product chrome) ---------- */
+.paper .masthead h1 { font-size: clamp(1.9rem, 4vw, 2.85rem); letter-spacing: -.01em; max-width: 22ch; margin-bottom: .6rem; }
+.paper .masthead .subtitle { color: var(--green-deep); font-size: clamp(1.15rem, 2.2vw, 1.45rem); line-height: 1.35; max-width: 40ch; margin-bottom: 2rem; }
+.doc { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 1.5rem; width: 100%; text-align: left; background: var(--card); border: 1px solid var(--border); border-radius: 1.25rem; padding: 1.4rem; }
+.doc .cover { border: 1px solid var(--border); border-radius: .4rem; overflow: hidden; background: #fff; }
+.doc dl { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 1rem; row-gap: .3rem; font-size: .92rem; margin-bottom: 1.1rem; }
+.doc dt { color: var(--muted); }
+.doc dd { color: var(--ink); font-weight: 500; }
+.doc dd code { font-family: var(--mono); font-size: .85rem; font-weight: 400; }
+.actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+.principles { border-top: 1px solid var(--border); }
+.principles div { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 1.25rem; padding: .9rem 0; border-bottom: 1px solid var(--border); }
+.principles dt { font-family: var(--serif); font-weight: 700; font-size: 1.05rem; color: var(--ink); line-height: 1.3; }
+.principles dd { font-size: .98rem; }
+.tblwrap { overflow-x: auto; margin: 0 -1.5rem; padding: 0 1.5rem; -webkit-overflow-scrolling: touch; }
+table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: .9rem; background: var(--card); border: 1px solid var(--border); }
+th, td { border: 1px solid var(--border); padding: .65rem .7rem; text-align: left; vertical-align: top; line-height: 1.45; }
+th { background: var(--soft); font-weight: 700; color: var(--ink); }
+td:first-child { font-weight: 600; color: var(--ink); }
+.tblnote { font-size: .85rem; color: var(--muted); margin-top: .6rem; }
+.offer { background: var(--soft); border: 1px solid var(--border); border-radius: 1.25rem; padding: 1.4rem 1.5rem; margin-top: 1.25rem; }
+.offer p { margin-bottom: .6rem; }
+.offer p:last-of-type { margin-bottom: 1rem; }
+.charter { list-style: none; border-top: 1px solid var(--border); }
+.charter li { padding: .8rem 0; border-bottom: 1px solid var(--border); font-size: .98rem; display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); gap: .6rem; }
+.charter li::before { content: ""; width: .55rem; height: .55rem; border-radius: 50%; background: var(--green); margin-top: .55rem; }
+.cite { background: var(--card); border: 1px solid var(--border); border-radius: 1.25rem; padding: 1.25rem 1.4rem; }
+.cite header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: .5rem; }
+.cite h3 { margin: 0; }
+.cite p { font-size: .95rem; margin: 0; }
+.copy { background: #fff; border: 1.5px solid var(--ink); border-radius: 100px; padding: .3rem .85rem; font-size: .8rem; font-weight: 600; cursor: pointer; color: var(--ink); }
+.copy:hover { background: var(--ink); color: #fff; }
+details.bib { margin-top: .9rem; }
+details.bib summary { cursor: pointer; font-weight: 600; color: var(--green); list-style: none; font-size: .92rem; }
+details.bib summary::-webkit-details-marker { display: none; }
+details.bib pre { font-family: var(--mono); font-size: .78rem; line-height: 1.55; background: var(--soft); border: 1px solid var(--border); border-radius: .6rem; padding: .9rem 1rem; margin-top: .6rem; white-space: pre-wrap; word-break: break-word; color: var(--ink); }
+.contact { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.contact p { font-size: .95rem; margin-bottom: .3rem; }
+.contact strong { display: block; color: var(--ink); }
+@media (max-width: 640px) {
+  .doc { grid-template-columns: 1fr; }
+  .doc .cover { max-width: 140px; }
+  .principles div { grid-template-columns: 1fr; gap: .2rem; }
+  .contact { grid-template-columns: 1fr; }
+}
+
+/* ---------- Data notice and results pages ---------- */
+.notice h1, .results h1 { margin-bottom: 1.5rem; }
+.notice p a, .results p a { text-decoration: underline; text-underline-offset: 2px; }
+
+/* ---------- Homepage (www.maximized-impact.org) ---------- */
+.masthead .inst .inst-h1 { display: block; font-family: var(--sans); font-size: 16px; font-weight: 600; line-height: 1.5; color: var(--ink); margin: 0 0 2px; }
+.home .sec p { max-width: 66ch; }
+.home-links { list-style: none; }
+.home-links li { padding: .8rem 0; border-bottom: 1px solid var(--border); font-size: 1.02rem; }
+
+.home-links .small { display: block; margin-top: .1rem; }

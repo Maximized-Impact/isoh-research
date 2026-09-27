@@ -1,0 +1,182 @@
+/* Study 7 Stage A survey: the prototype's stylesheet (study7_survey_timer_prototype_v17.html), unchanged apart from the
+   inline lotus mark, the language selector, the block lead, the sending error line and the data-notice link, which the
+   strings file needs. Dark and app-derived on purpose: the greys were chosen for sensory tolerance. */
+  :root{
+    --bg:#0E0E0E; --card:#1B1B1B; --card2:#232323; --pill:#111111; --line:#3A3A3A;
+    --ink:#FFFFFF; --dim:#9A9A9A; --dim2:#8A8A8A;
+    --green:#2ED573; --green-dk:#12331F; --green-btn:#14532D;
+    --orange:#F5A030; --orange-dk:#3C2712;
+    --yellow:#F5B800; --yellow-dk:#6B5200; --red:#FF5252;
+    --item:52px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Roboto,"Segoe UI",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+  button{font-family:inherit}
+  :focus-visible{outline:3px solid var(--green);outline-offset:2px}
+  [hidden]{display:none !important}
+
+  /* ---------- overlays ---------- */
+  .scrim{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  .card{width:min(430px,100%);max-height:calc(100dvh - 32px);overflow:auto;background:var(--card);border-radius:28px;padding:28px 24px 24px;box-shadow:0 24px 70px rgba(0,0,0,.65);scrollbar-width:none}
+  .card::-webkit-scrollbar{display:none}
+
+  /* ---------- call setup card ---------- */
+  .inst{margin:2px auto 12px;width:max-content;max-width:100%;background:var(--pill);border-radius:999px;padding:12px 24px;text-align:center;font-weight:600;font-size:17px;line-height:1.25}
+  .inst small{display:block;font-weight:400;font-size:13px;color:var(--dim);margin-top:3px}
+  .study{text-align:center;font-size:23px;font-weight:700;letter-spacing:.2px;margin:-4px 0 16px}
+  .picker{background:var(--card2);border-radius:24px;padding:14px 6px 6px}
+  .picker-head{display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center;color:var(--dim);font-size:17px;margin-bottom:2px}
+  .wheels{display:grid;grid-template-columns:1fr 1fr 1fr;height:calc(var(--item) * 5)}
+  .wheel{height:100%;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none;overscroll-behavior:contain;
+         -webkit-mask-image:linear-gradient(transparent,#000 28%,#000 72%,transparent);mask-image:linear-gradient(transparent,#000 28%,#000 72%,transparent)}
+  .wheel::-webkit-scrollbar{display:none}
+  .wheel .pad{height:calc(var(--item) * 2)}
+  .wheel .it{height:var(--item);display:flex;align-items:center;justify-content:center;scroll-snap-align:center;font-size:24px;color:var(--dim2);font-variant-numeric:tabular-nums;transition:font-size .12s,color .12s;cursor:pointer}
+  .wheel .it.near{font-size:28px;color:#B4B4B4}
+  .wheel .it.sel{font-size:44px;font-weight:700;color:var(--ink)}
+  .row-set{display:flex;justify-content:space-between;align-items:center;margin:18px 6px 6px;color:var(--dim);font-size:19px}
+  .reset{background:none;border:0;color:var(--dim);font-size:19px;display:flex;align-items:center;gap:8px;cursor:pointer;padding:6px 2px}
+  .reset.active{color:var(--green)}
+  .preset-labels{display:flex;justify-content:space-between;padding:8px 24px 16px;font-weight:700;font-size:22px}
+  .preset-labels .long{color:var(--orange)} .preset-labels .short{color:var(--green)}
+  .custom-label{text-align:center;color:var(--green);font-weight:700;font-size:24px;padding:8px 0 16px}
+  .buttons{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .btn{border:0;border-radius:999px;height:78px;font-size:24px;font-weight:700;cursor:pointer;transition:transform .08s}
+  .btn:active{transform:scale(.985)}
+  .btn.long{background:var(--orange-dk);color:var(--orange)}
+  .btn.short{background:var(--green-dk);color:var(--green)}
+  .btn.call{width:100%;background:var(--green-btn);color:var(--green)}
+
+  /* ---------- focus sound card ---------- */
+  .card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .card-head h2{margin:0;font-size:30px;font-weight:700}
+  .x{background:none;border:0;color:#DDD;font-size:40px;line-height:1;cursor:pointer;padding:0 4px}
+  .label{color:var(--dim);font-size:17px;margin:16px 0 10px}
+  .slider-row{display:flex;align-items:center;gap:14px}
+  .slider-row .pct{width:56px;text-align:right;font-size:21px}
+  .slider-row .mm{color:var(--dim2);font-size:14px;width:26px}
+  .slider-row .mm.r{text-align:right}
+  input[type=range]{-webkit-appearance:none;appearance:none;flex:1;height:4px;border-radius:2px;margin:12px 0;background:linear-gradient(to right,var(--c) 0 var(--p,50%),var(--line) var(--p,50%) 100%);cursor:pointer}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--c);border:0}
+  input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--c);border:0}
+  .green{--c:var(--green)} .yellow{--c:var(--yellow)}
+  .speaker{width:28px;height:28px;flex:none;fill:#fff}
+  .radios{margin-top:2px}
+  .opt{display:flex;align-items:center;gap:12px;padding:9px 2px;cursor:pointer;font-size:24px}
+  .opt input{position:absolute;opacity:0;width:1px;height:1px}
+  .opt .radio{width:32px;height:32px;border-radius:50%;border:3px solid var(--green);display:grid;place-items:center;flex:none}
+  .opt input:checked + .radio::after{content:"";width:16px;height:16px;border-radius:50%;background:var(--green)}
+  .opt input:focus-visible + .radio{outline:3px solid #fff;outline-offset:2px}
+  .opt .emoji{width:38px;text-align:center;font-size:26px}
+  hr{border:0;border-top:1px solid var(--line);margin:18px 0 6px}
+  .ts-head{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+  .ts-head h3{margin:0;font-size:26px;font-weight:700}
+  .ts-head .sub{color:var(--green);font-size:16px;margin-top:3px}
+  .toggle{position:relative;width:64px;height:32px;flex:none;cursor:pointer}
+  .toggle input{position:absolute;opacity:0;width:1px;height:1px}
+  .toggle span{position:absolute;inset:0;border-radius:999px;background:var(--line);transition:background .15s}
+  .toggle span::after{content:"";position:absolute;top:1px;left:1px;width:30px;height:30px;border-radius:50%;background:#8A8A8A;transition:transform .15s,background .15s}
+  .toggle input:checked + span{background:var(--yellow-dk)}
+  .toggle input:checked + span::after{background:var(--yellow);transform:translateX(34px)}
+  .toggle input:focus-visible + span{outline:3px solid #fff}
+  .ivalue{font-size:22px;margin:2px 0 6px}
+
+  /* ---------- in-call bar ---------- */
+  .topbar{position:sticky;top:0;z-index:30;background:#141414;border-bottom:1px solid #222;padding:10px 16px 12px}
+  .topbar .row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;max-width:640px;margin:0 auto}
+  :root{--t-green:#43A047;--t-amber:#FF9800;--t-red:#F44336}
+  /* Label stays beside the clock while it fits; when it would meet the buttons it drops under the clock */
+  .topbar .left{flex:1 1 auto;min-width:0;display:flex;flex-wrap:wrap;align-items:baseline;column-gap:12px;row-gap:0}
+  .cd{font-size:38px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+  .status{font-size:15px;font-weight:600;white-space:nowrap}
+  .topbar .row{align-items:center;gap:16px}
+  .topbar .tools{flex:none}
+  .topbar .right{text-align:right}
+  .el{color:var(--dim);font-size:13px;font-variant-numeric:tabular-nums;line-height:1.4}
+  .bar{height:6px;border-radius:3px;background:#333;overflow:hidden;max-width:640px;margin:8px auto 0}
+  .bar i{display:block;height:100%;width:0;background:var(--t-green);transition:width .25s linear,background .3s}
+  .green .cd,.green .status{color:var(--t-green)} .green .bar i{background:var(--t-green)}
+  .amber .cd,.amber .status{color:var(--t-amber)} .amber .bar i{background:var(--t-amber)}
+  .red .cd,.red .status{color:var(--t-red)} .red .bar i{background:var(--t-red)}
+  .asrs-note{color:var(--dim2);font-size:11px;margin:2px 0 0}
+
+  /* ---------- survey ---------- */
+  .survey{max-width:640px;margin:0 auto;padding:22px 16px 140px}
+  .survey h1{font-size:22px;margin:0 0 6px}
+  .survey .intro{color:var(--dim);font-size:15px;line-height:1.5;margin:0 0 18px}
+  .block h2{font-size:16px;color:var(--dim);font-weight:600;margin:22px 0 8px}
+  .q{background:#161616;border-radius:16px;padding:14px 16px;margin:10px 0}
+  .q p{margin:0 0 10px;font-size:16px;line-height:1.4}
+  /* Default: options expand to fill the row */
+  .scale{display:flex;flex-wrap:wrap;gap:6px}
+  .scale label{flex:1 1 54px;min-width:54px;position:relative;display:flex;align-items:center;justify-content:center;min-height:44px;text-align:center;background:#222;border-radius:10px;padding:8px 6px;font-size:12px;cursor:pointer;line-height:1.25}
+  .scale.wide label{flex-basis:140px;min-width:140px}
+  /* 0-10 only: a grid keeps every button the same size, including the last row, so size cannot steer the choice */
+  .scale.numeric{display:grid;grid-template-columns:repeat(auto-fill,minmax(52px,1fr))}
+  .scale.numeric label{flex:none;min-width:0;font-size:15px;font-weight:600}
+  @media (min-width:600px){.scale.numeric{grid-template-columns:repeat(11,1fr)}}
+  /* Five-option scales: five in a row while they fit; below 500px three on top, two centred beneath, all the same size */
+  @media (max-width:499px){
+    .scale.five{display:grid;grid-template-columns:repeat(6,1fr)}
+    .scale.five label{flex:none;min-width:0;grid-column:span 2}
+    .scale.five label:nth-child(4){grid-column:2/span 2}
+  }
+  .anchors{display:flex;justify-content:space-between;color:var(--dim2);font-size:11px;margin-top:6px}
+  .repeat-note{color:var(--yellow);font-size:14px;line-height:1.45;text-align:left;margin:0 0 12px}
+  .scale input{position:absolute;opacity:0;width:1px;height:1px}
+  .scale label:has(input:checked){background:var(--green-dk);color:var(--green);box-shadow:inset 0 0 0 2px var(--green)}
+  .scale label:has(input:focus-visible){box-shadow:inset 0 0 0 2px #fff}
+  .submit.secondary{background:transparent;box-shadow:inset 0 0 0 2px var(--green);margin-top:12px}
+  .submit{display:block;width:100%;margin-top:26px;height:64px;border:0;border-radius:999px;background:var(--green-btn);color:var(--green);font-size:20px;font-weight:700;cursor:pointer}
+  .thanks{display:none;padding:24px 0}
+  .credit{color:var(--dim2);font-size:12px;text-align:center;margin-top:28px}
+
+  /* ---------- tool buttons (app drawer style) ---------- */
+  .rb{width:44px;height:44px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;opacity:.5;transition:opacity .15s,box-shadow .15s}
+  .rb svg{width:22px;height:22px}
+  .rb.green{background:#1E4A2E} .rb.green svg{fill:var(--green)}
+  .rb.amber{background:#4D3B00} .rb.amber svg{fill:var(--yellow)}
+  .rb.on{opacity:1;box-shadow:0 0 0 2px rgba(255,255,255,.18)}
+  .sq{height:44px;padding:0 12px;border:2px solid #6B6B6B;border-radius:14px;background:transparent;display:flex;align-items:center;gap:12px;cursor:pointer}
+  .sq svg{width:20px;height:20px;opacity:.35;transition:opacity .15s}
+  .sq .ts svg{fill:var(--yellow)} .sq .fs svg{fill:var(--green)}
+  .sq .ts.on svg,.sq .fs.on svg{opacity:1}
+  .tools{display:flex;align-items:center;gap:10px}
+  .topbar .row2{display:flex;justify-content:space-between;align-items:baseline;max-width:640px;margin:6px auto 0}
+  .cluster{position:fixed;right:18px;bottom:22px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+  .cluster .rb{width:56px;height:56px;box-shadow:0 8px 24px rgba(0,0,0,.55)} .cluster .rb.on{box-shadow:0 8px 24px rgba(0,0,0,.55),0 0 0 2px rgba(255,255,255,.18)}
+  .cluster .rb svg{width:26px;height:26px}
+  .cluster .sq{height:52px;background:rgba(14,14,14,.92);box-shadow:0 8px 24px rgba(0,0,0,.55)}
+  .toggle.green input:checked + span{background:#1E4A2E}
+  .toggle.green input:checked + span::after{background:var(--green)}
+  .head-right{display:flex;align-items:center;gap:14px}
+  /* ---------- welcome overlay ---------- */
+  .welcome{text-align:center}
+  .welcome .mark{width:72px;height:65px;display:block;margin:2px auto 12px;fill:#fff}
+  .welcome .inst-name{font-weight:700;font-size:17px;color:#fff}
+  .welcome .inst-sub{color:var(--dim);font-size:14px;line-height:1.45;max-width:36ch;margin:4px auto 22px}
+  .welcome .study-h{font-size:27px;font-weight:700;margin:0 0 2px}
+  .welcome .study-s{font-style:italic;color:var(--dim);font-size:17px;margin:0 0 18px}
+  .welcome .intro-txt{color:var(--dim);font-size:15.5px;line-height:1.55;text-align:left;margin:0 0 12px}
+  .btn.cont{width:100%;height:64px;background:var(--green);color:#0E0E0E;font-size:20px;margin-top:10px}
+  .btn.quiet{width:100%;height:48px;background:transparent;color:var(--dim);font-size:16px;font-weight:600;margin-top:4px}
+  .btn.quiet:hover{color:#fff}
+  .follow{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);text-align:left}
+  .follow p{color:var(--dim);font-size:15px;line-height:1.5;margin:0 0 12px}
+  .follow-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:56px;border-radius:999px;border:2px solid var(--green);color:var(--green);font-size:18px;font-weight:700;text-decoration:none;box-sizing:border-box}
+  .follow-btn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2}
+  .follow-btn:hover{background:var(--green-dk)}
+  .welcome .follow{text-align:center}
+  .fs-lead{color:var(--dim);font-size:16px;line-height:1.45;margin:0 0 14px}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto !important}}
+
+  /* ---------- production additions ---------- */
+  .lotus-defs{position:absolute;width:0;height:0;overflow:hidden}
+  .lang-row{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin:-8px 0 8px;color:var(--dim);font-size:14px}
+  .lang-row select{background:var(--card2);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:6px 10px;font:inherit;font-size:14px}
+  .lang-row[hidden]{display:none}
+  .notice-link{color:var(--green);text-decoration:underline;text-underline-offset:2px}
+  .block .lead{color:var(--dim2);font-size:14px;line-height:1.45;margin:-2px 0 8px}
+  .send-error{color:var(--yellow);font-size:14px;line-height:1.45;text-align:center;margin:10px 0 0}
+  .submit[disabled]{opacity:.6;cursor:default}
