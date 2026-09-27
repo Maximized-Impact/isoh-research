@@ -17,7 +17,9 @@
   const AMBER_S = 120, RED_S = 30;
   const CHIME_MARKS = [30, 25, 20, 19, 15, 14, 13, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]; // call_timeout_chime.mp3, seconds left
   const TURNSTILE_WAIT_MS = 10000;
-  const ITEM = 52;
+  const ITEM = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--item')) || 52; // wheel row height, from the stylesheet's --item
+  const GAIN = 1.5, TAU = 500, SLOP = 8, MIN_MS = 120, MAX_MS = 800; // wheel drag: finger gain, fling travel (ms of release speed), tap-or-drag threshold, glide duration bounds
+  const ANDROID = /Android/i.test(navigator.userAgent); // custom touch physics only on Android; iPhone keeps its native scrolling
 
   let S = null;      // the language file
   let ASRS = null;   // this language's ASRS entry
@@ -76,17 +78,61 @@
      ------------------------------------------------------------------ */
   const wheels = { h: $('wh'), m: $('wm'), s: $('ws') };
   const picked = { h: 0, m: 0, s: 0 };
+  const motion = new Map(); // wheel -> its drag and fling state
+  const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const snapTo = (el, y) => Math.max(0, Math.min(+el.dataset.max * ITEM, Math.round(y / ITEM) * ITEM));
+  if (ANDROID) document.documentElement.classList.add('android');
   function buildWheel(el) {
     const max = +el.dataset.max; const frag = document.createDocumentFragment();
     const padTop = document.createElement('div'); padTop.className = 'pad'; frag.appendChild(padTop);
     for (let i = 0; i <= max; i++) { const d = document.createElement('div'); d.className = 'it'; d.textContent = pad(i); d.dataset.v = i; d.setAttribute('role', 'option'); frag.appendChild(d); }
     const padBot = document.createElement('div'); padBot.className = 'pad'; frag.appendChild(padBot);
     el.appendChild(frag);
-    el.addEventListener('click', (e) => { const it = e.target.closest('.it'); if (it) el.scrollTo({ top: (+it.dataset.v) * ITEM, behavior: 'smooth' }); });
-    el.addEventListener('keydown', (e) => { const cur = Math.round(el.scrollTop / ITEM); if (e.key === 'ArrowDown') { e.preventDefault(); el.scrollTo({ top: Math.min(max, cur + 1) * ITEM }); } if (e.key === 'ArrowUp') { e.preventDefault(); el.scrollTo({ top: Math.max(0, cur - 1) * ITEM }); } });
+    // Drag with gain and a fling: the mouse and pen everywhere, touch on Android (iPhone keeps its native scrolling). A press
+    // stops a spinning wheel; a move beyond SLOP becomes a drag (pointer captured, snap off via .drag); release flings by the
+    // last 100 ms of finger speed and glide() lands on a row. Trackpad, mouse wheel and keyboard stay native.
+    const st = { raf: 0, id: null, moved: false, y0: 0, top0: 0, pos: 0, s: [] }; motion.set(el, st);
+    el.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'mouse' ? e.button !== 0 : !ANDROID) return;
+      cancelAnimationFrame(st.raf);
+      Object.assign(st, { id: e.pointerId, moved: false, y0: e.clientY, top0: el.scrollTop, pos: el.scrollTop, s: [{ t: e.timeStamp, y: e.clientY }] });
+    });
+    el.addEventListener('pointermove', (e) => {
+      if (e.pointerId !== st.id) return;
+      if (!st.moved) { if (Math.abs(e.clientY - st.y0) < SLOP) return; st.moved = true; st.y0 = e.clientY; st.top0 = el.scrollTop; el.classList.add('drag'); try { el.setPointerCapture(e.pointerId); } catch (x) { /* pointer already gone */ } }
+      st.pos = Math.max(0, Math.min(max * ITEM, st.top0 - (e.clientY - st.y0) * GAIN)); el.scrollTop = st.pos;
+      st.s.push({ t: e.timeStamp, y: e.clientY }); while (st.s.length > 1 && e.timeStamp - st.s[0].t > 100) st.s.shift();
+    });
+    const end = (e, fling) => {
+      if (e.pointerId !== st.id) return; st.id = null;
+      if (!st.moved) { if (el.classList.contains('drag')) glide(el, el.scrollTop); return; } // a tap: the click handler may follow
+      const a = st.s[0], b = st.s[st.s.length - 1], dt = b.t - a.t; let v = 0;
+      if (fling && st.s.length > 1 && dt >= 15 && e.timeStamp - b.t < 80) v = Math.max(-5, Math.min(5, (b.y - a.y) / dt)); // finger px per ms; a finger at rest before lifting gives no fling
+      const target = snapTo(el, st.pos - v * GAIN * TAU);
+      glide(el, target, v ? 2 * Math.abs(target - st.pos) / (Math.abs(v) * GAIN) : undefined); // duration matched to the release speed
+      if (e.pointerType !== 'mouse') st.moved = false; // touch drags produce no click to swallow
+    };
+    el.addEventListener('pointerup', (e) => end(e, true)); el.addEventListener('pointercancel', (e) => end(e, false));
+    el.addEventListener('click', (e) => { if (st.moved) { st.moved = false; return; } const it = e.target.closest('.it'); if (it) glide(el, (+it.dataset.v) * ITEM); });
+    el.addEventListener('keydown', (e) => { const cur = Math.round(el.scrollTop / ITEM); if (e.key === 'ArrowDown') { e.preventDefault(); glide(el, Math.min(max, cur + 1) * ITEM, 0); } if (e.key === 'ArrowUp') { e.preventDefault(); glide(el, Math.max(0, cur - 1) * ITEM, 0); } });
     let raf = 0;
     el.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => highlight(el)); }, { passive: true });
     highlight(el);
+  }
+  // Every programmatic move of a wheel: cancels its drag or fling, glides to the nearest row (quadratic ease-out; ms 0, reduced
+  // motion or no distance is instant) with snap off, and lands exactly on the row before snap returns, so nothing jumps.
+  function glide(el, target, ms) {
+    const st = motion.get(el); cancelAnimationFrame(st.raf); st.id = null;
+    target = snapTo(el, target);
+    const from = el.scrollTop, dist = target - from;
+    if (ms === undefined) ms = MIN_MS + Math.abs(dist) / 3;
+    ms = REDUCED.matches || !dist || !ms ? 0 : Math.max(MIN_MS, Math.min(MAX_MS, ms));
+    const land = () => { el.scrollTop = target; el.classList.remove('drag'); highlight(el); };
+    if (!ms) { land(); return; }
+    el.classList.add('drag');
+    const t0 = performance.now();
+    const step = (now) => { const p = Math.min(1, (now - t0) / ms); el.scrollTop = from + dist * (1 - (1 - p) * (1 - p)); if (p < 1) st.raf = requestAnimationFrame(step); else land(); };
+    st.raf = requestAnimationFrame(step);
   }
   function highlight(el) {
     const idx = Math.max(0, Math.min(+el.dataset.max, Math.round(el.scrollTop / ITEM)));
@@ -247,7 +293,7 @@
     $('fsLead').hidden = true; $('fsContinue').hidden = true; $('focusClose').hidden = false;
     $('setupScrim').hidden = false; $('cluster').hidden = false; $('btnShort').focus();
   });
-  $('reset').addEventListener('click', () => { Object.values(wheels).forEach((w) => w.scrollTo({ top: 0, behavior: 'smooth' })); });
+  $('reset').addEventListener('click', () => { Object.values(wheels).forEach((w) => glide(w, 0, MIN_MS)); });
   $('btnLong').addEventListener('click', () => startTimer(PRESETS.long, 'long'));
   $('btnShort').addEventListener('click', () => startTimer(PRESETS.short, 'short'));
   $('btnCall').addEventListener('click', () => startTimer(customSeconds(), 'custom'));
