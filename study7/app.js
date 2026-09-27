@@ -2,7 +2,8 @@
    language file (strings_*.json) and, for block F, from asrs_official_transcriptions_v1.json. Differences from the
    prototype, all from handoff v14: answers are option indexes; the per-answer ping is gone; the submission carries the
    schema's field names, item_timing with last_s and the "switched on at any point" tool flags; the six sounds and the two
-   chimes are the app's audio files; the countdown chime plays at 30, 20, 19 and 10 to 0 seconds left. */
+   chimes are the app's audio files; the countdown chime plays at 30 and 25, at 20 and 19, at 15, 14 and 13, then every
+   second from 10 to 0 seconds left. */
 (() => {
   'use strict';
   const $ = (id) => document.getElementById(id);
@@ -14,7 +15,7 @@
   const INTERVALS = [10, 20, 30, 60];
   const DONE_KEY = 'study7_stageA_done';
   const AMBER_S = 120, RED_S = 30;
-  const CHIME_MARKS = [30, 20, 19, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]; // call_timeout_chime.mp3, seconds left
+  const CHIME_MARKS = [30, 25, 20, 19, 15, 14, 13, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]; // call_timeout_chime.mp3, seconds left
   const TURNSTILE_WAIT_MS = 10000;
   const ITEM = 52;
 
@@ -136,7 +137,7 @@
     } else {
       cd.textContent = `-${fmtClock(-remaining)}`; bar.firstElementChild.style.width = '100%';
     }
-    // Countdown chime: once at 30 s left, at 20 and 19, then every second from 10 to 0. Marks at or above the chosen
+    // Countdown chime: at 30 and 25 s left, at 20 and 19, at 15, 14 and 13, then every second from 10 to 0. Marks at or above the chosen
     // duration never fire; if several marks fall due at once (a tab returning from the background) only the latest sounds.
     const due = CHIME_MARKS.filter((m) => !timer.fired.has(m) && m < timer.duration && remaining <= m * 1000);
     if (due.length) {
