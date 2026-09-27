@@ -5,7 +5,7 @@
 // OSF_PREREG_URL: the public OSF pre-registration address; empty until the registration exists (the data notice hides the link).
 // PRODUCTION_ORIGIN: submissions from this origin carry stage-a-v1-<language>; from any other origin they carry stage-a-test.
 window.STUDY7_CONFIG = {
-  FUNCTION_URL: '',
+  FUNCTION_URL: 'https://europe-north1-maximized-impact-research.cloudfunctions.net/study7',
   TURNSTILE_SITE_KEY: '0x4AAAAAAFEilqbN-FP6ZU59',
   OSF_PREREG_URL: '',
   PRODUCTION_ORIGIN: 'https://research.maximized-impact.org',
