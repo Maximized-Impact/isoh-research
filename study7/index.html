@@ -32,15 +32,22 @@
 
 <!-- ============ survey ============ -->
 <main class="survey" id="survey" hidden>
-  <h1 data-s="survey.title"></h1>
-  <p class="intro" data-s="survey.intro1"></p>
-  <p class="intro" data-s="survey.intro2"></p>
+  <div id="surveyHead">
+    <h1 data-s="survey.title"></h1>
+    <p class="intro" data-s="survey.intro1"></p>
+    <p class="intro" data-s="survey.intro2"></p>
+  </div>
   <div id="items"></div>
   <button class="submit" id="submit" type="button" data-s="survey.send"></button>
   <p class="send-error" id="sendError" role="alert" hidden data-s="thanks.send_failed"></p>
+  <p class="send-error" id="unanswered" role="alert" hidden data-s="survey.unanswered"></p>
   <section class="thanks" id="thanks">
+    <svg class="mark" aria-hidden="true" focusable="false"><use href="#lotus"/></svg>
+    <div class="inst-name" data-s="institute.name"></div>
+    <p class="inst-sub" data-s="institute.formula"></p>
     <h2 data-s="thanks.title"></h2>
     <p data-s="thanks.sent"></p>
+    <p data-s="thanks.results"></p>
     <button class="submit secondary" id="download" type="button" data-s="thanks.download"></button>
     <p class="intro" data-s="thanks.download_note"></p>
     <div class="follow">

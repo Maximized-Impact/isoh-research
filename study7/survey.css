@@ -107,6 +107,7 @@
   .survey .intro{color:var(--dim);font-size:15px;line-height:1.5;margin:0 0 18px}
   .block h2{font-size:16px;color:var(--dim);font-weight:600;margin:22px 0 8px}
   .q{background:#161616;border-radius:16px;padding:14px 16px;margin:10px 0}
+  .q.missing{background:#2A1313;box-shadow:inset 0 0 0 2px var(--red)}
   .q p{margin:0 0 10px;font-size:16px;line-height:1.4}
   /* Default: options expand to fill the row */
   .scale{display:flex;flex-wrap:wrap;gap:6px}
@@ -129,7 +130,7 @@
   .scale label:has(input:focus-visible){box-shadow:inset 0 0 0 2px #fff}
   .submit.secondary{background:transparent;box-shadow:inset 0 0 0 2px var(--green);margin-top:12px}
   .submit{display:block;width:100%;margin-top:26px;height:64px;border:0;border-radius:999px;background:var(--green-btn);color:var(--green);font-size:20px;font-weight:700;cursor:pointer}
-  .thanks{display:none;padding:24px 0}
+  .thanks{display:none;padding:24px 0;text-align:center}
   .credit{color:var(--dim2);font-size:12px;text-align:center;margin-top:28px}
 
   /* ---------- tool buttons (app drawer style) ---------- */
@@ -149,9 +150,9 @@
   .head-right{display:flex;align-items:center;gap:14px}
   /* ---------- welcome overlay ---------- */
   .welcome{text-align:center}
-  .welcome .mark{width:72px;height:65px;display:block;margin:2px auto 12px;fill:#fff}
-  .welcome .inst-name{font-weight:700;font-size:17px;color:#fff}
-  .welcome .inst-sub{color:var(--dim);font-size:14px;line-height:1.45;max-width:36ch;margin:4px auto 22px}
+  .welcome .mark,.thanks .mark{width:72px;height:65px;display:block;margin:2px auto 12px;fill:#fff}
+  .welcome .inst-name,.thanks .inst-name{font-weight:700;font-size:17px;color:#fff}
+  .welcome .inst-sub,.thanks .inst-sub{color:var(--dim);font-size:14px;line-height:1.45;max-width:36ch;margin:4px auto 22px}
   .welcome .study-h{font-size:27px;font-weight:700;margin:0 0 2px}
   .welcome .study-s{font-style:italic;color:var(--dim);font-size:17px;margin:0 0 18px}
   .welcome .intro-txt{color:var(--dim);font-size:15.5px;line-height:1.55;text-align:left;margin:0 0 12px}
@@ -164,7 +165,7 @@
   .follow-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:56px;border-radius:999px;border:2px solid var(--green);color:var(--green);font-size:18px;font-weight:700;text-decoration:none;box-sizing:border-box}
   .follow-btn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2}
   .follow-btn:hover{background:var(--green-dk)}
-  .welcome .follow{text-align:center}
+  .welcome .follow,.thanks .follow{text-align:center}
   .fs-lead{color:var(--dim);font-size:15px;line-height:1.45;margin:0 0 14px}
 
   @media (prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto !important}}

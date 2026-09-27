@@ -22,7 +22,7 @@ Canonical URLs: `https://research.maximized-impact.org/papers/hct/` and `https:/
 |------|------------|
 | `study7/index.html`, `survey.css`, `app.js`, `net.js`, `pdf.js` | The survey: markup with string keys, the prototype's stylesheet, the behaviour, the network and Turnstile layer, the PDF module (loaded on the download tap). |
 | `study7/config.js` | The four values that differ between environments: `FUNCTION_URL`, `TURNSTILE_SITE_KEY`, `OSF_PREREG_URL`, `PRODUCTION_ORIGIN`. Nothing else is configured anywhere. |
-| `assets/lang/study7/` | `index.json` (the languages offered), `strings_en_v6.json`, `asrs_official_transcriptions_v1.json`. |
+| `assets/lang/study7/` | `index.json` (the languages offered), `strings_en_v7.json`, `asrs_official_transcriptions_v1.json`. |
 | `assets/audio/study7/` | The six focus sounds as Vorbis (`.ogg`, the app's files; the brown noise FLAC became Vorbis) with MP3 fallbacks for browsers without Vorbis (iOS Safari), and the two chimes as delivered. Loaded only when a sound is switched on or the timer starts. |
 | `assets/fonts/` | DM Sans and DM Mono web fonts; Carlito, Caladea and DM Sans TTFs for the PDF (see `assets/fonts/README.md`). |
 | `assets/lib/` | `pdf-lib.min.js` 1.17.1 and `fontkit.umd.min.js` (@pdf-lib/fontkit 1.1.1), loaded only on the download tap. |
@@ -45,7 +45,7 @@ Site name `maximized-impact-research`; deploy previews on; production deploys lo
 
 ## Adding a language
 
-1. Drop `strings_<code>_v6.json` (the same keys as `strings_en_v6.json`, the same version) into `assets/lang/study7/`. Its `_meta.fonts` names the font family for each PDF role; a language whose script Carlito, Caladea or DM Sans do not cover names Noto families there, and their TTF files must then be added to `assets/fonts/` and to the `FONT_FILES` table in `study7/pdf.js` and `tools/check-font-coverage.mjs`.
+1. Drop `strings_<code>_v7.json` (the same keys as `strings_en_v7.json`, the same version) into `assets/lang/study7/`. Its `_meta.fonts` names the font family for each PDF role; a language whose script Carlito, Caladea or DM Sans do not cover names Noto families there, and their TTF files must then be added to `assets/fonts/` and to the `FONT_FILES` table in `study7/pdf.js` and `tools/check-font-coverage.mjs`.
 2. Add a line to `assets/lang/study7/index.json` with `code`, `label` (the language's own name, shown in the selector) and `file`.
 3. The language appears only if its entry in `asrs_official_transcriptions_v1.json` has a status beginning with `verbatim`. Thai stays hidden until its flag is cleared; Arabic and Urdu stay hidden.
 4. `cd tools && node check-font-coverage.mjs <code>`: every character of the strings and the ASRS entry must have a glyph, or the file is not shipped. Arabic and Urdu need shaping and right-to-left layout that pdf-lib does not do: for them the download is the text file.

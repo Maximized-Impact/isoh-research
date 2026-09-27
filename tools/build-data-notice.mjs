@@ -4,7 +4,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const S = JSON.parse(readFileSync(resolve(root, 'assets/lang/study7/strings_en_v6.json'), 'utf8'));
+const S = JSON.parse(readFileSync(resolve(root, 'assets/lang/study7/strings_en_v7.json'), 'utf8'));
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const D = S.data_notice;
 const contactParts = D.contact.split('janne@maximized-impact.org');
@@ -20,4 +20,4 @@ const body = `    <div class="page notice">
     </div>`;
 const template = readFileSync(resolve(root, 'tools/data-notice.template.html'), 'utf8');
 writeFileSync(resolve(root, 'study7/data-notice/index.html'), template.replace('<!--BODY-->', body));
-console.log('study7/data-notice/index.html written from strings_en_v6.json');
+console.log('study7/data-notice/index.html written from strings_en_v7.json');

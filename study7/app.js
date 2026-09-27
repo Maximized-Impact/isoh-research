@@ -326,6 +326,8 @@
     const wrap = $('items');
     wrap.addEventListener('change', (e) => { if (!e.target.name || !para.startedAt) return; const id = e.target.name, t = activeNow();
       const r = para.items[id] || (para.items[id] = { first: t, last: t, changes: 0, order: ++para.order }); r.last = t; r.changes++; para.lastItem = id; });
+    // An answered question loses its red mark; the notice goes once none is left
+    wrap.addEventListener('change', (e) => { const q = e.target.closest('.q.missing'); if (q) { q.classList.remove('missing'); if (!wrap.querySelector('.q.missing')) $('unanswered').hidden = true; } });
     S._meta.block_order.forEach((letter) => {
       const b = S.blocks[letter];
       const block = document.createElement('section'); block.className = 'block'; const h = document.createElement('h2'); h.textContent = b.title; block.appendChild(h);
@@ -334,11 +336,11 @@
         if (b.lead) { const lead = document.createElement('p'); lead.className = 'lead'; lead.textContent = b.lead; block.appendChild(lead); }
         entries = ASRS.items.map((text, i) => [`asrs${i + 1}`, text, ASRS.scale]);
       } else {
-        entries = Object.entries(b.items).map(([id, item]) => [id, item.text, S.options[item.options]]);
+        entries = Object.entries(b.items).map(([id, item]) => [id, item.text, S.options[item.options], item.optional === true]);
       }
-      entries.forEach(([id, text, opts]) => {
+      entries.forEach(([id, text, opts, optional]) => {
         QTEXT[id] = text; OPTS[id] = opts;
-        const q = document.createElement('div'); q.className = 'q'; const p = document.createElement('p'); p.textContent = text; q.appendChild(p);
+        const q = document.createElement('div'); q.className = 'q'; if (optional) q.dataset.optional = '1'; const p = document.createElement('p'); p.textContent = text; q.appendChild(p);
         const numeric = opts.length === 11, wide = Math.max(...opts.map((o) => o.length)) > 14;
         const sc = document.createElement('div'); sc.className = 'scale' + (numeric ? ' numeric' : wide ? ' wide' : opts.length === 5 ? ' five' : ''); sc.setAttribute('role', 'radiogroup'); sc.setAttribute('aria-label', text);
         opts.forEach((o, index) => { const l = document.createElement('label'); const i = document.createElement('input'); i.type = 'radio'; i.name = id; i.value = String(index); l.appendChild(i); l.appendChild(document.createTextNode(o)); sc.appendChild(l); });
@@ -364,8 +366,13 @@
       active_time_s: Math.round(activeNow() / 1000), item_timing: paraSummary(), ...(src ? { src } : {}),
     };
   }
+  // Required answers: every question except those the language file marks optional. Send refuses while any is open,
+  // marks them in red, scrolls to the first and says why; nothing is sent and Turnstile is not loaded.
+  const unanswered = () => [...document.querySelectorAll('#items .q:not([data-optional])')].filter((q) => !q.querySelector('input:checked'));
   async function send() {
     const button = $('submit'); if (button.disabled) return;
+    const missing = unanswered(); document.querySelectorAll('#items .q.missing').forEach((q) => q.classList.remove('missing'));
+    if (missing.length) { missing.forEach((q) => q.classList.add('missing')); $('unanswered').hidden = false; missing[0].scrollIntoView({ block: 'center', behavior: REDUCED.matches ? 'auto' : 'smooth' }); return; }
     button.disabled = true; button.textContent = S.thanks.sending; $('sendError').hidden = true;
     const payload = buildSubmission(Date.now());
     let token = null;
@@ -380,7 +387,7 @@
     sent = true;
     last = { payload, at: new Date() };
     try { window.localStorage.setItem(DONE_KEY, last.at.toISOString()); } catch (e) { /* storage unavailable */ }
-    $('submit').hidden = true; $('sendError').hidden = true; $('items').hidden = true; $('thanks').style.display = 'block';
+    $('submit').hidden = true; $('sendError').hidden = true; $('unanswered').hidden = true; $('surveyHead').hidden = true; $('items').hidden = true; $('thanks').style.display = 'block';
     timer.active = false; $('topbar').hidden = true; window.scrollTo(0, 0);
   }
   $('submit').addEventListener('click', send);
