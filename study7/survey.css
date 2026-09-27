@@ -6,7 +6,7 @@
     --ink:#FFFFFF; --dim:#9A9A9A; --dim2:#8A8A8A;
     --green:#2ED573; --green-dk:#12331F; --green-btn:#14532D;
     --orange:#F5A030; --orange-dk:#3C2712;
-    --yellow:#F5B800; --yellow-dk:#6B5200; --red:#FF5252;
+    --yellow:#F5B800; --yellow-dk:#6B5200; --red:#FF5252; --red-dim:#C0504F;
     --item:42px;
   }
   *{box-sizing:border-box}
@@ -22,7 +22,7 @@
   .card.setup,.card.focus{padding:22px 20px 20px}
 
   /* ---------- call setup card ---------- */
-  .study{text-align:center;font-size:19px;font-weight:700;letter-spacing:.2px;margin:0 0 14px}
+  .study{text-align:center;font-size:25px;font-weight:700;letter-spacing:.2px;margin:0 0 14px}
   .picker{background:var(--card2);border-radius:24px;padding:12px 6px 6px}
   .picker-head{display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center;color:var(--dim);font-size:15px;margin-bottom:2px}
   .wheels{display:grid;grid-template-columns:1fr 1fr 1fr;height:calc(var(--item) * 5)}
@@ -107,7 +107,7 @@
   .survey .intro{color:var(--dim);font-size:15px;line-height:1.5;margin:0 0 18px}
   .block h2{font-size:16px;color:var(--dim);font-weight:600;margin:22px 0 8px}
   .q{background:#161616;border-radius:16px;padding:14px 16px;margin:10px 0}
-  .q.missing{background:#2A1313;box-shadow:inset 0 0 0 2px var(--red)}
+  .q.missing{box-shadow:inset 0 0 0 2px var(--red-dim)}
   .q p{margin:0 0 10px;font-size:16px;line-height:1.4}
   /* Default: options expand to fill the row */
   .scale{display:flex;flex-wrap:wrap;gap:6px}
@@ -131,6 +131,9 @@
   .submit.secondary{background:transparent;box-shadow:inset 0 0 0 2px var(--green);margin-top:12px}
   .submit{display:block;width:100%;margin-top:26px;height:64px;border:0;border-radius:999px;background:var(--green-btn);color:var(--green);font-size:20px;font-weight:700;cursor:pointer}
   .thanks{display:none;padding:24px 0;text-align:center}
+  .thanks h2{font-size:25px;font-weight:700;margin:22px 0 18px}
+  .thanks .submit.secondary{margin-bottom:16px}
+  .thanks-inst{text-align:center;margin-top:14px}
   .credit{color:var(--dim2);font-size:12px;text-align:center;margin-top:28px}
 
   /* ---------- tool buttons (app drawer style) ---------- */
@@ -150,9 +153,9 @@
   .head-right{display:flex;align-items:center;gap:14px}
   /* ---------- welcome overlay ---------- */
   .welcome{text-align:center}
-  .welcome .mark,.thanks .mark{width:72px;height:65px;display:block;margin:2px auto 12px;fill:#fff}
-  .welcome .inst-name,.thanks .inst-name{font-weight:700;font-size:17px;color:#fff}
-  .welcome .inst-sub,.thanks .inst-sub{color:var(--dim);font-size:14px;line-height:1.45;max-width:36ch;margin:4px auto 22px}
+  .welcome .mark,.thanks .mark,.setup .mark{width:72px;height:65px;display:block;margin:2px auto 12px;fill:#fff}
+  .welcome .inst-name,.thanks-inst .inst-name{font-weight:700;font-size:17px;color:#fff}
+  .welcome .inst-sub,.thanks-inst .inst-sub{color:var(--dim);font-size:14px;line-height:1.45;max-width:36ch;margin:4px auto 22px}
   .welcome .study-h{font-size:27px;font-weight:700;margin:0 0 2px}
   .welcome .study-s{font-style:italic;color:var(--dim);font-size:17px;margin:0 0 18px}
   .welcome .intro-txt{color:var(--dim);font-size:15.5px;line-height:1.55;text-align:left;margin:0 0 12px}
@@ -166,7 +169,6 @@
   .follow-btn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2}
   .follow-btn:hover{background:var(--green-dk)}
   .welcome .follow,.thanks .follow{text-align:center}
-  .fs-lead{color:var(--dim);font-size:15px;line-height:1.45;margin:0 0 14px}
 
   @media (prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto !important}}
 

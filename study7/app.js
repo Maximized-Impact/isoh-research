@@ -285,13 +285,13 @@
   });
   function openFocusStep(fromScrim) {
     step = 'focus'; $(fromScrim).hidden = true;
-    $('fsLead').hidden = false; $('fsContinue').hidden = false; $('focusClose').hidden = true;
+    $('fsContinue').hidden = false; $('focusClose').hidden = true;
     $('focusScrim').hidden = false; syncTools(); $('fsOn').focus();
   }
   $('welcomeContinue').addEventListener('click', () => openFocusStep('welcomeScrim'));
   $('fsContinue').addEventListener('click', () => {
     step = 'setup'; $('focusScrim').hidden = true;
-    $('fsLead').hidden = true; $('fsContinue').hidden = true; $('focusClose').hidden = false;
+    $('fsContinue').hidden = true; $('focusClose').hidden = false;
     $('setupScrim').hidden = false; $('btnShort').focus();
     history.pushState({ step: 'setup' }, ''); // so the back gesture or button returns to the focus card
   });
@@ -387,7 +387,7 @@
     sent = true;
     last = { payload, at: new Date() };
     try { window.localStorage.setItem(DONE_KEY, last.at.toISOString()); } catch (e) { /* storage unavailable */ }
-    $('submit').hidden = true; $('sendError').hidden = true; $('unanswered').hidden = true; $('surveyHead').hidden = true; $('items').hidden = true; $('thanks').style.display = 'block';
+    $('submit').hidden = true; $('sendError').hidden = true; $('unanswered').hidden = true; $('surveyHead').hidden = true; $('items').hidden = true; $('thanks').style.display = 'block'; $('thanksInst').hidden = false;
     timer.active = false; $('topbar').hidden = true; window.scrollTo(0, 0);
   }
   $('submit').addEventListener('click', send);

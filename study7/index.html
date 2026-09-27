@@ -43,11 +43,9 @@
   <p class="send-error" id="unanswered" role="alert" hidden data-s="survey.unanswered"></p>
   <section class="thanks" id="thanks">
     <svg class="mark" aria-hidden="true" focusable="false"><use href="#lotus"/></svg>
-    <div class="inst-name" data-s="institute.name"></div>
-    <p class="inst-sub" data-s="institute.formula"></p>
     <h2 data-s="thanks.title"></h2>
     <p data-s="thanks.sent"></p>
-    <p data-s="thanks.results"></p>
+    <p class="intro" data-s="thanks.results"></p>
     <button class="submit secondary" id="download" type="button" data-s="thanks.download"></button>
     <p class="intro" data-s="thanks.download_note"></p>
     <div class="follow">
@@ -56,6 +54,10 @@
     </div>
   </section>
   <p class="credit" data-s="survey.credit"></p>
+  <div class="thanks-inst" id="thanksInst" hidden>
+    <div class="inst-name" data-s="institute.name"></div>
+    <p class="inst-sub" data-s="institute.formula"></p>
+  </div>
 </main>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -101,6 +103,7 @@
 <!-- ============ overlay 1: call setup ============ -->
 <div class="scrim" id="setupScrim" hidden>
   <section class="card setup" role="dialog" aria-modal="true" aria-labelledby="setupTitle">
+    <svg class="mark" aria-hidden="true" focusable="false"><use href="#lotus"/></svg>
     <div class="study" id="setupTitle" data-s="setup.study"></div>
 
     <div class="picker" data-s-aria="setup.set_duration">
@@ -134,7 +137,6 @@
 <!-- ============ overlay 2: focus sound ============ -->
 <div class="scrim" id="focusScrim" hidden>
   <section class="card focus" role="dialog" aria-modal="true" aria-labelledby="focusTitle">
-    <p class="fs-lead" id="fsLead" hidden data-s="focus.lead"></p>
     <div class="card-head">
       <h2 id="focusTitle" data-s="focus.title"></h2>
       <div class="head-right">
