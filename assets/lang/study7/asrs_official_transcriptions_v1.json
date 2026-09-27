@@ -1,0 +1,223 @@
+{
+ "_about": "ASRS-V1.1 6-Question Screener (Part A): items and response labels transcribed verbatim from the official PDFs hosted by Harvard NCS (hcp.med.harvard.edu/ncs/asrs.php). Each entry carries the copyright line printed on that PDF. Use unaltered; cite Kessler et al. (2005). Status per language in 'status'.",
+ "_terms": "Free for clinical and non-clinical use with attribution; no modifications other than creating electronic versions (NYU licensing page). Notice to print with every version: 'ASRS-V1.1 Screener © World Health Organization 2003; © New York University and the President and Fellows of Harvard College. All rights reserved. Used unaltered (electronic version). Kessler et al. (2005).' plus the line printed on the language PDF.",
+ "en": {
+  "status": "verbatim",
+  "source": "6Q_ASRS_English.pdf / ASRS-V1.1 Screener",
+  "notice": "© World Health Organization 2003. All rights reserved.",
+  "scale": [
+   "Never",
+   "Rarely",
+   "Sometimes",
+   "Often",
+   "Very Often"
+  ],
+  "items": [
+   "How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?",
+   "How often do you have difficulty getting things in order when you have to do a task that requires organization?",
+   "How often do you have problems remembering appointments or obligations?",
+   "When you have a task that requires a lot of thought, how often do you avoid or delay getting started?",
+   "How often do you fidget or squirm with your hands or feet when you have to sit down for a long time?",
+   "How often do you feel overly active and compelled to do things, like you were driven by a motor?"
+  ]
+ },
+ "fi": {
+  "status": "verbatim",
+  "source": "6Q_Finnish_final.pdf",
+  "notice": "© New York University and Ronald C. Kessler, PhD. All rights reserved.",
+  "translators": "Sami Leppämäki, Pekka Tani, Sami Grönfors, Rauli Kärkäs, Elina Sihvola (HUS Psychiatry); Matti Huttunen (THL)",
+  "scale": [
+   "Ei koskaan",
+   "Harvoin",
+   "Joskus",
+   "Usein",
+   "Hyvin usein"
+  ],
+  "items": [
+   "Kuinka usein Teidän on vaikea tehdä tehtäviä loppuun saakka sen jälkeen, kun haastavat tai mielenkiintoiset osat on tehty?",
+   "Kuinka usein Teillä on vaikeuksia järjestelmällisyyttä vaativissa tehtävissä?",
+   "Kuinka usein Teidän on vaikea muistaa velvollisuuksianne tai sovittuja tapaamisianne?",
+   "Kun Teidän pitäisi tehdä tehtävä, joka vaatii paljon ajatustyötä, kuinka usein välttelette sitä tai viivyttelette sen aloittamista?",
+   "Kuinka usein kiemurtelette tai liikuttelette levottomasti käsiänne tai jalkojanne kun joudutte istumaan paikoillanne pitkään?",
+   "Kuinka usein Teillä on yliaktiivinen olo ja tunnette pakonomaista tarvetta tehdä asioita, ikään kuin sisällänne olisi moottori?"
+  ]
+ },
+ "de": {
+  "status": "verbatim",
+  "source": "6Q_German_final.pdf",
+  "notice": "© New York University and Ronald C. Kessler, PhD. All rights reserved.",
+  "scale": [
+   "Niemals",
+   "Selten",
+   "Manchmal",
+   "Oft",
+   "Sehr oft"
+  ],
+  "items": [
+   "Wie oft haben Sie Probleme, die letzten Feinheiten einer Arbeit zum Abschluss zu bringen, nachdem Sie die wesentlichen Punkte erledigt haben?",
+   "Wie oft fällt es Ihnen schwer, Dinge in die Reihe zu bekommen, wenn Sie an einer Aufgabe arbeiten, bei der Organisation gefragt ist?",
+   "Wie oft haben Sie Probleme, sich an Termine oder Verabredungen zu erinnern?",
+   "Wie oft vermeiden Sie oder verzögern Sie, die Aufgabe zu beginnen, wenn Sie vor einer Aufgabe stehen, bei der sehr viel Denkvermögen gefragt ist?",
+   "Wie oft sind Ihre Hände bzw. Füße bei langem Sitzen in Bewegung?",
+   "Wie oft fühlen Sie sich übermäßig aktiv und verspüren den Drang Dinge zu tun, als ob Sie von einem Motor angetrieben würden?"
+  ]
+ },
+ "fr": {
+  "status": "verbatim",
+  "source": "6Q_French_final.pdf",
+  "notice": "© New York University and Ronald C. Kessler, PhD. All rights reserved.",
+  "scale": [
+   "Jamais",
+   "Rarement",
+   "Quelquefois",
+   "Souvent",
+   "Très souvent"
+  ],
+  "items": [
+   "A quelle fréquence vous arrive-t-il d'avoir des difficultés à finaliser les derniers détails d'un projet une fois que les parties les plus stimulantes ont été faites ?",
+   "A quelle fréquence vous arrive-t-il d'avoir des difficultés à mettre les choses en ordre lorsque vous devez faire quelque chose qui demande de l'organisation ?",
+   "A quelle fréquence vous arrive-t-il d'avoir des difficultés à vous rappeler vos rendez-vous ou vos obligations ?",
+   "Quand vous devez faire quelque chose qui demande beaucoup de réflexion, à quelle fréquence vous arrive-t-il d'éviter de le faire ou de le remettre à plus tard ?",
+   "A quelle fréquence vous arrive-t-il de remuer ou de tortiller les mains ou les pieds lorsque vous devez rester assis pendant une période prolongée ?",
+   "A quelle fréquence vous arrive-t-il de vous sentir excessivement actif et contraint de faire quelque chose, comme si vous étiez entraîné malgré vous par un moteur ?"
+  ]
+ },
+ "it": {
+  "status": "verbatim",
+  "source": "6Q_Italian_final.pdf",
+  "notice": "© New York University and Ronald C. Kessler, PhD. All rights reserved.",
+  "translators": "Andrea Fossati, Antonella Somma, Serena Borroni, Davide Carlotta",
+  "scale": [
+   "Mai",
+   "Raramente",
+   "Talvolta",
+   "Spesso",
+   "Molto spesso"
+  ],
+  "items": [
+   "Con che frequenza ha difficoltà a concludere i dettagli finali di un progetto, una volta che le parti più stimolanti sono state fatte?",
+   "Con che frequenza ha difficoltà a mettere le cose in ordine quando deve svolgere un compito che richiede organizzazione?",
+   "Con che frequenza ha problemi a ricordarsi gli appuntamenti o gli impegni?",
+   "Quando ha un compito che richiede un sacco di concentrazione, con che frequenza evita o ritarda l'inizio?",
+   "Con che frequenza agita o si contorce le mani o i piedi quando deve stare seduto/a per molto tempo?",
+   "Con che frequenza si sente eccessivamente attivo/a e costretto a fare delle cose, come se fosse azionato/a da un motore?"
+  ]
+ },
+ "sv": {
+  "status": "verbatim",
+  "source": "6Q_Swedish_final.pdf",
+  "notice": "© New York University and Ronald C. Kessler, PhD. All rights reserved.",
+  "translators": "Alina Rodriguez (Uppsala University)",
+  "scale": [
+   "Aldrig",
+   "Sällan",
+   "Ibland",
+   "Ofta",
+   "Mycket ofta"
+  ],
+  "items": [
+   "Hur ofta har du svårigheter med att avsluta de sista detaljerna i en uppgift/ett projekt när de mer krävande momenten har avklarats?",
+   "Hur ofta har du svårigheter med att få ordning på saker och ting när du ska utföra en uppgift som kräver organisation?",
+   "Hur ofta har du problem att komma ihåg avtalade möten, t ex läkartid, eller åtaganden?",
+   "Hur ofta händer det att du undviker eller skjuter på att sätta igång med en uppgift som kräver mycket tankemöda?",
+   "Hur ofta händer det att du sitter och plockar med något, eller skruvar på dig och rör händer eller fötter när du är tvungen att sitta en längre stund?",
+   "Hur ofta känner du dig överaktiv och tvungen att hålla igång, som om du gick på högvarv?"
+  ]
+ },
+ "ja": {
+  "status": "verbatim",
+  "source": "6Q_Japanese_final.pdf",
+  "notice": "© New York University and Ronald C. Kessler, PhD. All rights reserved.",
+  "translators": "Toshinobu Takeda (Ryukoku University)",
+  "scale": [
+   "全くない",
+   "めったにない",
+   "時々",
+   "頻繁",
+   "非常に頻繁"
+  ],
+  "items": [
+   "物事を行うにあたって、難所は乗り越えたのに、詰めが甘くて仕上げるのが困難だったことが、どのくらいの頻度でありますか。",
+   "計画性を要する作業を行なう際に、作業を順序だてるのが困難だったことが、どのくらいの頻度でありますか。",
+   "約束や、しなければいけない用事を忘れたことが、どのくらいの頻度でありますか。",
+   "じっくりと考える必要のある課題に取り掛かるのを避けたり、遅らせたりすることが、どのくらいの頻度でありますか。",
+   "長時間座っていなければならない時に、手足をそわそわと動かしたり、もぞもぞしたりすることが、どのくらいの頻度でありますか。",
+   "まるで何かに駆り立てられるかのように過度に活動的になったり、何かせずにいられなくなることが、どのくらいの頻度でありますか。"
+  ]
+ },
+ "ru": {
+  "status": "verbatim",
+  "source": "6Q_Russian_final.pdf",
+  "notice": "© World Health Organization 2004. All rights reserved. Based on the Composite International Diagnostic Interview © 2001 World Health Organization.",
+  "scale": [
+   "Никогда",
+   "Редко",
+   "Иногда",
+   "Часто",
+   "Очень часто"
+  ],
+  "items": [
+   "Как часто вам бывает трудно закончить работу после того как самое трудное уже сделано?",
+   "Как часто вам бывает трудно навести порядок перед выполнением работы, требующей организованности?",
+   "Как часто у вас возникают трудности с запоминанием времени встреч или своих обязанностей?",
+   "Как часто вы избегаете или откладываете начало работы, требующей больших умственных усилий?",
+   "Как часто вы беспокойно перебираете руками или ногами, когда приходится долго сидеть на одном месте?",
+   "Как часто вы испытываете чрезмерную активность и непреодолимое желание что-то сделать, как если бы у вас внутри был мотор?"
+  ]
+ },
+ "th": {
+  "status": "extracted with orthographic repair; compare glyph by glyph against the PDF before going live",
+  "source": "6Q_Thai_final.pdf",
+  "notice": "© New York University and Ronald C. Kessler, PhD. All rights reserved.",
+  "translators": "Sontuss Bussaratid",
+  "repairs": "PDF text layer lost the vowel sara am (ทา->ทำ) and displaced tone marks (แคไ่หน->แค่ไหน, ท่ี->ที่, คร้ัง->ครั้ง). Only those substitutions were made; item 6 may read 'บ่อยแค่ไหนที่ท่าน' in the original.",
+  "scale": [
+   "ไม่เคย",
+   "นานๆ ครั้ง",
+   "เป็นบางครั้ง",
+   "บ่อย",
+   "บ่อยมาก"
+  ],
+  "items": [
+   "บ่อยแค่ไหนที่ท่านทำงานครึ่งๆ กลางๆ หรือทำแล้วไม่ทำต่อจนเสร็จ เมื่อได้ทำส่วนที่ท้าทายของงานเสร็จแล้ว",
+   "บ่อยแค่ไหนที่ท่านทำงานไม่เป็นระเบียบ เพราะขาดการวางแผนหรือการจัดการที่ดี",
+   "บ่อยแค่ไหนที่ท่านลืมนัดหรือลืมทำในสิ่งที่ต้องทำ",
+   "บ่อยแค่ไหนที่ท่านหลีกเลี่ยงหรือผัดผ่อนที่จะเริ่มงานที่ต้องใช้ความคิดมากๆ",
+   "บ่อยแค่ไหนที่ท่านหยุกหยิก หรือ ขยับแขน ขยับขา เวลาที่ต้องนั่งนานๆ",
+   "บ่อยแค่ไหนท่านรู้สึกมีพลังมากเกินไป อยากทำโน่นทำนี่อย่างไม่รู้จักเหนื่อย"
+  ]
+ },
+ "es-ES": {
+  "status": "blocked tonight: Harvard server refused the fetch (robots timeout); file 6Q_Spanish (for Spain)_final.pdf exists",
+  "source": "6Q_Spanish (for Spain)_final.pdf"
+ },
+ "es-MX": {
+  "status": "not yet fetched; official 'Spanish (for Mexico & U.S.)' version exists",
+  "source": "Harvard NCS list"
+ },
+ "pt-PT": {
+  "status": "blocked tonight; official version exists",
+  "source": "Harvard NCS list"
+ },
+ "pt-BR": {
+  "status": "not yet fetched; official 'Portuguese-Brazil' version exists",
+  "source": "Harvard NCS list"
+ },
+ "zh-Hans": {
+  "status": "not yet fetched; official 'Chinese (Mandarin)' version exists",
+  "source": "Harvard NCS list"
+ },
+ "zh-Hant": {
+  "status": "not yet fetched; official 'Chinese (Traditional)' version exists",
+  "source": "Harvard NCS list"
+ },
+ "ar": {
+  "status": "fetch failed tonight; expect the same text-layer problem as Urdu (right-to-left PDFs extract garbled). Needs manual keying from the PDF image.",
+  "source": "6Q_Arabic_final.pdf"
+ },
+ "ur": {
+  "status": "PDF text layer unreadable (letters disconnected and reversed). Needs manual keying from the PDF image. Translators: Muhammad Waseem Tufail, Muhammad Saleem, Zeeshan Tabassam, Asif Khan, Nazish Tameer.",
+  "source": "6Q_Urdu_final.pdf",
+  "notice": "© New York University and Ronald C. Kessler, PhD. All rights reserved."
+ }
+}

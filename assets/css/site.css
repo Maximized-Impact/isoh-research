@@ -1,0 +1,172 @@
+/* Institute for The Study Of Humanity: house style for the association pages.
+   Colours, type and sizes come from handoff-v14/mockup_v2 and yapper-research-mockup-v5.html.
+   The bar's behaviour follows yapperphone.app's top bar (src/App.jsx, src/index.css); its content and colours are the Institute's.
+   This file is identical in isoh-research and maximized-impact-site: edit both. */
+
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('../fonts/dm-sans-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: italic; font-weight: 400; font-display: swap; src: url('../fonts/dm-sans-latin-400-italic.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url('../fonts/dm-sans-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url('../fonts/dm-sans-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 700; font-display: swap; src: url('../fonts/dm-sans-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url('../fonts/dm-mono-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Mono'; font-style: normal; font-weight: 500; font-display: swap; src: url('../fonts/dm-mono-latin-500-normal.woff2') format('woff2'); }
+
+:root {
+  --bg: #FAFCFA; --card: #FFFFFF; --ink: #0F1A14; --text: #3A4A40; --muted: #5A6B60; --border: #D0E8D8; --soft: #F0FAF4;
+  --green: #1B8C4F; --green-deep: #122E1C;
+  --serif: Georgia, 'Times New Roman', Times, serif;
+  --sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --mono: 'DM Mono', 'Courier New', monospace;
+  --measure: 720px; --max: 1120px;
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 4px; }
+img { display: block; max-width: 100%; height: auto; }
+button { font: inherit; }
+.lotus-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* ---------- Skip link ---------- */
+.skip-link { position: absolute; top: -100%; left: 1rem; z-index: 10000; background: var(--green); color: #fff; padding: .5rem 1rem; border-radius: .75rem; font-weight: 600; }
+.skip-link:focus { top: 1rem; text-decoration: none; }
+
+/* ---------- Bar (yapperphone.app's floating pill, Institute content and colours) ---------- */
+.bar {
+  position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 999;
+  display: flex; align-items: center; gap: 32px;
+  max-width: 940px; width: calc(100% - 2rem); padding: 10px 24px; border-radius: 100px; line-height: normal;
+  background: transparent; border: 1px solid transparent; backdrop-filter: none; -webkit-backdrop-filter: none;
+  transition: all 0.5s var(--ease-out);
+}
+.bar.scrolled {
+  background: rgba(250, 252, 250, 0.72); border-color: var(--border);
+  backdrop-filter: blur(24px) saturate(1.4); -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  box-shadow: 0 8px 32px rgba(15, 26, 20, 0.08);
+}
+.bar-brand { display: flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 700; font-size: 16px; line-height: 1; white-space: nowrap; }
+.bar-brand:hover { text-decoration: none; color: var(--ink); }
+.bar-brand svg { width: 32px; height: 29px; display: block; flex-shrink: 0; fill: var(--ink); }
+.bar-brand .name-short { display: none; }
+.bar-links { display: flex; align-items: center; gap: 28px; margin-left: auto; list-style: none; font-size: 15px; font-weight: 500; }
+.bar-links a { color: var(--text); transition: color 0.2s, transform 0.2s; }
+.bar-links a:hover { color: var(--ink); text-decoration: none; transform: translateY(-1px); }
+.bar-links a[aria-current="page"] { color: var(--ink); }
+.bar-cta {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 22px; border-radius: 100px;
+  background: var(--green); color: #fff; font-weight: 600; font-size: 15px; white-space: nowrap;
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s; -webkit-tap-highlight-color: transparent;
+}
+.bar-cta:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(27, 140, 79, 0.2); text-decoration: none; color: #fff; }
+.bar-menu { display: none; }
+
+@media (max-width: 859px) {
+  .bar { top: 12px; left: 16px; right: 16px; width: auto; max-width: none; transform: none; gap: 12px; padding: 8px 8px 8px 16px; }
+  .bar-brand { font-size: 13px; line-height: 1.15; flex-grow: 1; }
+  .bar-brand svg { width: 30px; height: 27px; }
+  .bar-brand .name-full { display: none; }
+  .bar-brand .name-short { display: flex; flex-direction: column; gap: 2px; white-space: nowrap; }
+  .bar-links, .bar > .bar-cta { display: none; }
+  .bar-menu {
+    display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+    width: 44px; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; flex-shrink: 0; border-radius: 50%;
+  }
+  .bar-menu span { display: block; width: 20px; height: 2px; background: var(--ink); border-radius: 2px; transition: opacity 0.2s ease; }
+  .bar-menu:hover span { opacity: 0.8; }
+}
+
+/* ---------- Mobile menu (yapperphone.app's drawer geometry and behaviour, house colours) ---------- */
+.drawer-backdrop {
+  position: fixed; inset: 0; z-index: 1000; background: rgba(15, 26, 20, 0.35);
+  backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
+  opacity: 0; pointer-events: none; transition: opacity 0.22s ease;
+}
+.drawer-backdrop.open { opacity: 1; pointer-events: auto; }
+.drawer {
+  position: fixed; top: 0; right: 0; z-index: 1001; height: 100vh; height: 100dvh; width: min(280px, 86vw);
+  background: rgba(250, 252, 250, 0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-left: 1px solid var(--border); box-shadow: -18px 0 48px rgba(15, 26, 20, 0.12);
+  transform: translateX(100%); visibility: hidden;
+  transition: transform 0.24s cubic-bezier(0.32, 0.72, 0.24, 1), visibility 0s linear 0.24s;
+  display: flex; flex-direction: column; padding: 4.5rem 1.5rem 1.5rem;
+}
+.drawer.open { transform: translateX(0); visibility: visible; transition: transform 0.24s cubic-bezier(0.32, 0.72, 0.24, 1), visibility 0s; }
+.drawer-close {
+  position: absolute; top: 1rem; right: 1rem; width: 32px; height: 32px; border-radius: 50%;
+  background: var(--soft); border: 1px solid var(--border); color: var(--ink); font-size: 1rem; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.drawer-close:hover { background: var(--border); }
+.drawer-links { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: auto; list-style: none; }
+.drawer-links a { display: block; padding: 0.85rem 0.5rem; font-weight: 600; font-size: 1.15rem; color: var(--ink); border-bottom: 1px solid var(--border); }
+.drawer-links a:hover { color: var(--green); text-decoration: none; }
+.drawer-cta-wrap { padding-top: 1.5rem; }
+.drawer-cta-wrap .bar-cta { width: 100%; min-height: 48px; }
+body.drawer-open { overflow: hidden; }
+
+/* ---------- Page frame ---------- */
+main { padding-top: 136px; }
+.page { max-width: var(--measure); margin: 0 auto; padding: 0 1.5rem; }
+
+/* ---------- Masthead (mockup_v2/institute_site_top_*) ---------- */
+.masthead { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+.masthead > svg { width: 88px; height: 79px; display: block; fill: var(--ink); }
+.inst { font-size: 14.4px; line-height: 1.5; color: var(--muted); max-width: 44ch; margin: 0; }
+.inst strong { display: block; font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.masthead h1 { margin: 28px 0 0; }
+.page > .masthead { padding-bottom: 2.5rem; border-bottom: 1px solid var(--border); }
+h1 { font-family: var(--serif); font-weight: 700; font-size: 40px; line-height: 1.15; color: var(--ink); }
+.subtitle { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 20px; line-height: 1.4; color: var(--text); margin: 0; }
+h2 { font-family: var(--serif); font-weight: 700; font-size: 1.5rem; line-height: 1.25; color: var(--ink); margin-bottom: 1.1rem; }
+h3 { font-family: var(--serif); font-weight: 700; font-size: 1.12rem; color: var(--ink); margin: 1.5rem 0 .5rem; }
+p { margin-bottom: 1rem; font-size: 1.02rem; max-width: 66ch; }
+.small { font-size: .88rem; color: var(--muted); }
+section.sec { padding: 2.75rem 0; border-bottom: 1px solid var(--border); }
+.btn { display: inline-flex; align-items: center; gap: .5rem; background: var(--green); color: #fff; font-weight: 600; font-size: .92rem; padding: .7rem 1.2rem; border-radius: 100px; border: 1.5px solid var(--green); }
+.btn:hover { text-decoration: none; background: #167A44; }
+.btn-outline { display: inline-flex; align-items: center; gap: .5rem; background: #fff; color: var(--ink); font-weight: 600; font-size: .92rem; padding: .7rem 1.2rem; border-radius: 100px; border: 1.5px solid var(--ink); }
+.btn-outline:hover { text-decoration: none; background: var(--ink); color: #fff; }
+
+/* ---------- Lists of publications and studies (yapper-research-mockup-v5.html .pubs) ---------- */
+.pubs { list-style: none; border-top: 1px solid var(--border); }
+.pubs li { padding: 1rem 0; border-bottom: 1px solid var(--border); }
+.pubs .date { font-family: var(--mono); font-size: .8rem; color: var(--muted); margin-bottom: .2rem; }
+.pubs .title { font-family: var(--serif); font-weight: 700; font-size: 1.1rem; color: var(--ink); line-height: 1.3; margin-bottom: .25rem; }
+.pubs .links { font-size: .9rem; margin-bottom: 0; }
+.pubs .links a + a { margin-left: 1rem; }
+.pubs .small { margin-bottom: .25rem; }
+
+/* ---------- Footer (mockup_v2/institute_site_footer_*) ---------- */
+.site-footer {
+  margin-top: 4rem; background: var(--card); color: var(--text);
+  border: 1px solid var(--border); border-bottom: 0; border-radius: 48px 48px 0 0; padding: 48px 80px 40px;
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px;
+}
+.site-footer > svg { width: 56px; height: 50px; display: block; fill: var(--ink); }
+.site-footer .links { display: flex; align-items: center; gap: 28px; font-size: 15px; font-weight: 500; line-height: normal; margin-top: 8px; list-style: none; }
+.site-footer .links a { display: inline-flex; align-items: center; min-height: 24px; color: var(--green); }
+.site-footer .links a:hover { color: var(--green-deep); }
+.site-footer .legal { font-family: var(--mono); font-size: 12.5px; line-height: 1.6; color: var(--muted); margin: 8px 0 0; }
+
+@media (max-width: 640px) {
+  main { padding-top: 120px; }
+  .masthead { gap: 18px; }
+  .masthead > svg { width: 72px; height: 65px; }
+  .inst { font-size: 14px; }
+  .masthead h1 { margin-top: 20px; }
+  h1 { font-size: 32px; }
+  .subtitle { font-size: 18px; }
+  .site-footer { margin-top: 3rem; border-radius: 40px 40px 0 0; padding: 40px 24px 36px; }
+  .site-footer .links { flex-direction: column; gap: 14px; }
+}
+
+/* ---------- Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
+}
