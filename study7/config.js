@@ -6,7 +6,7 @@
 // PRODUCTION_ORIGIN: submissions from this origin carry stage-a-v1-<language>; from any other origin they carry stage-a-test.
 window.STUDY7_CONFIG = {
   FUNCTION_URL: 'https://europe-north1-maximized-impact-research.cloudfunctions.net/study7',
-  TURNSTILE_SITE_KEY: '1x00000000000000000000BB',
+  TURNSTILE_SITE_KEY: '2x00000000000000000000BB',
   OSF_PREREG_URL: '',
   PRODUCTION_ORIGIN: 'https://research.maximized-impact.org',
 };
