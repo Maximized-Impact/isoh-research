@@ -259,7 +259,7 @@
   function syncTools() {
     const fsOn = audio.playing, tsOnNow = ts.on;
     $('fsOn').checked = fsOn; $('tsOn').checked = tsOnNow;
-    ['tbFocus', 'fabFocus'].forEach((id) => { $(id).classList.toggle('on', fsOn); $(id).setAttribute('aria-pressed', String(fsOn)); });
+    $('tbFocus').classList.toggle('on', fsOn); $('tbFocus').setAttribute('aria-pressed', String(fsOn));
     $('tbSignal').classList.toggle('on', tsOnNow); $('tbSignal').setAttribute('aria-pressed', String(tsOnNow));
     document.querySelectorAll('.sq .fs').forEach((el) => el.classList.toggle('on', fsOn));
     document.querySelectorAll('.sq .ts').forEach((el) => el.classList.toggle('on', tsOnNow));
@@ -269,9 +269,9 @@
   const openCard = () => { $('focusScrim').hidden = false; $('focusClose').focus(); syncTools(); };
   $('sounds').addEventListener('change', () => { audio.start(selectedSound()); syncTools(); });
   $('fsOn').addEventListener('change', (e) => { if (e.target.checked) audio.start(selectedSound()); else audio.stop(); syncTools(); });
-  $('tbFocus').addEventListener('click', toggleFocus); $('fabFocus').addEventListener('click', toggleFocus);
+  $('tbFocus').addEventListener('click', toggleFocus);
   $('tbSignal').addEventListener('click', toggleSignal);
-  $('tbOpen').addEventListener('click', openCard); $('fabOpen').addEventListener('click', openCard);
+  $('tbOpen').addEventListener('click', openCard);
   $('focusClose').addEventListener('click', () => { $('focusScrim').hidden = true; });
   $('focusScrim').addEventListener('click', (e) => { if (step !== 'focus' && e.target === e.currentTarget) $('focusScrim').hidden = true; });
   document.addEventListener('keydown', (e) => { if (step !== 'focus' && e.key === 'Escape' && !$('focusScrim').hidden) $('focusScrim').hidden = true; });
@@ -283,16 +283,20 @@
     Net.post('under18', {}).catch(() => {}); // anonymous count only: the common fields, nothing else follows
     $('underScrim').querySelector('.follow-btn').focus();
   });
-  $('welcomeContinue').addEventListener('click', () => {
-    step = 'focus'; $('welcomeScrim').hidden = true;
+  function openFocusStep(fromScrim) {
+    step = 'focus'; $(fromScrim).hidden = true;
     $('fsLead').hidden = false; $('fsContinue').hidden = false; $('focusClose').hidden = true;
     $('focusScrim').hidden = false; syncTools(); $('fsOn').focus();
-  });
+  }
+  $('welcomeContinue').addEventListener('click', () => openFocusStep('welcomeScrim'));
   $('fsContinue').addEventListener('click', () => {
     step = 'setup'; $('focusScrim').hidden = true;
     $('fsLead').hidden = true; $('fsContinue').hidden = true; $('focusClose').hidden = false;
-    $('setupScrim').hidden = false; $('cluster').hidden = false; $('btnShort').focus();
+    $('setupScrim').hidden = false; $('btnShort').focus();
+    history.pushState({ step: 'setup' }, ''); // so the back gesture or button returns to the focus card
   });
+  // Back (gesture, Android button, browser) while the setup card is open reopens the focus card; Continue comes forward again.
+  window.addEventListener('popstate', () => { if (step === 'setup' && !timer.active) openFocusStep('setupScrim'); });
   $('reset').addEventListener('click', () => { Object.values(wheels).forEach((w) => glide(w, 0, MIN_MS)); });
   $('btnLong').addEventListener('click', () => startTimer(PRESETS.long, 'long'));
   $('btnShort').addEventListener('click', () => startTimer(PRESETS.short, 'short'));

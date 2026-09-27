@@ -55,10 +55,6 @@
   <symbol id="i-wave" viewBox="0 0 24 24"><rect x="2" y="9" width="2.4" height="6" rx="1.2"/><rect x="6.4" y="5" width="2.4" height="14" rx="1.2"/><rect x="10.8" y="2" width="2.4" height="20" rx="1.2"/><rect x="15.2" y="6" width="2.4" height="12" rx="1.2"/><rect x="19.6" y="9" width="2.4" height="6" rx="1.2"/></symbol>
   <symbol id="i-watch" viewBox="0 0 24 24"><path d="M9 1h6v2H9zM12 5a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 2a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm-1 2h2v5h-2zM19 4.5l1.5 1.5-1.8 1.8-1.5-1.5z"/></symbol>
 </svg>
-<div class="cluster" id="cluster" hidden>
-  <button class="rb green" id="fabFocus" type="button" data-s-aria="focus.aria_focus_toggle" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wave"/></svg></button>
-  <button class="sq" id="fabOpen" type="button" data-s-aria="focus.aria_open"><span class="ts"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-watch"/></svg></span><span class="fs"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wave"/></svg></span></button>
-</div>
 
 <!-- ============ overlay 0: welcome ============ -->
 <div class="scrim" id="welcomeScrim" hidden>
@@ -97,9 +93,8 @@
 
 <!-- ============ overlay 1: call setup ============ -->
 <div class="scrim" id="setupScrim" hidden>
-  <section class="card setup" role="dialog" aria-modal="true" aria-labelledby="instName">
-    <div class="inst" id="instName"><span data-s="institute.name"></span><small data-s="institute.short"></small></div>
-    <div class="study" data-s="setup.study"></div>
+  <section class="card setup" role="dialog" aria-modal="true" aria-labelledby="setupTitle">
+    <div class="study" id="setupTitle" data-s="setup.study"></div>
 
     <div class="picker" data-s-aria="setup.set_duration">
       <div class="picker-head"><span data-s="setup.hours"></span><span data-s="setup.minutes"></span><span data-s="setup.seconds"></span></div>
