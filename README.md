@@ -42,6 +42,9 @@ Site name `maximized-impact-research`; deploy previews on; production deploys lo
 - The countdown chime (`call_timeout_chime.mp3`) plays at 30 and 25 s left, at 20 and 19, at 15, 14 and 13, then every second from 10 to 0; marks at or above the chosen duration never fire, and a tab returning from the background hears only the latest due mark. The time signal and the amber transition at 2:00 use `chime.mp3`. Both play at the time-signal volume.
 - "Download your answers" builds the PDF on the device in the design of `Study7_Answers_Download_Mockup_v4.pdf`, in the respondent's language; if anything throws (or `pdf.js`, pdf-lib or a font cannot load) the plain-text file is offered instead.
 - The only client-side storage is `localStorage` key `study7_stageA_done`, in try/catch.
+- Send refuses while a required question is open: the open cards turn dark red with a red ring, the page scrolls to the first and `survey.unanswered` explains; nothing is sent and Turnstile is not loaded. An item with `optional: true` in the language file (the gender question) is not required.
+- The duration wheels: the mouse or a pen can drag them on any platform; on Android a finger drags them at 1.5x and a flick travels by the last 100 ms of finger speed (`GAIN`, `TAU` in `app.js`), with snapping switched off only while a drag or glide runs; iPhone keeps its native scrolling. Trackpad, mouse wheel and arrow keys are native. Reset takes 120 ms. The row height comes from the stylesheet's `--item`.
+- There are no floating tool buttons. While the setup card is open, the back gesture or button (a history entry) reopens the Focus Sound card and its Continue comes forward again; during the questionnaire the top bar carries the tools, and back behaves as the browser's.
 
 ## Adding a language
 
@@ -87,6 +90,25 @@ Verified on this build with Playwright (Chromium) against a local server that ap
 | Closing the tab mid-survey: one `progress/{session}_leave` with `last_item`; none after a successful Send | Passed. |
 | No cookies; no requests to any domain except the site, the function and challenges.cloudflare.com; Cloudflare only at Send | Passed. |
 | Lighthouse accessibility 95+; keyboard-only completion; `prefers-reduced-motion` | Passed: 95 to 96 on every association page (the one flag is the contrast of the mockup's green `#1B8C4F` links on `#FAFCFA`, about 4.1:1; the mockup's colours are kept), 100 on the survey; keyboard-only completion of the whole flow; motion off under reduced motion. |
+
+## Test report (27 September 2026, evening: wrap-up chimes, wheel picker, compact cards, required answers, thank-you screen)
+
+Verified in headless Chrome driven over the DevTools protocol against `python3 -m http.server` at the repo root (no headers), with the deployed function's host made unresolvable in the test browser and every POST answered inside the page (204 for Send), so nothing reached the function; Turnstile was blocked. Feel and sound on a phone are marked for Janne.
+
+| Acceptance item | Result |
+|-----------------|--------|
+| Short Call: the countdown chime plays once each at 30, 25, 20, 19, 15, 14, 13, then 10 to 0 s left, in that order, none in overtime; the amber chime at 2:00 | Passed with a doubled clock, recording every playback call. Janne: the chimes themselves, on a phone. |
+| Custom 20 s call: 19, 15, 14, 13, then 10 to 0; 25 and 20 never fire (marks at or above the duration) | Passed. |
+| Wheels on Android: a 140 px finger drag lands on row 5 (1.5x, 8 px slop), a flick keeps moving with snap off and lands on a row 12+ rows further, clamps at 0 and at the last row, tap selects, a touch stops a spinning wheel, cancel and reduced motion settle at once, a drag on the card heading scrolls the card and a drag on a wheel does not | Passed with emulated touch and an Android user agent. Janne: the feel on the phone (`GAIN`, `TAU` in `app.js` if it needs a nudge). |
+| Wheels with a mouse: drag lands on a row with the wheel focused and nothing selected, no row click after a drag, click glides, flick, mouse wheel stays native, ArrowDown/Up step one row, roles intact; Reset from a spinning wheel returns to 0 in 120 ms | Passed. |
+| iPhone: no custom physics, wheels scroll natively | Passed with an iPhone user agent in Chrome. Janne: on an iPhone. |
+| Setup and focus cards at about 80 % of their previous size, Institute pill gone from the setup card, its dialog named by the study heading; the setup card fits 343 x 740 without scrolling; interval end labels on one line; the welcome card pixel-identical to before | Passed with before/after screenshots at 412 x 915 and 343 x 740. |
+| No floating buttons anywhere; back from the setup card reopens the Focus Sound card in step mode (backdrop and Escape inert), Continue returns with the picked duration, twice in a row; back during the questionnaire changes nothing; the top bar still opens the card with a close button | Passed with `history.back()`. Janne: the back gesture and button on the phone. |
+| Tap highlight off | Passed (computed style). Janne: no flash around pressed buttons on the phone. |
+| Send with nothing answered: 25 cards marked, the optional gender item not, the notice shown, the button still enabled, the first card in view, no request and no Turnstile; answering a card clears its mark; the notice goes when all required are answered | Passed. |
+| Send with everything but the optional item answered: the Turnstile script is requested only now; the submission carries exactly the schema fields, 25 answers, `stage-a-test` off production | Passed against the faked 204. |
+| Thank-you: survey heading and intro hidden; lotus mark, Institute name and formula line, "Thank you!", the sent line, the results date, download, the Instagram line and button, all centred | Passed. |
+| No page exceptions across the runs; `node --check`, data-notice rebuild unchanged, font coverage for v7 | Passed. |
 
 Observations for Janne, none of them changes to the handoff:
 
