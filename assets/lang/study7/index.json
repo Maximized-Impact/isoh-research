@@ -2,6 +2,13 @@
   "_note": "Languages offered by the Study 7 survey. Adding a language: drop its strings file (same keys as strings_en_v8.json, at the same version) into this folder, add a line here, and run tools/check-font-coverage.mjs for it. A language appears only if its entry in asrs_official_transcriptions_v1.json has a status beginning with 'verbatim'. label is the language's own name for the selector.",
   "asrs": "asrs_official_transcriptions_v1.json",
   "languages": [
-    { "code": "en", "label": "English", "file": "strings_en_v8.json" }
+    { "code": "en", "label": "English", "file": "strings_en_v8.json" },
+    { "code": "de", "label": "Deutsch", "file": "strings_de_v8.json" },
+    { "code": "fi", "label": "Suomi", "file": "strings_fi_v8.json" },
+    { "code": "fr", "label": "Français", "file": "strings_fr_v8.json" },
+    { "code": "it", "label": "Italiano", "file": "strings_it_v8.json" },
+    { "code": "ja", "label": "日本語", "file": "strings_ja_v8.json" },
+    { "code": "ru", "label": "Русский", "file": "strings_ru_v8.json" },
+    { "code": "sv", "label": "Svenska", "file": "strings_sv_v8.json" }
   ]
 }

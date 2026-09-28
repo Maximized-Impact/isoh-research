@@ -1,0 +1,369 @@
+{
+ "_meta": {
+  "lang": "fi",
+  "dir": "ltr",
+  "questionnaire_version": "stage-a-v1",
+  "fonts": {
+   "sans": "Carlito",
+   "serif": "Caladea",
+   "institute": "DM Sans"
+  },
+  "note": "Finnish (fi) translation of strings_en_v8.json, made 2026-09-28 under HANDOFF_Translations_v6. Same keys, structure and order as the English source; placeholders unchanged; _meta.fonts, _meta.block_order and blocks.G.items.g2.optional copied as is. Block F: the six ASRS items and five labels are never in this file; the build takes them verbatim from the fi entry of asrs_official_transcriptions_v1.json (6Q_Finnish_final.pdf, formal Te register kept); blocks.F.notice stays in English; blocks.F.notice_language_line carries the line printed on the Finnish PDF. Register elsewhere: informal sinä, as ADHD-liitto and Autismiliitto use with adults. options.freq uses the Finnish ASRS words for the first four labels; the fifth is Aina. Questionnaire unchanged, so questionnaire_version stays stage-a-v1. v8 (2026-09-28): institute.prereg_line and institute.prereg_link added; welcome.data_notice_link and data_notice.title name the study; data_notice.prereg_link removed; file.next_p1 gives the DOI and the results page as full web addresses. Keys match strings_en_v8.json.",
+  "block_order": [
+   "B",
+   "C",
+   "D",
+   "H",
+   "E",
+   "F",
+   "A",
+   "G"
+  ]
+ },
+ "institute": {
+  "name": "Institute for The Study Of Humanity",
+  "formula": "Tutkimusohjelma, jota ylläpitää suomalainen rekisteröity yhdistys Maximized Impact ry. Helsinki.",
+  "short": "Maximized Impact ry:n tutkimusohjelma",
+  "prereg_line": "Tutkimus on esirekisteröity Open Science Framework -palvelussa ennen tiedonkeruun alkua: {url}",
+  "prereg_link": "Esirekisteröity OSF:ssä"
+ },
+ "welcome": {
+  "title": "Miltä puhelut sinusta tuntuvat?",
+  "study": "Study 7 - Stage A",
+  "p1": "Tervetuloa. Olet osallistumassa Institute for The Study Of Humanity -tutkimusohjelman ensimmäiseen tutkimukseen: Study 7, Stage A.",
+  "p2": "Se mittaa, kuinka yleisiä puhelinkammo ja muut puheluihin liittyvät vaikeudet ovat, sekä yleisesti että eri ryhmissä, kuten ihmisillä, joilla on ADHD tai autismi, ja ihmisillä, joilla ei ole kumpaakaan. Tarvitsemme vastauksia kaikilta, myös niiltä, joille puhelut ovat helppoja. Ensimmäiset tulokset julkaistaan lokakuussa.",
+  "p3": "Vastaaminen kestää noin kolme minuuttia. Kysely on anonyymi: ei nimeä, sähköpostia eikä tiliä. Sivu kirjaa, kuinka kauan kuhunkin kysymykseen menee ja kuinka pitkälle etenet, myös jos lopetat kesken; vastauksesi lähetetään vain, kun painat Lähetä.",
+  "p4": "Valitse seuraavaksi halutessasi keskittymisääni ja aikamerkki ja napauta sitten Jatka. Aseta sen jälkeen ajastin: valitse lyhyt tai pitkä puhelu tai aseta oma kestosi valitsimella.",
+  "data_notice_link": "Mitä Study 7 - Stage A kerää",
+  "repeat_note": "Tältä laitteelta on lähetetty vastauksia aiemmin. Voit jatkaa; vastaathan viimeiseen kysymykseen rehellisesti.",
+  "continue_adult": "Olen vähintään 18-vuotias, jatka",
+  "under18": "Olen alle 18-vuotias",
+  "language_label": "Kieli"
+ },
+ "under18": {
+  "title": "Kiitos, että haluat osallistua.",
+  "p1": "Tämä kysely on tarkoitettu aikuisille, joten se päättyy tähän. Sinusta ei tallennettu mitään, vain se, että joku alle 18-vuotias kävi sivulla.",
+  "p2": "Alle 18-vuotiaille suunnattu versio on suunnitteilla. Maximized Impact ry kertoo Institute for The Study Of Humanity -tutkimusohjelman tutkimuksista ja tuloksista Instagramissa, joten seuraamalla kuulet, kun se avautuu.",
+  "follow": "Seuraa Instagramissa"
+ },
+ "focus": {
+  "title": "Keskittymisääni",
+  "volume": "Äänenvoimakkuus",
+  "sound": "Ääni",
+  "sounds": {
+   "brown": "Ruskea kohina",
+   "white": "Valkoinen kohina",
+   "pink": "Vaaleanpunainen kohina",
+   "rain": "Sade",
+   "ocean": "Meren aallot",
+   "forest": "Metsä"
+  },
+  "time_signal": "Aikamerkki",
+  "system_wide": "Järjestelmänlaajuinen",
+  "interval": "Aikaväli",
+  "interval_values": {
+   "10": "10 s",
+   "20": "20 s",
+   "30": "30 s",
+   "60": "1 min"
+  },
+  "continue": "Jatka",
+  "close": "Sulje",
+  "aria_focus_toggle": "Keskittymisääni päälle tai pois",
+  "aria_signal_toggle": "Aikamerkki päälle tai pois",
+  "aria_open": "Avaa keskittymisäänen asetukset"
+ },
+ "setup": {
+  "study": "Study 7 - Stage A",
+  "subtitle": "Aseta aikarajasi",
+  "hours": "Tunnit",
+  "minutes": "Minuutit",
+  "seconds": "Sekunnit",
+  "set_duration": "Aseta kesto",
+  "reset": "Nollaa",
+  "long_label": "Pitkä: {duration}",
+  "short_label": "Lyhyt: {duration}",
+  "custom_label": "Oma: {duration}",
+  "long_call": "Pitkä puhelu",
+  "short_call": "Lyhyt puhelu",
+  "call": "Soita",
+  "tap_hint": "Napauta, niin kysely alkaa",
+  "units": {
+   "h": "h",
+   "m": "min",
+   "s": "s"
+  }
+ },
+ "timer": {
+  "plenty": "Aikaa on hyvin",
+  "keep_going": "Jatka vain",
+  "last30": "Viimeiset 30 s",
+  "overtime": "Aika ylittyi",
+  "elapsed": "Kulunut {time}",
+  "remaining": "Jäljellä {time} · sovittu {duration}"
+ },
+ "survey": {
+  "title": "Miltä puhelut sinusta tuntuvat?",
+  "intro1": "Anonyymi, noin kolme minuuttia. Ei nimiä, ei sähköpostia, ei tiliä. Kyselyn toteuttaa Institute for The Study Of Humanity -tutkimusohjelma, jota ylläpitää Maximized Impact ry.",
+  "intro2": "Vastatessasi sivu kirjaa, kuinka kauan kuhunkin kysymykseen menee ja kuinka pitkälle etenet, myös jos lopetat kesken. Itse vastaukset lähetetään vain, kun painat Lähetä vastaukset.",
+  "send": "Lähetä vastaukset",
+  "credit": "Ajastin ja keskittymistyökalut on mukailtu Yapper Phone -sovelluksesta.",
+  "scale_anchor_none": "ei lainkaan",
+  "scale_anchor_extreme": "erittäin paljon",
+  "unanswered": "Vastaa punaisella merkittyihin kysymyksiin ennen lähettämistä. Vapaaehtoiseksi merkityn kysymyksen voi jättää tyhjäksi."
+ },
+ "options": {
+  "freq": [
+   "Ei koskaan",
+   "Harvoin",
+   "Joskus",
+   "Usein",
+   "Aina"
+  ],
+  "status": [
+   "Kyllä, diagnosoitu",
+   "Tutkimuksissa",
+   "Ei diagnoosia, mutta tunnistan itsessäni tai epäilen",
+   "Ei"
+  ],
+  "presentation": [
+   "Tarkkaamaton",
+   "Yliaktiivis-impulsiivinen",
+   "Yhdistetty",
+   "En tiedä",
+   "Ei diagnoosia"
+  ],
+  "yesno": [
+   "Kyllä",
+   "Ei"
+  ],
+  "noyes": [
+   "Ei",
+   "Kyllä"
+  ],
+  "scale11": [
+   "0",
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "age": [
+   "18–24",
+   "25–34",
+   "35–44",
+   "45–54",
+   "55–64",
+   "65+"
+  ],
+  "gender": [
+   "Nainen",
+   "Mies",
+   "Muunsukupuolinen",
+   "En halua sanoa"
+  ],
+  "regions": [
+   "Suomi",
+   "Muut Pohjoismaat",
+   "Muu Eurooppa",
+   "Pohjois-Amerikka",
+   "Latinalainen Amerikka ja Karibia",
+   "Lähi-itä ja Pohjois-Afrikka",
+   "Saharan eteläpuolinen Afrikka",
+   "Etelä- ja Keski-Aasia",
+   "Itä- ja Kaakkois-Aasia",
+   "Oseania"
+  ]
+ },
+ "blocks": {
+  "B": {
+   "title": "Kun puhelin soi",
+   "items": {
+    "b1": {
+     "text": "Kun puhelimeni soi, jännitän tai ahdistun.",
+     "options": "freq"
+    },
+    "b2": {
+     "text": "Ahdistun ennen puhelua, joka minun on soitettava.",
+     "options": "freq"
+    },
+    "b3": {
+     "text": "Kuinka paljon puhelut kaiken kaikkiaan ahdistavat sinua? (0 = ei lainkaan, 10 = erittäin paljon)",
+     "options": "scale11"
+    }
+   }
+  },
+  "C": {
+   "title": "Mitä teet asialle",
+   "items": {
+    "c1": {
+     "text": "Jätän vastaamatta tuttujen ihmisten puheluihin sen takia, miltä puhelut minusta tuntuvat.",
+     "options": "freq"
+    },
+    "c2": {
+     "text": "Lykkään takaisin soittamista päivän tai pidempään.",
+     "options": "freq"
+    },
+    "c3": {
+     "text": "Olen viimeisen vuoden aikana vältellyt jotain tärkeää (ajanvarausta, laskua, työpaikkaa, terveysasiaa), koska se olisi vaatinut puhelun.",
+     "options": "yesno"
+    },
+    "c4": {
+     "text": "Vastaan puheluihin tuntemattomista numeroista.",
+     "options": "freq"
+    }
+   }
+  },
+  "D": {
+   "title": "Aika ja lopettaminen",
+   "items": {
+    "d1": {
+     "text": "Puhelun aikana minulta katoaa käsitys siitä, kuinka kauan puhelu on kestänyt.",
+     "options": "freq"
+    },
+    "d2": {
+     "text": "Puhelun lopettaminen on minulle vaikeaa, vaikka haluaisin lopettaa.",
+     "options": "freq"
+    }
+   }
+  },
+  "H": {
+   "title": "Kun et tiedä, mitä odottaa",
+   "items": {
+    "h1": {
+     "text": "Ahdistun, kun en tiedä, miksi joku soittaa.",
+     "options": "freq"
+    },
+    "h2": {
+     "text": "Ahdistun, kun en tiedä, kuinka kauan puhelu kestää.",
+     "options": "freq"
+    }
+   }
+  },
+  "E": {
+   "title": "Mieltymys",
+   "items": {
+    "e1": {
+     "text": "Jos saan valita, viestittelen mieluummin kuin soitan.",
+     "options": "freq"
+    }
+   }
+  },
+  "F": {
+   "title": "Tarkkaavuus ja aktiivisuus",
+   "lead": "Seuraavat kuusi kysymystä ovat WHO:n aikuisten ADHD-oirekyselyn seula, toistettuna sanasta sanaan. Ajattele kuutta viime kuukautta.",
+   "items": "ASRS: six items and five labels come verbatim from asrs_official_transcriptions_v1.json for this language",
+   "notice": "ASRS-V1.1 Screener © World Health Organization 2003; © New York University and the President and Fellows of Harvard College. All rights reserved. Used unaltered (electronic version). Kessler et al. (2005).",
+   "notice_language_line": "© New York University and Ronald C. Kessler, PhD. All rights reserved."
+  },
+  "A": {
+   "title": "ADHD, autismi ja ahdistuneisuus",
+   "items": {
+    "a1": {
+     "text": "ADHD",
+     "options": "status"
+    },
+    "a2": {
+     "text": "Jos sinulla on ADHD-diagnoosi: mikä esiintymismuoto?",
+     "options": "presentation"
+    },
+    "a3": {
+     "text": "Autismi",
+     "options": "status"
+    },
+    "a4": {
+     "text": "Ahdistuneisuus (esimerkiksi sosiaalisten tilanteiden pelko tai yleistynyt ahdistuneisuus)",
+     "options": "status"
+    }
+   }
+  },
+  "G": {
+   "title": "Lyhyesti sinusta",
+   "items": {
+    "g1": {
+     "text": "Ikä",
+     "options": "age"
+    },
+    "g2": {
+     "text": "Sukupuoli (vapaaehtoinen)",
+     "options": "gender",
+     "optional": true
+    },
+    "g3": {
+     "text": "Missä asut?",
+     "options": "regions"
+    },
+    "g4": {
+     "text": "Oletko vastannut tähän kyselyyn aiemmin?",
+     "options": "noyes"
+    }
+   }
+  }
+ },
+ "thanks": {
+  "title": "Kiitos!",
+  "sent": "Vastauksesi lähetettiin anonyymisti.",
+  "results": "Ensimmäiset tulokset julkaistaan lokakuussa, ADHD-kuukautena, ADHD-viikolla 5.–11.10.",
+  "footer": "Study 7 - Stage A, Puhelinkammokysely, Institute for The Study Of Humanity 2026",
+  "download": "Lataa vastauksesi",
+  "download_note": "Kopio vastauksistasi ja valitsemistasi työkaluista.",
+  "preparing": "Valmistellaan tiedostoasi…",
+  "download_again": "Lataa uudelleen",
+  "follow_text": "Maximized Impact ry kertoo Institute for The Study Of Humanity -tutkimusohjelman tutkimuksista ja tuloksista Instagramissa.",
+  "follow": "Seuraa Instagramissa",
+  "sending": "Lähetetään…",
+  "send_failed": "Lähetys epäonnistui. Tarkista yhteytesi ja yritä uudelleen; vastauksesi ovat yhä tallella."
+ },
+ "file": {
+  "title": "Vastauksesi",
+  "study_line": "Study 7: puhelinkammo ja puhelujen välttely",
+  "saved": "Tallennettu {datetime}",
+  "created_on_device": "Luotu laitteellasi",
+  "no_identifiers": "Tämä tiedosto ei sisällä nimeä, sähköpostia eikä laitteen tai tilin tunnistetta. Mikään siinä ei yhdisty sinuun.",
+  "thank_you_p1": "Autoit juuri antamaan luvun sille, miltä puhelut tuntuvat ihmisistä, joilla on ADHD tai autismi, ja ihmisistä, joilla ei ole kumpaakaan. Tietääksemme kukaan ei ole mitannut tätä aiemmin. Jokainen vastaus tässä tiedostossa on osa sitä lukua.",
+  "thank_you_p2": "Institute for The Study Of Humanity sai vastauksesi anonyymisti. Tämä kopio on sinun: säilytä, jaa tai poista se. Tutkimusohjelma ei voi yhdistää sitä sinuun, eikä siinä ole mitään, mikä voisi.",
+  "what_you_answered": "Mitä vastasit",
+  "question": "Kysymys",
+  "your_answer": "Vastauksesi",
+  "not_answered": "(ei vastattu)",
+  "answered_after": "vastattu {seconds} s kuluttua",
+  "changed_times": "muutettu {n} kertaa",
+  "tools_title": "Käyttämäsi työkalut",
+  "tools_p": "Kyselysivu tarjosi samat työkalut, joita Yapper Phone käyttää puhelun aikana: puhelun keston ajastimen, keskittymisäänet ja aikamerkit. Valintasi on kirjattu tähän sinulle ja, ilman mitään tunnistetta, vastaustesi rinnalle, jotta tutkimusohjelma näkee, mitä työkaluja ihmiset suosivat.",
+  "setting": "Asetus",
+  "what_you_chose": "Mitä valitsit",
+  "tool_rows": {
+   "call_length": "Valitsemasi puhelun kesto",
+   "time_taken": "Käyttämäsi aika",
+   "overtime": "Yliaika",
+   "focus_sound": "Keskittymisääni",
+   "time_signal": "Aikamerkki",
+   "none": "ei mitään",
+   "on_every": "Päällä, {interval} välein",
+   "off": "Pois"
+  },
+  "next_title": "Mitä seuraavaksi",
+  "next_p1": "Tulokset julkaistaan avoimesti Creative Commons Nimeä 4.0 -lisenssillä, tiivistelmineen suomeksi ja englanniksi, täydennyksenä julkaisuun \"The Case for Health Communications Technology\" (https://doi.org/10.5281/zenodo.21978705). Löydät ne osoitteesta https://research.maximized-impact.org/study7/results/?lang=fi. Anonymisoitu aineisto julkaistaan tulosten mukana, jotta kuka tahansa voi tarkistaa luvut.",
+  "next_p2": "Jos sinulla on kysyttävää tutkimuksesta, kirjoita osoitteeseen janne@maximized-impact.org. Koska tutkimusohjelmalla ei ole tunnisteita, se ei voi löytää eikä poistaa yksittäistä vastausta sen lähettämisen jälkeen; tämä tiedosto on oma tallenteesi.",
+  "footer": "Institute for The Study Of Humanity · Maximized Impact ry · Helsinki, Suomi",
+  "page": "Sivu {n}"
+ },
+ "data_notice": {
+  "title": "Mitä Study 7 - Stage A kerää",
+  "p1": "Kun painat Lähetä, vastauksesi lähetetään Institute for The Study Of Humanity -tutkimusohjelmalle ilman nimeä, sähköpostia, tiliä, puhelinnumeroa tai laitteen tunnistetta. Tutkimusohjelma ei tallenna IP-osoitteita. Satunnainen istuntokoodi yhdistää yhden käynnin osat toisiinsa, ei muuta.",
+  "p2": "Vastatessasi sivu lähettää kaksi pientä edistymissignaalia, kun aloitat ja jos poistut, jotta tutkimusohjelma näkee, missä ihmiset lopettavat. Ne eivät sisällä vastauksia.",
+  "p3": "Selaimesi säilyttää yhden merkinnän siitä, että tältä laitteelta on vastattu, jotta sivu voi muistuttaa sinua. Sivu ei aseta evästeitä eikä käytä analytiikkaa. Kun painat Lähetä, Cloudflare Turnstilen näkymätön bottitarkistus varmistaa, että vastaukset lähettää ihminen; se on sivun ainoa kolmannen osapuolen palvelu.",
+  "p3_link": {
+   "text": "Cloudflaren Turnstile-tietosuojaliite",
+   "url": "https://www.cloudflare.com/turnstile-privacy-policy/"
+  },
+  "p4": "Tulokset julkaistaan avoimesti anonymisoidun aineiston kanssa. Koska tunnistetta ei ole, vastausta ei voi jälkikäteen löytää eikä poistaa.",
+  "contact": "Kysymykset: janne@maximized-impact.org"
+ }
+}

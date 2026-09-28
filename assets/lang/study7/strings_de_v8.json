@@ -1,0 +1,369 @@
+{
+ "_meta": {
+  "lang": "de",
+  "dir": "ltr",
+  "questionnaire_version": "stage-a-v1",
+  "fonts": {
+   "sans": "Carlito",
+   "serif": "Caladea",
+   "institute": "DM Sans"
+  },
+  "note": "German (de) translation of strings_en_v8.json, made 2026-09-28 under HANDOFF_Translations_v6. Same keys, structure and order as the English source; placeholders unchanged; _meta.fonts, _meta.block_order and blocks.G.items.g2.optional copied as is. Block F: the six ASRS items and five labels are never in this file; the build takes them verbatim from the de entry of asrs_official_transcriptions_v1.json (6Q_German_final.pdf, formal Sie register kept); blocks.F.notice stays in English; blocks.F.notice_language_line carries the line printed on the German PDF. Register elsewhere: informal du, as the German adult ADHD community uses in peer communication (ADxS.org forum, autistic-run community sites, ADHS Deutschland e.V. pages for young adults); the association's institutional pages use Sie, so the shift to Sie in block F is explained by blocks.F.lead. options.freq uses the German ASRS words for the first four labels; the fifth is Immer. Yapper Phone tool names (focus.title, focus.time_signal, focus.system_wide, file.tool_rows.*) are literal short translations, to be aligned with the app's German UI if it uses other words. data_notice.p3_link uses Cloudflare's German page and its heading. Questionnaire unchanged, so questionnaire_version stays stage-a-v1. v8 (2026-09-28): institute.prereg_line and institute.prereg_link added; welcome.data_notice_link and data_notice.title name the study; data_notice.prereg_link removed; file.next_p1 gives the DOI and the results page as full web addresses. Keys match strings_en_v8.json.",
+  "block_order": [
+   "B",
+   "C",
+   "D",
+   "H",
+   "E",
+   "F",
+   "A",
+   "G"
+  ]
+ },
+ "institute": {
+  "name": "Institute for The Study Of Humanity",
+  "formula": "Eine Forschungsinitiative von Maximized Impact ry, einem finnischen eingetragenen Verein. Helsinki.",
+  "short": "eine Forschungsinitiative von Maximized Impact ry",
+  "prereg_line": "Diese Studie wurde vor Beginn der Datenerhebung im Open Science Framework präregistriert: {url}",
+  "prereg_link": "Präregistriert auf OSF"
+ },
+ "welcome": {
+  "title": "Wie fühlen sich Telefonate für dich an?",
+  "study": "Study 7 - Stage A",
+  "p1": "Willkommen. Du nimmst gleich an der ersten Studie des Institute for The Study Of Humanity teil: Study 7, Stage A.",
+  "p2": "Die Studie misst, wie verbreitet Telefonangst und andere Schwierigkeiten mit dem Telefonieren sind, insgesamt und in verschiedenen Gruppen, darunter Menschen mit und ohne ADHS oder Autismus. Wir brauchen Antworten von allen, auch von Menschen, denen Telefonieren leichtfällt. Erste Ergebnisse werden im Oktober veröffentlicht.",
+  "p3": "Es dauert etwa drei Minuten. Die Umfrage ist anonym: kein Name, keine E-Mail, kein Konto. Die Seite erfasst, wie lange jede Frage dauert und wie weit du kommst, auch wenn du abbrichst; deine Antworten werden erst gesendet, wenn du auf Senden drückst.",
+  "p4": "Als Nächstes kannst du, wenn du möchtest, einen Fokus-Sound und ein Zeitsignal wählen. Tippe dann auf Weiter. Danach stellst du deinen Timer ein: Wähle einen kurzen oder langen Anruf oder lege mit dem Auswahlrad deine eigene Dauer fest.",
+  "data_notice_link": "Was Study 7 - Stage A erfasst",
+  "repeat_note": "Von diesem Gerät wurden schon einmal Antworten gesendet. Du kannst gern weitermachen; bitte beantworte die letzte Frage ehrlich.",
+  "continue_adult": "Ich bin 18 oder älter, weiter",
+  "under18": "Ich bin unter 18",
+  "language_label": "Sprache"
+ },
+ "under18": {
+  "title": "Danke, dass du teilnehmen möchtest.",
+  "p1": "Dieser Fragebogen ist für Erwachsene, deshalb endet er hier. Über dich wurde nichts gespeichert, nur dass jemand unter 18 die Seite besucht hat.",
+  "p2": "Eine Version für Menschen unter 18 ist geplant. Maximized Impact ry gibt die Studien und Ergebnisse des Instituts auf Instagram bekannt; wenn du folgst, erfährst du, wann sie startet.",
+  "follow": "Auf Instagram folgen"
+ },
+ "focus": {
+  "title": "Fokus-Sound",
+  "volume": "Lautstärke",
+  "sound": "Sound",
+  "sounds": {
+   "brown": "Braunes Rauschen",
+   "white": "Weißes Rauschen",
+   "pink": "Rosa Rauschen",
+   "rain": "Regen",
+   "ocean": "Meereswellen",
+   "forest": "Wald"
+  },
+  "time_signal": "Zeitsignal",
+  "system_wide": "Systemweit",
+  "interval": "Intervall",
+  "interval_values": {
+   "10": "10 s",
+   "20": "20 s",
+   "30": "30 s",
+   "60": "1 min"
+  },
+  "continue": "Weiter",
+  "close": "Schließen",
+  "aria_focus_toggle": "Fokus-Sound ein oder aus",
+  "aria_signal_toggle": "Zeitsignal ein oder aus",
+  "aria_open": "Fokus-Sound-Einstellungen öffnen"
+ },
+ "setup": {
+  "study": "Study 7 - Stage A",
+  "subtitle": "Zeitlimit festlegen",
+  "hours": "Stunden",
+  "minutes": "Minuten",
+  "seconds": "Sekunden",
+  "set_duration": "Dauer festlegen",
+  "reset": "Zurücksetzen",
+  "long_label": "Lang: {duration}",
+  "short_label": "Kurz: {duration}",
+  "custom_label": "Individuell: {duration}",
+  "long_call": "Langer Anruf",
+  "short_call": "Kurzer Anruf",
+  "call": "Anrufen",
+  "tap_hint": "Tippen, um den Fragebogen zu starten",
+  "units": {
+   "h": "h",
+   "m": "min",
+   "s": "s"
+  }
+ },
+ "timer": {
+  "plenty": "Noch viel Zeit",
+  "keep_going": "Weiter so",
+  "last30": "Letzte 30 Sekunden",
+  "overtime": "Überzogen",
+  "elapsed": "Verstrichen {time}",
+  "remaining": "Noch {time} · vereinbart {duration}"
+ },
+ "survey": {
+  "title": "Wie fühlen sich Telefonate für dich an?",
+  "intro1": "Anonym, etwa drei Minuten. Keine Namen, keine E-Mail, kein Konto. Durchgeführt vom Institute for The Study Of Humanity, einer Forschungsinitiative von Maximized Impact ry.",
+  "intro2": "Während du antwortest, erfasst die Seite, wie lange jede Frage dauert und wie weit du kommst, auch wenn du vor dem Ende abbrichst. Deine Antworten selbst werden erst gesendet, wenn du auf Antworten senden drückst.",
+  "send": "Antworten senden",
+  "credit": "Timer und Fokus-Tools nach dem Vorbild von Yapper Phone.",
+  "scale_anchor_none": "keine",
+  "scale_anchor_extreme": "extrem",
+  "unanswered": "Bitte beantworte vor dem Senden die rot markierten Fragen. Die als optional markierte Frage kann offen bleiben."
+ },
+ "options": {
+  "freq": [
+   "Niemals",
+   "Selten",
+   "Manchmal",
+   "Oft",
+   "Immer"
+  ],
+  "status": [
+   "Ja, diagnostiziert",
+   "In Abklärung",
+   "Keine Diagnose, aber ich erkenne mich wieder oder vermute es",
+   "Nein"
+  ],
+  "presentation": [
+   "Unaufmerksam",
+   "Hyperaktiv-impulsiv",
+   "Gemischt (kombiniert)",
+   "Weiß nicht",
+   "Keine Diagnose"
+  ],
+  "yesno": [
+   "Ja",
+   "Nein"
+  ],
+  "noyes": [
+   "Nein",
+   "Ja"
+  ],
+  "scale11": [
+   "0",
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "age": [
+   "18–24",
+   "25–34",
+   "35–44",
+   "45–54",
+   "55–64",
+   "65+"
+  ],
+  "gender": [
+   "Frau",
+   "Mann",
+   "Nicht-binär",
+   "Keine Angabe"
+  ],
+  "regions": [
+   "Finnland",
+   "Andere nordische Länder",
+   "Übriges Europa",
+   "Nordamerika",
+   "Lateinamerika und Karibik",
+   "Naher Osten und Nordafrika",
+   "Subsahara-Afrika",
+   "Süd- und Zentralasien",
+   "Ost- und Südostasien",
+   "Ozeanien"
+  ]
+ },
+ "blocks": {
+  "B": {
+   "title": "Wenn das Telefon klingelt",
+   "items": {
+    "b1": {
+     "text": "Wenn mein Telefon klingelt, fühle ich mich angespannt oder ängstlich.",
+     "options": "freq"
+    },
+    "b2": {
+     "text": "Wenn ich jemanden anrufen muss, habe ich vorher Angst.",
+     "options": "freq"
+    },
+    "b3": {
+     "text": "Wie viel Angst machen dir Telefonate insgesamt? (0 = keine, 10 = extrem)",
+     "options": "scale11"
+    }
+   }
+  },
+  "C": {
+   "title": "Wie du damit umgehst",
+   "items": {
+    "c1": {
+     "text": "Ich gehe bei Anrufen von Menschen, die ich kenne, nicht ran, wegen des Gefühls, das Telefonate in mir auslösen.",
+     "options": "freq"
+    },
+    "c2": {
+     "text": "Ich schiebe Rückrufe einen Tag oder länger auf.",
+     "options": "freq"
+    },
+    "c3": {
+     "text": "Im letzten Jahr habe ich etwas Wichtiges vermieden (einen Termin, eine Rechnung, einen Job, etwas Gesundheitliches), weil dafür ein Telefonat nötig war.",
+     "options": "yesno"
+    },
+    "c4": {
+     "text": "Ich nehme Anrufe von unbekannten Nummern an.",
+     "options": "freq"
+    }
+   }
+  },
+  "D": {
+   "title": "Zeit und Gesprächsende",
+   "items": {
+    "d1": {
+     "text": "Während eines Telefonats verliere ich das Gefühl dafür, wie lange es schon dauert.",
+     "options": "freq"
+    },
+    "d2": {
+     "text": "Es fällt mir schwer, ein Telefonat zu beenden, auch wenn ich es möchte.",
+     "options": "freq"
+    }
+   }
+  },
+  "H": {
+   "title": "Wenn du nicht weißt, was dich erwartet",
+   "items": {
+    "h1": {
+     "text": "Wenn ich nicht weiß, warum jemand anruft, macht mir das Angst.",
+     "options": "freq"
+    },
+    "h2": {
+     "text": "Wenn ich nicht weiß, wie lange ein Telefonat dauern wird, macht mir das Angst.",
+     "options": "freq"
+    }
+   }
+  },
+  "E": {
+   "title": "Was du bevorzugst",
+   "items": {
+    "e1": {
+     "text": "Wenn ich die Wahl habe, schreibe ich lieber eine Nachricht, als anzurufen.",
+     "options": "freq"
+    }
+   }
+  },
+  "F": {
+   "title": "Aufmerksamkeit und Aktivität",
+   "lead": "Die nächsten sechs Fragen sind der ADHS-Screener der WHO für Erwachsene, wortwörtlich übernommen. Denk an die letzten sechs Monate.",
+   "items": "ASRS: six items and five labels come verbatim from asrs_official_transcriptions_v1.json for this language",
+   "notice": "ASRS-V1.1 Screener © World Health Organization 2003; © New York University and the President and Fellows of Harvard College. All rights reserved. Used unaltered (electronic version). Kessler et al. (2005).",
+   "notice_language_line": "© New York University and Ronald C. Kessler, PhD. All rights reserved."
+  },
+  "A": {
+   "title": "ADHS, Autismus und Angst",
+   "items": {
+    "a1": {
+     "text": "ADHS",
+     "options": "status"
+    },
+    "a2": {
+     "text": "Falls du eine ADHS-Diagnose hast: welches Erscheinungsbild?",
+     "options": "presentation"
+    },
+    "a3": {
+     "text": "Autismus",
+     "options": "status"
+    },
+    "a4": {
+     "text": "Angststörung (zum Beispiel soziale Phobie oder generalisierte Angststörung)",
+     "options": "status"
+    }
+   }
+  },
+  "G": {
+   "title": "Kurz zu dir",
+   "items": {
+    "g1": {
+     "text": "Alter",
+     "options": "age"
+    },
+    "g2": {
+     "text": "Geschlecht (optional)",
+     "options": "gender",
+     "optional": true
+    },
+    "g3": {
+     "text": "Wo lebst du?",
+     "options": "regions"
+    },
+    "g4": {
+     "text": "Hast du diese Umfrage schon einmal beantwortet?",
+     "options": "noyes"
+    }
+   }
+  }
+ },
+ "thanks": {
+  "title": "Danke!",
+  "sent": "Deine Antworten wurden anonym gesendet.",
+  "results": "Erste Ergebnisse erscheinen im Oktober, dem internationalen ADHS-Monat, in der finnischen ADHS-Woche vom 5. bis 11. Oktober.",
+  "footer": "Study 7 - Stage A, Fragebogen zur Telefonangst, Institute for The Study Of Humanity 2026",
+  "download": "Deine Antworten herunterladen",
+  "download_note": "Eine Kopie deiner Antworten und der Tools, die du gewählt hast.",
+  "preparing": "Deine Datei wird vorbereitet…",
+  "download_again": "Erneut herunterladen",
+  "follow_text": "Maximized Impact ry gibt die Studien und Ergebnisse des Institute for The Study Of Humanity auf Instagram bekannt.",
+  "follow": "Auf Instagram folgen",
+  "sending": "Wird gesendet…",
+  "send_failed": "Senden fehlgeschlagen. Prüfe deine Verbindung und versuch es noch einmal; deine Antworten sind noch da."
+ },
+ "file": {
+  "title": "Deine Antworten",
+  "study_line": "Study 7: Telefonangst und Vermeidung von Anrufen",
+  "saved": "Gespeichert {datetime}",
+  "created_on_device": "Auf deinem Gerät erstellt",
+  "no_identifiers": "Diese Datei enthält keinen Namen, keine E-Mail-Adresse und keine Geräte- oder Kontokennung. Nichts darin lässt sich mit dir verbinden.",
+  "thank_you_p1": "Du hast gerade geholfen, eine Zahl dafür zu finden, wie sich Telefonate anfühlen, für Menschen mit und ohne ADHS oder Autismus. Soweit wir wissen, hat das noch niemand gemessen. Jede Antwort in dieser Datei ist Teil dieser Zahl.",
+  "thank_you_p2": "Das Institute for The Study Of Humanity hat deine Antworten anonym erhalten. Diese Kopie gehört dir: Behalte sie, teile sie oder lösche sie. Das Institut kann sie nicht mit dir verbinden, und sie enthält nichts, was das könnte.",
+  "what_you_answered": "Was du geantwortet hast",
+  "question": "Frage",
+  "your_answer": "Deine Antwort",
+  "not_answered": "(nicht beantwortet)",
+  "answered_after": "beantwortet nach {seconds} s",
+  "changed_times": "{n}-mal geändert",
+  "tools_title": "Die Tools, die du genutzt hast",
+  "tools_p": "Die Umfrageseite bot denselben Timer für die Gesprächsdauer, dieselben Fokus-Sounds und Zeitsignale an, die Yapper Phone während eines Anrufs nutzt. Was du gewählt hast, ist hier für dich festgehalten und, ohne jede Kennung, neben deinen Antworten, damit das Institut sehen kann, welche Tools Menschen bevorzugen.",
+  "setting": "Einstellung",
+  "what_you_chose": "Was du gewählt hast",
+  "tool_rows": {
+   "call_length": "Gewählte Gesprächsdauer",
+   "time_taken": "Benötigte Zeit",
+   "overtime": "Überzogene Zeit",
+   "focus_sound": "Fokus-Sound",
+   "time_signal": "Zeitsignal",
+   "none": "keine",
+   "on_every": "An, alle {interval}",
+   "off": "Aus"
+  },
+  "next_title": "Wie es weitergeht",
+  "next_p1": "Die Ergebnisse werden frei zugänglich unter der Lizenz Creative Commons Namensnennung 4.0 veröffentlicht, mit einer Zusammenfassung auf Finnisch und Englisch, als Ergänzung zur Veröffentlichung \"The Case for Health Communications Technology\" (https://doi.org/10.5281/zenodo.21978705). Du findest sie unter https://research.maximized-impact.org/study7/results. Der anonymisierte Datensatz wird zusammen mit den Ergebnissen veröffentlicht, damit alle die Zahlen nachprüfen können.",
+  "next_p2": "Wenn du eine Frage zur Studie hast, schreib an janne@maximized-impact.org. Da das Institut keine Kennungen speichert, kann es eine einzelne Einsendung nach dem Senden weder finden noch entfernen; diese Datei ist dein Beleg.",
+  "footer": "Institute for The Study Of Humanity · Maximized Impact ry · Helsinki, Finnland",
+  "page": "Seite {n}"
+ },
+ "data_notice": {
+  "title": "Was Study 7 - Stage A erfasst",
+  "p1": "Wenn du auf Senden drückst, gehen deine Antworten ohne Namen, E-Mail, Konto, Telefonnummer oder Gerätekennung an das Institute for The Study Of Humanity. Das Institut speichert keine IP-Adressen. Ein zufälliger Sitzungscode verbindet die Teile eines Besuchs miteinander, sonst nichts.",
+  "p2": "Während du antwortest, sendet die Seite zwei kleine Fortschrittssignale, beim Start und beim Verlassen, damit das Institut sieht, wo Menschen aufhören. Sie enthalten keine Antworten.",
+  "p3": "Dein Browser speichert eine Markierung, dass dieses Gerät geantwortet hat, damit die Seite dich erinnern kann. Die Seite setzt keine Cookies und nutzt keine Analyse-Tools. Wenn du auf Senden drückst, bestätigt eine unsichtbare Bot-Prüfung von Cloudflare Turnstile, dass ein Mensch die Antworten sendet; sie ist der einzige Drittanbieterdienst auf der Seite.",
+  "p3_link": {
+   "text": "Turnstile Datenschutznachtrag von Cloudflare",
+   "url": "https://www.cloudflare.com/de-de/turnstile-privacy-policy/"
+  },
+  "p4": "Die Ergebnisse erscheinen frei zugänglich mit dem anonymisierten Datensatz. Da es keine Kennung gibt, lässt sich eine Einsendung später weder finden noch entfernen.",
+  "contact": "Fragen: janne@maximized-impact.org"
+ }
+}

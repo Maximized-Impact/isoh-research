@@ -1,0 +1,369 @@
+{
+ "_meta": {
+  "lang": "sv",
+  "dir": "ltr",
+  "questionnaire_version": "stage-a-v1",
+  "fonts": {
+   "sans": "Carlito",
+   "serif": "Caladea",
+   "institute": "DM Sans"
+  },
+  "note": "Swedish (sv) translation of strings_en_v8.json, made 2026-09-28 under HANDOFF_Translations_v6. Same keys, structure and order as the English source; placeholders unchanged; _meta.fonts, _meta.block_order and blocks.G.items.g2.optional copied as is. Block F: the six ASRS items and five labels are never in this file; the build takes them verbatim from the sv entry of asrs_official_transcriptions_v1.json (6Q_Swedish_final.pdf, du register); blocks.F.notice stays in English; blocks.F.notice_language_line carries the line printed on the Swedish PDF. Register elsewhere: du, as Riksförbundet Attention uses with adults, so there is no register shift at block F. options.freq uses the Swedish ASRS words for the first four labels; the fifth is Alltid. adhd is written lowercase in running text, as Attention and Socialstyrelsen do. Questionnaire unchanged, so questionnaire_version stays stage-a-v1. v8 (2026-09-28): institute.prereg_line and institute.prereg_link added; welcome.data_notice_link and data_notice.title name the study; data_notice.prereg_link removed; file.next_p1 gives the DOI and the results page as full web addresses. Keys match strings_en_v8.json.",
+  "block_order": [
+   "B",
+   "C",
+   "D",
+   "H",
+   "E",
+   "F",
+   "A",
+   "G"
+  ]
+ },
+ "institute": {
+  "name": "Institute for The Study Of Humanity",
+  "formula": "Ett forskningsinitiativ av Maximized Impact ry, en finländsk registrerad förening. Helsingfors.",
+  "short": "ett forskningsinitiativ av Maximized Impact ry",
+  "prereg_line": "Den här studien förregistrerades på Open Science Framework innan några data samlades in: {url}",
+  "prereg_link": "Förregistrerad på OSF"
+ },
+ "welcome": {
+  "title": "Hur känns telefonsamtal för dig?",
+  "study": "Study 7 - Stage A",
+  "p1": "Välkommen. Du är på väg att delta i den första studien från Institute for The Study Of Humanity: Study 7, Stage A.",
+  "p2": "Den mäter hur vanligt telefonskräck och andra svårigheter med telefonsamtal är, både i stort och i olika grupper, bland annat personer med och utan adhd eller autism. Vi behöver svar från alla, även från dem som tycker att telefonsamtal är lätta. De första resultaten publiceras i oktober.",
+  "p3": "Det tar ungefär tre minuter. Enkäten är anonym: inget namn, ingen e-post, inget konto. Sidan noterar hur lång tid varje fråga tar och hur långt du kommer, även om du avbryter; dina svar skickas bara när du trycker på Skicka.",
+  "p4": "Välj sedan ett fokusljud och en tidssignal om du vill, och tryck på Fortsätt. Ställ därefter in din timer: välj ett kort eller långt samtal, eller ange en egen längd med väljaren.",
+  "data_notice_link": "Vad Study 7 - Stage A samlar in",
+  "repeat_note": "Den här enheten har skickat svar tidigare. Du får gärna fortsätta; svara ärligt på den sista frågan.",
+  "continue_adult": "Jag är 18 år eller äldre, fortsätt",
+  "under18": "Jag är under 18 år",
+  "language_label": "Språk"
+ },
+ "under18": {
+  "title": "Tack för att du vill delta.",
+  "p1": "Den här enkäten är för vuxna, så den slutar här. Inget om dig sparades, bara att någon under 18 år besökte sidan.",
+  "p2": "En version för personer under 18 år planeras. Maximized Impact ry berättar om institutets studier och resultat på Instagram, så följ oss där för att få veta när den öppnar.",
+  "follow": "Följ på Instagram"
+ },
+ "focus": {
+  "title": "Fokusljud",
+  "volume": "Volym",
+  "sound": "Ljud",
+  "sounds": {
+   "brown": "Brunt brus",
+   "white": "Vitt brus",
+   "pink": "Rosa brus",
+   "rain": "Regn",
+   "ocean": "Havsvågor",
+   "forest": "Skog"
+  },
+  "time_signal": "Tidssignal",
+  "system_wide": "Systemomfattande",
+  "interval": "Intervall",
+  "interval_values": {
+   "10": "10 s",
+   "20": "20 s",
+   "30": "30 s",
+   "60": "1 min"
+  },
+  "continue": "Fortsätt",
+  "close": "Stäng",
+  "aria_focus_toggle": "Fokusljud på eller av",
+  "aria_signal_toggle": "Tidssignal på eller av",
+  "aria_open": "Öppna inställningar för fokusljud"
+ },
+ "setup": {
+  "study": "Study 7 - Stage A",
+  "subtitle": "Ställ in din tidsgräns",
+  "hours": "Timmar",
+  "minutes": "Minuter",
+  "seconds": "Sekunder",
+  "set_duration": "Ange längd",
+  "reset": "Återställ",
+  "long_label": "Långt: {duration}",
+  "short_label": "Kort: {duration}",
+  "custom_label": "Eget: {duration}",
+  "long_call": "Långt samtal",
+  "short_call": "Kort samtal",
+  "call": "Ring",
+  "tap_hint": "Tryck för att starta enkäten",
+  "units": {
+   "h": "h",
+   "m": "min",
+   "s": "s"
+  }
+ },
+ "timer": {
+  "plenty": "Gott om tid",
+  "keep_going": "Fortsätt",
+  "last30": "Sista 30 sekunderna",
+  "overtime": "Övertid",
+  "elapsed": "Förfluten tid {time}",
+  "remaining": "Återstår {time} · avtalat {duration}"
+ },
+ "survey": {
+  "title": "Hur känns telefonsamtal för dig?",
+  "intro1": "Anonym, ungefär tre minuter. Inga namn, ingen e-post, inget konto. Genomförs av Institute for The Study Of Humanity, ett forskningsinitiativ av Maximized Impact ry.",
+  "intro2": "Medan du svarar registrerar sidan hur lång tid varje fråga tar och hur långt du kommer, även om du slutar före slutet. Själva svaren skickas bara när du trycker på Skicka svar.",
+  "send": "Skicka svar",
+  "credit": "Timer och fokusverktyg anpassade från Yapper Phone.",
+  "scale_anchor_none": "ingen",
+  "scale_anchor_extreme": "extrem",
+  "unanswered": "Svara på frågorna som är markerade med rött innan du skickar. Den fråga som är märkt valfritt kan lämnas tom."
+ },
+ "options": {
+  "freq": [
+   "Aldrig",
+   "Sällan",
+   "Ibland",
+   "Ofta",
+   "Alltid"
+  ],
+  "status": [
+   "Ja, diagnostiserad",
+   "Under utredning",
+   "Ingen diagnos, men jag känner igen mig eller misstänker det",
+   "Nej"
+  ],
+  "presentation": [
+   "Ouppmärksam",
+   "Hyperaktiv-impulsiv",
+   "Kombinerad",
+   "Vet inte",
+   "Ingen diagnos"
+  ],
+  "yesno": [
+   "Ja",
+   "Nej"
+  ],
+  "noyes": [
+   "Nej",
+   "Ja"
+  ],
+  "scale11": [
+   "0",
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "age": [
+   "18–24",
+   "25–34",
+   "35–44",
+   "45–54",
+   "55–64",
+   "65+"
+  ],
+  "gender": [
+   "Kvinna",
+   "Man",
+   "Icke-binär",
+   "Vill inte uppge"
+  ],
+  "regions": [
+   "Finland",
+   "Övriga Norden",
+   "Övriga Europa",
+   "Nordamerika",
+   "Latinamerika och Karibien",
+   "Mellanöstern och Nordafrika",
+   "Afrika söder om Sahara",
+   "Syd- och Centralasien",
+   "Öst- och Sydostasien",
+   "Oceanien"
+  ]
+ },
+ "blocks": {
+  "B": {
+   "title": "När telefonen ringer",
+   "items": {
+    "b1": {
+     "text": "När min telefon ringer blir jag spänd eller får ångest.",
+     "options": "freq"
+    },
+    "b2": {
+     "text": "Före ett samtal som jag måste ringa får jag ångest.",
+     "options": "freq"
+    },
+    "b3": {
+     "text": "Hur mycket ångest ger telefonsamtal dig på det hela taget? (0 = ingen, 10 = extrem)",
+     "options": "scale11"
+    }
+   }
+  },
+  "C": {
+   "title": "Vad du gör åt det",
+   "items": {
+    "c1": {
+     "text": "Jag låter samtal från personer jag känner gå obesvarade på grund av hur samtal får mig att känna.",
+     "options": "freq"
+    },
+    "c2": {
+     "text": "Jag skjuter upp att ringa tillbaka en dag eller mer.",
+     "options": "freq"
+    },
+    "c3": {
+     "text": "Under det senaste året har jag undvikit något viktigt (en tid, en räkning, ett jobb, en hälsofråga) för att det krävde ett telefonsamtal.",
+     "options": "yesno"
+    },
+    "c4": {
+     "text": "Jag svarar på samtal från okända nummer.",
+     "options": "freq"
+    }
+   }
+  },
+  "D": {
+   "title": "Tid och avslut",
+   "items": {
+    "d1": {
+     "text": "Under samtal tappar jag koll på hur länge samtalet har pågått.",
+     "options": "freq"
+    },
+    "d2": {
+     "text": "Jag har svårt att avsluta ett samtal även när jag vill.",
+     "options": "freq"
+    }
+   }
+  },
+  "H": {
+   "title": "Att inte veta vad som väntar",
+   "items": {
+    "h1": {
+     "text": "När jag inte vet varför någon ringer får jag ångest.",
+     "options": "freq"
+    },
+    "h2": {
+     "text": "När jag inte vet hur långt ett samtal blir får jag ångest.",
+     "options": "freq"
+    }
+   }
+  },
+  "E": {
+   "title": "Preferens",
+   "items": {
+    "e1": {
+     "text": "Om jag får välja föredrar jag att skriva framför att ringa.",
+     "options": "freq"
+    }
+   }
+  },
+  "F": {
+   "title": "Uppmärksamhet och aktivitet",
+   "lead": "De sex följande frågorna är WHO:s screeningformulär för adhd hos vuxna, återgivet ord för ord. Tänk på de senaste sex månaderna.",
+   "items": "ASRS: six items and five labels come verbatim from asrs_official_transcriptions_v1.json for this language",
+   "notice": "ASRS-V1.1 Screener © World Health Organization 2003; © New York University and the President and Fellows of Harvard College. All rights reserved. Used unaltered (electronic version). Kessler et al. (2005).",
+   "notice_language_line": "© New York University and Ronald C. Kessler, PhD. All rights reserved."
+  },
+  "A": {
+   "title": "Adhd, autism och ångest",
+   "items": {
+    "a1": {
+     "text": "Adhd",
+     "options": "status"
+    },
+    "a2": {
+     "text": "Om du har en adhd-diagnos: vilken form?",
+     "options": "presentation"
+    },
+    "a3": {
+     "text": "Autism",
+     "options": "status"
+    },
+    "a4": {
+     "text": "Ångest (till exempel social ångest eller generaliserat ångestsyndrom)",
+     "options": "status"
+    }
+   }
+  },
+  "G": {
+   "title": "Kort om dig",
+   "items": {
+    "g1": {
+     "text": "Ålder",
+     "options": "age"
+    },
+    "g2": {
+     "text": "Kön (valfritt)",
+     "options": "gender",
+     "optional": true
+    },
+    "g3": {
+     "text": "Var bor du?",
+     "options": "regions"
+    },
+    "g4": {
+     "text": "Har du svarat på den här enkäten tidigare?",
+     "options": "noyes"
+    }
+   }
+  }
+ },
+ "thanks": {
+  "title": "Tack!",
+  "sent": "Dina svar skickades anonymt.",
+  "results": "De första resultaten publiceras i oktober, ADHD Awareness Month, under den finländska adhd-veckan 5–11 oktober.",
+  "footer": "Study 7 - Stage A, Enkät om telefonskräck, Institute for The Study Of Humanity 2026",
+  "download": "Ladda ner dina svar",
+  "download_note": "En kopia av dina svar och de verktyg du valde.",
+  "preparing": "Förbereder din fil…",
+  "download_again": "Ladda ner igen",
+  "follow_text": "Maximized Impact ry berättar om studier och resultat från Institute for The Study Of Humanity på Instagram.",
+  "follow": "Följ på Instagram",
+  "sending": "Skickar…",
+  "send_failed": "Det gick inte att skicka. Kontrollera din anslutning och försök igen; dina svar finns kvar här."
+ },
+ "file": {
+  "title": "Dina svar",
+  "study_line": "Study 7: telefonskräck och undvikande av samtal",
+  "saved": "Sparad {datetime}",
+  "created_on_device": "Skapad på din enhet",
+  "no_identifiers": "Den här filen innehåller inget namn, ingen e-post och ingen enhets- eller kontoidentifierare. Inget i den kopplar till dig.",
+  "thank_you_p1": "Du har just hjälpt till att sätta en siffra på hur telefonsamtal känns, för personer med och utan adhd eller autism. Så vitt vi vet har ingen mätt detta tidigare. Varje svar i den här filen är en del av den siffran.",
+  "thank_you_p2": "Institute for The Study Of Humanity tog emot dina svar anonymt. Den här kopian är din: spara den, dela den eller radera den. Institutet kan inte koppla den till dig, och den innehåller inget som skulle kunna göra det.",
+  "what_you_answered": "Vad du svarade",
+  "question": "Fråga",
+  "your_answer": "Ditt svar",
+  "not_answered": "(inte besvarad)",
+  "answered_after": "besvarad efter {seconds} s",
+  "changed_times": "ändrad {n} gånger",
+  "tools_title": "Verktygen du använde",
+  "tools_p": "Enkätsidan erbjöd samma timer för samtalslängd, samma fokusljud och samma tidssignaler som Yapper Phone använder under ett samtal. Det du valde är noterat här för dig och, utan någon identifierare, bredvid dina svar, så att institutet kan se vilka verktyg människor föredrar.",
+  "setting": "Inställning",
+  "what_you_chose": "Vad du valde",
+  "tool_rows": {
+   "call_length": "Samtalslängd du valde",
+   "time_taken": "Tid du tog",
+   "overtime": "Övertid",
+   "focus_sound": "Fokusljud",
+   "time_signal": "Tidssignal",
+   "none": "inget",
+   "on_every": "På, intervall {interval}",
+   "off": "Av"
+  },
+  "next_title": "Vad händer nu",
+  "next_p1": "Resultaten publiceras med öppen tillgång under Creative Commons Erkännande 4.0, med en sammanfattning på finska och engelska, som ett tillägg till vitboken \"The Case for Health Communications Technology\" (https://doi.org/10.5281/zenodo.21978705). Du hittar dem på https://research.maximized-impact.org/study7/results. Det anonymiserade datasetet publiceras tillsammans med resultaten så att vem som helst kan kontrollera siffrorna.",
+  "next_p2": "Om du har en fråga om studien, skriv till janne@maximized-impact.org. Eftersom institutet inte har några identifierare kan det inte hitta eller ta bort ett enskilt svar efter att det har skickats; den här filen är din egen kopia.",
+  "footer": "Institute for The Study Of Humanity · Maximized Impact ry · Helsingfors, Finland",
+  "page": "Sida {n}"
+ },
+ "data_notice": {
+  "title": "Vad Study 7 - Stage A samlar in",
+  "p1": "När du trycker på Skicka skickas dina svar till Institute for The Study Of Humanity utan namn, e-post, konto, telefonnummer eller enhetsidentifierare. Institutet sparar inte IP-adresser. En slumpmässig sessionskod kopplar ihop delarna av ett besök, inget annat.",
+  "p2": "Medan du svarar skickar sidan två små framstegssignaler, när du börjar och om du lämnar, så att institutet kan se var människor slutar. De innehåller inga svar.",
+  "p3": "Din webbläsare sparar en markering om att den här enheten har svarat, så att sidan kan påminna dig. Sidan sätter inga kakor och använder ingen analys. När du trycker på Skicka bekräftar en osynlig botkontroll från Cloudflare Turnstile att det är en människa som skickar svaren; det är den enda tredjepartstjänsten på sidan.",
+  "p3_link": {
+   "text": "Cloudflares integritetstillägg för Turnstile",
+   "url": "https://www.cloudflare.com/turnstile-privacy-policy/"
+  },
+  "p4": "Resultaten publiceras med öppen tillgång tillsammans med det anonymiserade datasetet. Utan identifierare kan ett svar inte hittas eller tas bort i efterhand.",
+  "contact": "Frågor: janne@maximized-impact.org"
+ }
+}

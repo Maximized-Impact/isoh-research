@@ -23,7 +23,7 @@ Canonical URLs: `https://research.maximized-impact.org/papers/hct/` and `https:/
 |------|------------|
 | `study7/index.html`, `survey.css`, `app.js`, `net.js`, `pdf.js` | The survey: markup with string keys, the prototype's stylesheet, the behaviour, the network and Turnstile layer, the PDF module (loaded on the download tap). |
 | `study7/config.js` | The four values that differ between environments: `FUNCTION_URL`, `TURNSTILE_SITE_KEY`, `OSF_PREREG_URL`, `PRODUCTION_ORIGIN`. Nothing else is configured anywhere. |
-| `assets/lang/study7/` | `index.json` (the languages offered), `strings_en_v8.json` (v7 kept beside it, untouched), `asrs_official_transcriptions_v1.json`. |
+| `assets/lang/study7/` | `index.json` (the languages offered), `strings_<code>_v8.json` for en, de, fi, fr, it, ja, ru and sv (`strings_en_v7.json` kept beside them, untouched), `asrs_official_transcriptions_v1.json`. |
 | `assets/audio/study7/` | The six focus sounds as Vorbis (`.ogg`, the app's files; the brown noise FLAC became Vorbis) with MP3 fallbacks for browsers without Vorbis (iOS Safari), and the two chimes as delivered. Loaded only when a sound is switched on or the timer starts. |
 | `assets/fonts/` | DM Sans and DM Mono web fonts; Carlito, Caladea and DM Sans TTFs for the PDF (see `assets/fonts/README.md`). |
 | `assets/lib/` | `pdf-lib.min.js` 1.17.1 and `fontkit.umd.min.js` (@pdf-lib/fontkit 1.1.1), loaded only on the download tap. |
@@ -117,7 +117,7 @@ Observations for Janne, none of them changes to the handoff:
 - `white.ogg` (from `white_noise_30s.ogg`) peaks at 4 % of full scale as delivered and is quiet at the default 17 % volume on purpose (Janne, 28 September 2026): loud white noise hurts the ears, so it is never normalised or lifted; the files play at the prototype's gain.
 - The PDF's "Saved" line uses the language's own date format (`Intl.DateTimeFormat`), so English reads "October 2, 2026 at 2:37 PM", not the mockup's hand-typed "2 October 2026, 14:37".
 - Georgia is not installed on Android, where the serif headings fall back to the system serif.
-- The Finnish strings file has not been delivered, so the selector offers English only. When it arrives, v8 needs these Finnish strings from the registration round: `data_notice.title` and `welcome.data_notice_link` "Mitä Tutkimus 7 - vaihe A kerää"; `institute.prereg_line` "Tutkimus on esirekisteröity Open Science Framework -palvelussa ennen tiedonkeruun alkua: {url}"; `institute.prereg_link` "Esirekisteröity OSF:ssä"; and `file.next_p1` with https://doi.org/10.5281/zenodo.21978705 and https://research.maximized-impact.org/study7/results/?lang=fi.
+- Seven translations arrived on 28 September 2026 at v8: de, fi, fr, it, ja, ru, sv (the same keys as English, the study label "Study 7 - Stage A" kept untranslated). Finnish carries the task's OSF line and the results address with `?lang=fi`. Russian names Carlito for all three PDF roles, because Caladea and DM Sans have no Cyrillic. Japanese names Noto Sans JP and Noto Serif JP, which are not shipped: until they are added (subset, with the `FONT_FILES` tables), the Japanese download is the text file. Thai stays hidden until its ASRS entry is checked glyph by glyph.
 
 ## Test report (28 September 2026: OSF registration link, results page, white paper header)
 
@@ -136,3 +136,15 @@ Verified in headless Chrome over the DevTools protocol against `python3 -m http.
 | Research page: a "Results" link beside "Take part" in the Study 7 entry | Passed. |
 | White paper page: the Institute block is the shared svg and `p.inst`; the lotus sits centred over the name at 88 x 79 px (72 x 65 on phones) with 20 px (18) to the name and 48 px (38) from the formula to the headline, the same as on the Research page; before, a 176 x 158 PNG sat 129 px left of centre at 1280 px (83 px at 390) with the formula at 16.3 px and 64 px (54) to the headline; nothing else on the page changed | Passed with before/after screenshots. |
 | No page exceptions across the runs; `node --check` on the four scripts; no em dash in any changed text | Passed. |
+
+## Test report (28 September 2026, evening: seven languages at strings v8)
+
+Checked in Node against `strings_en_v8.json` and in headless Chrome as above (function host unresolvable, POSTs answered in the page), with the Russian PDF read back with pdf-lib and rendered with Quick Look.
+
+| Acceptance item | Result |
+|-----------------|--------|
+| de, fi, fr, it, ja, ru, sv: the same 192 keys as English, placeholders intact, item ids, option counts and `block_order` unchanged, `questionnaire_version` `stage-a-v1`, the Institute name verbatim in the first welcome sentence, `{url}` in the OSF line, the email in the contact and file strings, no em dash | Passed. |
+| Font coverage for the full strings files: de, fi, fr, it, sv with the three fonts; ru with Carlito for all roles; ja reports the unshipped Noto families | Passed as intended (ja fails by design until the fonts ship). |
+| Selector lists English, Deutsch, Suomi, Français, Italiano, 日本語, Русский, Svenska; `?lang=ru` and `?lang=ja` run welcome to thank-you with the linked lotus and Institute name, the data notice and OSF links, the three footer lines, `language` in the submission | Passed at 412 x 915. Janne: on a phone. |
+| Russian download: a four-page PDF in Carlito with correct Cyrillic on every page, the link annotations and the OSF footer line; Japanese download: the text file, ending with the credit and the Japanese OSF line | Passed (rendered pages checked). Janne: the PDF on a phone. |
+| Data notice `?lang=fi`, `?lang=de`, `?lang=ja`: title, heading, the OSF line with the address as the link, contact; Finnish reads the task's exact OSF line | Passed. |

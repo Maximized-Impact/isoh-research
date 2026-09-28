@@ -1,0 +1,369 @@
+{
+ "_meta": {
+  "lang": "ja",
+  "dir": "ltr",
+  "questionnaire_version": "stage-a-v1",
+  "fonts": {
+   "sans": "Noto Sans JP",
+   "serif": "Noto Serif JP",
+   "institute": "Noto Sans JP"
+  },
+  "note": "Japanese (ja) translation of strings_en_v8.json, made 2026-09-28 under HANDOFF_Translations_v6. Same keys, structure and order as the English source; placeholders unchanged; _meta.fonts, _meta.block_order and blocks.G.items.g2.optional copied as is (the listed fonts do not cover Japanese: the PDF build needs a Japanese font such as Noto Sans JP / Noto Serif JP, set by the build). Block F: the six ASRS items and five labels are never in this file; the build takes them verbatim from the ja entry of asrs_official_transcriptions_v1.json (6Q_Japanese_final.pdf, polite desu/masu register); blocks.F.notice stays in English; blocks.F.notice_language_line carries the line printed on the Japanese PDF. Register elsewhere: polite desu/masu, the standard survey register, so there is no register shift at block F. options.freq uses the Japanese ASRS labels for the first four values; the fifth is itsumo. Age bands rendered as Japanese ranges with sai. Questionnaire unchanged, so questionnaire_version stays stage-a-v1. v8 (2026-09-28): institute.prereg_line and institute.prereg_link added; welcome.data_notice_link and data_notice.title name the study; data_notice.prereg_link removed; file.next_p1 gives the DOI and the results page as full web addresses. Keys match strings_en_v8.json.",
+  "block_order": [
+   "B",
+   "C",
+   "D",
+   "H",
+   "E",
+   "F",
+   "A",
+   "G"
+  ]
+ },
+ "institute": {
+  "name": "Institute for The Study Of Humanity",
+  "formula": "フィンランドの登録団体Maximized Impact ryの研究イニシアチブ。ヘルシンキ。",
+  "short": "Maximized Impact ryの研究イニシアチブ",
+  "prereg_line": "この研究は、データ収集を始める前にOpen Science Frameworkで事前登録されています：{url}",
+  "prereg_link": "OSFで事前登録済み"
+ },
+ "welcome": {
+  "title": "電話について、あなたはどう感じますか？",
+  "study": "Study 7 - Stage A",
+  "p1": "ようこそ。あなたはInstitute for The Study Of Humanityの最初の研究、Study 7, Stage Aに参加しようとしています。",
+  "p2": "この研究は、電話への不安やその他の電話に関する困りごとが、全体として、またADHDや自閉スペクトラム症のある人とない人などのさまざまなグループで、どのくらい一般的かを測ります。電話が苦にならない人も含め、すべての人の回答が必要です。最初の結果は10月に公開されます。",
+  "p3": "所要時間は約3分です。匿名で、名前もメールアドレスもアカウントも不要です。このページは、各質問にかかった時間と、途中でやめた場合も含めてどこまで進んだかを記録します。回答が送信されるのは、「送信」を押したときだけです。",
+  "p4": "次に、必要であればフォーカスサウンドとタイムシグナルを選び、「続ける」をタップしてください。その後、タイマーを設定します。短い通話か長い通話を選ぶか、ピッカーで自分の時間を設定してください。",
+  "data_notice_link": "Study 7 - Stage Aが収集するもの",
+  "repeat_note": "この端末からは以前に回答が送信されています。続けていただいて構いません。最後の質問には正直にお答えください。",
+  "continue_adult": "18歳以上です、続ける",
+  "under18": "18歳未満です",
+  "language_label": "言語"
+ },
+ "under18": {
+  "title": "参加したいと思ってくださり、ありがとうございます。",
+  "p1": "この質問票は大人向けのため、ここで終了します。あなたについては何も記録されていません。18歳未満の方が訪れたことだけが記録されます。",
+  "p2": "18歳未満向けのバージョンを計画しています。Maximized Impact ryは研究所の研究と結果をInstagramで発表していますので、フォローしていただくと公開時にお知らせが届きます。",
+  "follow": "Instagramでフォロー"
+ },
+ "focus": {
+  "title": "フォーカスサウンド",
+  "volume": "音量",
+  "sound": "サウンド",
+  "sounds": {
+   "brown": "ブラウンノイズ",
+   "white": "ホワイトノイズ",
+   "pink": "ピンクノイズ",
+   "rain": "雨",
+   "ocean": "海の波",
+   "forest": "森"
+  },
+  "time_signal": "タイムシグナル",
+  "system_wide": "システム全体",
+  "interval": "間隔",
+  "interval_values": {
+   "10": "10秒",
+   "20": "20秒",
+   "30": "30秒",
+   "60": "1分"
+  },
+  "continue": "続ける",
+  "close": "閉じる",
+  "aria_focus_toggle": "フォーカスサウンドのオン・オフ",
+  "aria_signal_toggle": "タイムシグナルのオン・オフ",
+  "aria_open": "フォーカスサウンドの設定を開く"
+ },
+ "setup": {
+  "study": "Study 7 - Stage A",
+  "subtitle": "制限時間を設定",
+  "hours": "時間",
+  "minutes": "分",
+  "seconds": "秒",
+  "set_duration": "時間を設定",
+  "reset": "リセット",
+  "long_label": "長い：{duration}",
+  "short_label": "短い：{duration}",
+  "custom_label": "カスタム：{duration}",
+  "long_call": "長い通話",
+  "short_call": "短い通話",
+  "call": "発信",
+  "tap_hint": "タップして質問票を開始",
+  "units": {
+   "h": "時間",
+   "m": "分",
+   "s": "秒"
+  }
+ },
+ "timer": {
+  "plenty": "まだ余裕があります",
+  "keep_going": "この調子で",
+  "last30": "残り30秒",
+  "overtime": "時間超過",
+  "elapsed": "経過 {time}",
+  "remaining": "残り {time} · 約束 {duration}"
+ },
+ "survey": {
+  "title": "電話について、あなたはどう感じますか？",
+  "intro1": "匿名、約3分。名前もメールアドレスもアカウントも不要です。実施：Institute for The Study Of Humanity（Maximized Impact ryの研究イニシアチブ）。",
+  "intro2": "回答中、このページは各質問にかかった時間と、途中でやめた場合も含めてどこまで進んだかを記録します。回答そのものが送信されるのは、「回答を送信」を押したときだけです。",
+  "send": "回答を送信",
+  "credit": "タイマーとフォーカスツールはYapper Phoneをもとにしています。",
+  "scale_anchor_none": "なし",
+  "scale_anchor_extreme": "極度",
+  "unanswered": "送信する前に、赤で示された質問に答えてください。「任意」と示された質問は空欄のままで構いません。"
+ },
+ "options": {
+  "freq": [
+   "全くない",
+   "めったにない",
+   "時々",
+   "頻繁",
+   "いつも"
+  ],
+  "status": [
+   "はい、診断あり",
+   "検査中・診断待ち",
+   "診断はないが、自分に当てはまると思う・疑っている",
+   "いいえ"
+  ],
+  "presentation": [
+   "不注意優勢型",
+   "多動・衝動性優勢型",
+   "混合型",
+   "わからない",
+   "診断なし"
+  ],
+  "yesno": [
+   "はい",
+   "いいえ"
+  ],
+  "noyes": [
+   "いいえ",
+   "はい"
+  ],
+  "scale11": [
+   "0",
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "age": [
+   "18〜24歳",
+   "25〜34歳",
+   "35〜44歳",
+   "45〜54歳",
+   "55〜64歳",
+   "65歳以上"
+  ],
+  "gender": [
+   "女性",
+   "男性",
+   "ノンバイナリー",
+   "回答しない"
+  ],
+  "regions": [
+   "フィンランド",
+   "その他の北欧諸国",
+   "その他のヨーロッパ",
+   "北アメリカ",
+   "ラテンアメリカ・カリブ海地域",
+   "中東・北アフリカ",
+   "サハラ以南のアフリカ",
+   "南アジア・中央アジア",
+   "東アジア・東南アジア",
+   "オセアニア"
+  ]
+ },
+ "blocks": {
+  "B": {
+   "title": "電話が鳴るとき",
+   "items": {
+    "b1": {
+     "text": "電話が鳴ると、緊張したり不安になったりします。",
+     "options": "freq"
+    },
+    "b2": {
+     "text": "かけなければならない電話の前に、不安になります。",
+     "options": "freq"
+    },
+    "b3": {
+     "text": "全体として、電話はあなたにどのくらい不安を引き起こしますか？（0＝なし、10＝極度）",
+     "options": "scale11"
+    }
+   }
+  },
+  "C": {
+   "title": "そのときどうしているか",
+   "items": {
+    "c1": {
+     "text": "電話が引き起こす気持ちのせいで、知っている人からの電話に出ないことがあります。",
+     "options": "freq"
+    },
+    "c2": {
+     "text": "折り返しの電話を1日以上先延ばしにします。",
+     "options": "freq"
+    },
+    "c3": {
+     "text": "この1年で、電話が必要だったために大事なこと（予約、支払い、仕事、健康に関すること）を避けたことがあります。",
+     "options": "yesno"
+    },
+    "c4": {
+     "text": "知らない番号からの電話に出ます。",
+     "options": "freq"
+    }
+   }
+  },
+  "D": {
+   "title": "時間と終わり方",
+   "items": {
+    "d1": {
+     "text": "通話中、どのくらい話しているかわからなくなります。",
+     "options": "freq"
+    },
+    "d2": {
+     "text": "終わらせたいと思っても、電話を切るのが難しいです。",
+     "options": "freq"
+    }
+   }
+  },
+  "H": {
+   "title": "何が待っているかわからないとき",
+   "items": {
+    "h1": {
+     "text": "相手がなぜ電話をかけてきたのかわからないと、不安になります。",
+     "options": "freq"
+    },
+    "h2": {
+     "text": "通話がどのくらい続くかわからないと、不安になります。",
+     "options": "freq"
+    }
+   }
+  },
+  "E": {
+   "title": "好み",
+   "items": {
+    "e1": {
+     "text": "選べるなら、電話よりメッセージを選びます。",
+     "options": "freq"
+    }
+   }
+  },
+  "F": {
+   "title": "注意と活動",
+   "lead": "次の6つの質問は、WHOの成人ADHDスクリーニングを一字一句そのまま掲載したものです。過去6か月について考えてお答えください。",
+   "items": "ASRS: six items and five labels come verbatim from asrs_official_transcriptions_v1.json for this language",
+   "notice": "ASRS-V1.1 Screener © World Health Organization 2003; © New York University and the President and Fellows of Harvard College. All rights reserved. Used unaltered (electronic version). Kessler et al. (2005).",
+   "notice_language_line": "© New York University and Ronald C. Kessler, PhD. All rights reserved."
+  },
+  "A": {
+   "title": "ADHD、自閉スペクトラム症、不安症",
+   "items": {
+    "a1": {
+     "text": "ADHD",
+     "options": "status"
+    },
+    "a2": {
+     "text": "ADHDの診断がある場合：どのタイプですか？",
+     "options": "presentation"
+    },
+    "a3": {
+     "text": "自閉スペクトラム症（ASD）",
+     "options": "status"
+    },
+    "a4": {
+     "text": "不安症（例：社交不安症や全般不安症）",
+     "options": "status"
+    }
+   }
+  },
+  "G": {
+   "title": "あなたについて簡単に",
+   "items": {
+    "g1": {
+     "text": "年齢",
+     "options": "age"
+    },
+    "g2": {
+     "text": "性別（任意）",
+     "options": "gender",
+     "optional": true
+    },
+    "g3": {
+     "text": "お住まいの地域",
+     "options": "regions"
+    },
+    "g4": {
+     "text": "このアンケートに以前回答したことがありますか？",
+     "options": "noyes"
+    }
+   }
+  }
+ },
+ "thanks": {
+  "title": "ありがとうございました！",
+  "sent": "回答は匿名で送信されました。",
+  "results": "最初の結果は、ADHD啓発月間である10月、フィンランドのADHD週間（10月5日から11日）に公開されます。",
+  "footer": "Study 7 - Stage A、電話への不安に関する質問票、Institute for The Study Of Humanity 2026",
+  "download": "回答をダウンロード",
+  "download_note": "あなたの回答と選んだツールのコピーです。",
+  "preparing": "ファイルを準備しています…",
+  "download_again": "もう一度ダウンロード",
+  "follow_text": "Maximized Impact ryは、Institute for The Study Of Humanityの研究と結果をInstagramで発表しています。",
+  "follow": "Instagramでフォロー",
+  "sending": "送信中…",
+  "send_failed": "送信できませんでした。接続を確認してもう一度お試しください。回答はまだここに残っています。"
+ },
+ "file": {
+  "title": "あなたの回答",
+  "study_line": "Study 7：電話への不安と電話の回避",
+  "saved": "保存 {datetime}",
+  "created_on_device": "あなたの端末で作成",
+  "no_identifiers": "このファイルには、名前、メールアドレス、端末やアカウントの識別子は含まれていません。あなたにつながるものは何もありません。",
+  "thank_you_p1": "あなたは今、ADHDや自閉スペクトラム症のある人とない人にとって電話がどう感じられるかを、数字で示す手助けをしました。私たちの知る限り、これを測った人はこれまでいません。このファイルの一つひとつの回答が、その数字の一部です。",
+  "thank_you_p2": "Institute for The Study Of Humanityはあなたの回答を匿名で受け取りました。このコピーはあなたのものです。保管しても、共有しても、削除しても構いません。研究所はこのファイルをあなたと結びつけることができず、それができる情報も含まれていません。",
+  "what_you_answered": "あなたの回答内容",
+  "question": "質問",
+  "your_answer": "あなたの回答",
+  "not_answered": "（未回答）",
+  "answered_after": "{seconds}秒後に回答",
+  "changed_times": "{n}回変更",
+  "tools_title": "使用したツール",
+  "tools_p": "アンケートのページでは、Yapper Phoneが通話中に使うのと同じ通話時間タイマー、フォーカスサウンド、タイムシグナルを提供しました。あなたが選んだ内容は、あなたのためにここに記録され、また識別子なしで回答と並べて記録されるため、研究所はどのツールが好まれるかを知ることができます。",
+  "setting": "設定",
+  "what_you_chose": "選んだ内容",
+  "tool_rows": {
+   "call_length": "選んだ通話時間",
+   "time_taken": "かかった時間",
+   "overtime": "時間超過",
+   "focus_sound": "フォーカスサウンド",
+   "time_signal": "タイムシグナル",
+   "none": "なし",
+   "on_every": "オン、{interval}ごと",
+   "off": "オフ"
+  },
+  "next_title": "この後の流れ",
+  "next_p1": "結果は、クリエイティブ・コモンズ 表示 4.0のもとオープンアクセスで公開され、フィンランド語と英語の要約とともに、ホワイトペーパー「The Case for Health Communications Technology」（https://doi.org/10.5281/zenodo.21978705）の補遺として発表されます。https://research.maximized-impact.org/study7/results でご覧いただけます。誰でも数字を確認できるよう、匿名化したデータセットも結果とともに公開します。",
+  "next_p2": "研究について質問がある場合は、janne@maximized-impact.org までお書きください。研究所は識別子を持たないため、送信後に個々の回答を探したり削除したりすることはできません。このファイルがあなたの記録です。",
+  "footer": "Institute for The Study Of Humanity · Maximized Impact ry · フィンランド、ヘルシンキ",
+  "page": "ページ {n}"
+ },
+ "data_notice": {
+  "title": "Study 7 - Stage Aが収集するもの",
+  "p1": "「送信」を押すと、回答は名前、メールアドレス、アカウント、電話番号、端末の識別子なしでInstitute for The Study Of Humanityに送られます。研究所はIPアドレスを保存しません。ランダムなセッションコードが一回の訪問の各部分を結びつけるだけで、それ以外は何もありません。",
+  "p2": "回答中、このページは開始時と離脱時に2つの小さな進行シグナルを送り、研究所はどこで人がやめるかを把握します。シグナルに回答は含まれません。",
+  "p3": "ブラウザには、この端末が回答済みであることを示すフラグが1つ保存され、ページがそれを知らせることができます。このページはCookieを設定せず、アナリティクスも使いません。「送信」を押すと、Cloudflare Turnstileによる目に見えないボットチェックが、人が回答を送信していることを確認します。これがこのページで使う唯一の第三者サービスです。",
+  "p3_link": {
+   "text": "CloudflareのTurnstileプライバシー補遺条項",
+   "url": "https://www.cloudflare.com/ja-jp/turnstile-privacy-policy/"
+  },
+  "p4": "結果は匿名化したデータセットとともにオープンアクセスで公開されます。識別子が存在しないため、送信後に回答を探したり削除したりすることはできません。",
+  "contact": "お問い合わせ：janne@maximized-impact.org"
+ }
+}
