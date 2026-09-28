@@ -271,7 +271,7 @@
   $('fsOn').addEventListener('change', (e) => { if (e.target.checked) audio.start(selectedSound()); else audio.stop(); syncTools(); });
   $('tbFocus').addEventListener('click', toggleFocus);
   $('tbSignal').addEventListener('click', toggleSignal);
-  $('tbOpen').addEventListener('click', openCard);
+  $('tbOpen').addEventListener('click', openCard); $('thanksOpen').addEventListener('click', openCard);
   $('focusClose').addEventListener('click', () => { $('focusScrim').hidden = true; });
   $('focusScrim').addEventListener('click', (e) => { if (step !== 'focus' && e.target === e.currentTarget) $('focusScrim').hidden = true; });
   document.addEventListener('keydown', (e) => { if (step !== 'focus' && e.key === 'Escape' && !$('focusScrim').hidden) $('focusScrim').hidden = true; });
@@ -388,7 +388,7 @@
     last = { payload, at: new Date() };
     try { window.localStorage.setItem(DONE_KEY, last.at.toISOString()); } catch (e) { /* storage unavailable */ }
     $('submit').hidden = true; $('sendError').hidden = true; $('unanswered').hidden = true; $('surveyHead').hidden = true; $('items').hidden = true; $('thanks').style.display = 'block'; $('thanksFoot').hidden = false; $('survey').classList.add('done');
-    timer.active = false; $('topbar').classList.add('done'); window.scrollTo(0, 0); // the bar keeps only its tool buttons
+    timer.active = false; $('topbar').hidden = true; $('thanksOpen').hidden = false; window.scrollTo(0, 0); // the floating pill keeps the Focus Sound card reachable
   }
   $('submit').addEventListener('click', send);
 

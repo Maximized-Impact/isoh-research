@@ -94,10 +94,6 @@
   .status{font-size:15px;font-weight:600;white-space:nowrap}
   .topbar .row{align-items:center;gap:16px}
   .topbar .tools{flex:none}
-  /* After Send the bar stays as a slim strip with only the tool buttons */
-  .topbar.done{padding:8px 16px}
-  .topbar.done .left,.topbar.done .row2,.topbar.done .bar{display:none}
-  .topbar.done .row{justify-content:flex-end}
   .topbar .right{text-align:right}
   .el{color:var(--dim);font-size:13px;font-variant-numeric:tabular-nums;line-height:1.4}
   .bar{height:6px;border-radius:3px;background:#333;overflow:hidden;max-width:640px;margin:8px auto 0}
@@ -156,6 +152,7 @@
   .sq svg{width:20px;height:20px;opacity:.35;transition:opacity .15s}
   .sq .ts svg{fill:var(--yellow)} .sq .fs svg{fill:var(--green)}
   .sq .ts.on svg,.sq .fs.on svg{opacity:1}
+  .fab-open{position:fixed;top:14px;right:16px;z-index:40;background:rgba(14,14,14,.92);box-shadow:0 8px 24px rgba(0,0,0,.55)} /* after Send: the one floating way to the Focus Sound card */
   .tools{display:flex;align-items:center;gap:10px}
   .topbar .row2{display:flex;justify-content:space-between;align-items:baseline;max-width:640px;margin:6px auto 0}
   .toggle.green input:checked + span{background:#1E4A2E}
