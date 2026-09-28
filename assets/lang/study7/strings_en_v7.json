@@ -8,7 +8,7 @@
    "serif": "Caladea",
    "institute": "DM Sans"
   },
-  "note": "Source of truth for all user-facing text of Study 7 Stage A. Keys are stable; translations must return the same keys. Blocks render in the order given in block_order; block letters and item IDs are internal and never shown. Strings in 'asrs' are NEVER translated here: they come verbatim from asrs_official_transcriptions_v1.json. v5 (2026-09-26): thanks.sent shortened; welcome.data_notice_link added (the welcome screen links to /study7/data-notice/); data_notice p1, p2 and p3 rewritten and shortened, p3_link kept, prereg_link added (link text only: its address comes from the site config once the OSF registration exists). v6 (2026-09-26): _meta.fonts added (the font family for each role of the downloadable file: sans, serif, institute; a language whose script these do not cover names Noto families instead; translators copy the object as is); thanks.download_note shortened; file.tools_p no longer claims an effect of the tools, only what people prefer. Questionnaire unchanged, so questionnaire_version stays stage-a-v1. v7 (2026-09-27): survey.unanswered, thanks.results, setup.subtitle and thanks.footer added; focus.lead removed; thanks.title and thanks.follow_text reworded; an item may carry optional: true (g2); questionnaire_version stays stage-a-v1.",
+  "note": "Source of truth for all user-facing text of Study 7 Stage A. Keys are stable; translations must return the same keys. Blocks render in the order given in block_order; block letters and item IDs are internal and never shown. Strings in 'asrs' are NEVER translated here: they come verbatim from asrs_official_transcriptions_v1.json. v5 (2026-09-26): thanks.sent shortened; welcome.data_notice_link added (the welcome screen links to /study7/data-notice/); data_notice p1, p2 and p3 rewritten and shortened, p3_link kept, prereg_link added (link text only: its address comes from the site config once the OSF registration exists). v6 (2026-09-26): _meta.fonts added (the font family for each role of the downloadable file: sans, serif, institute; a language whose script these do not cover names Noto families instead; translators copy the object as is); thanks.download_note shortened; file.tools_p no longer claims an effect of the tools, only what people prefer. Questionnaire unchanged, so questionnaire_version stays stage-a-v1. v7 (2026-09-27): survey.unanswered, thanks.results, setup.subtitle, thanks.footer, setup.tap_hint, thanks.preparing and thanks.download_again added; setup.units.m is min; focus.lead removed; thanks.title and thanks.follow_text reworded; an item may carry optional: true (g2); questionnaire_version stays stage-a-v1.",
   "block_order": [
    "B",
    "C",
@@ -85,9 +85,10 @@
   "long_call": "Long Call",
   "short_call": "Short Call",
   "call": "Call",
+  "tap_hint": "Tap to start questionnaire",
   "units": {
    "h": "h",
-   "m": "m",
+   "m": "min",
    "s": "s"
   }
  },
@@ -310,6 +311,8 @@
   "footer": "Study 7 - Stage A, Phone Anxiety Questionnaire, Institute for The Study Of Humanity 2026.",
   "download": "Download your answers",
   "download_note": "A copy of your answers and the tools you chose.",
+  "preparing": "Preparing your file…",
+  "download_again": "Download again",
   "follow_text": "Maximized Impact ry announces the Institute for The Study Of Humanity's studies and results on Instagram.",
   "follow": "Follow on Instagram",
   "sending": "Sending…",

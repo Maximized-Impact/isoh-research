@@ -33,7 +33,7 @@
   const get = (path) => path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), S);
   const pad = (n) => String(n).padStart(2, '0');
   const fmtHuman = (s) => { const U = S.setup.units; const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = s % 60;
-    return [h ? `${h}${U.h}` : '', m ? `${m}${U.m}` : '', x ? `${x}${U.s}` : ''].filter(Boolean).join(' ') || `0${U.s}`; };
+    return [h ? `${h} ${U.h}` : '', m ? `${m} ${U.m}` : '', x ? `${x} ${U.s}` : ''].filter(Boolean).join(' ') || `0 ${U.s}`; };
   const fmtClock = (ms) => { const s = Math.max(0, Math.round(ms / 1000)); const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = s % 60;
     return h ? `${h}:${pad(m)}:${pad(x)}` : `${pad(m)}:${pad(x)}`; };
   const vibrate = (p) => { try { if (navigator.vibrate) navigator.vibrate(p); } catch (e) { /* no vibration */ } };
@@ -159,7 +159,7 @@
   function startTimer(sec, preset) {
     audio.unlock(); audio.preloadChimes();
     Object.assign(timer, { active: true, preset, duration: sec, startAt: Date.now(), endAt: Date.now() + sec * 1000, amberFired: false, fired: new Set() });
-    $('setupScrim').hidden = true; $('topbar').hidden = false; $('survey').hidden = false;
+    step = 'call'; $('setupScrim').hidden = true; $('topbar').hidden = false; $('survey').hidden = false;
     paraStart();
     Net.post('start', { preset, duration_s: sec, ...(src ? { src } : {}) }).catch(() => {});
     // Time signal marks the start of the countdown and re-anchors its interval to it
@@ -388,7 +388,7 @@
     last = { payload, at: new Date() };
     try { window.localStorage.setItem(DONE_KEY, last.at.toISOString()); } catch (e) { /* storage unavailable */ }
     $('submit').hidden = true; $('sendError').hidden = true; $('unanswered').hidden = true; $('surveyHead').hidden = true; $('items').hidden = true; $('thanks').style.display = 'block'; $('thanksFoot').hidden = false; $('survey').classList.add('done');
-    timer.active = false; $('topbar').hidden = true; window.scrollTo(0, 0);
+    timer.active = false; $('topbar').classList.add('done'); window.scrollTo(0, 0); // the bar keeps only its tool buttons
   }
   $('submit').addEventListener('click', send);
 
@@ -448,7 +448,8 @@
     return pdfModule;
   }
   $('download').addEventListener('click', async () => {
-    if (!last) return;
+    const button = $('download'); if (!last || button.disabled) return;
+    button.disabled = true; button.textContent = S.thanks.preparing; // the file takes a moment to build
     const rec = record();
     try {
       const pdf = await loadPdfModule();
@@ -457,6 +458,7 @@
     } catch (e) {
       downloadText(rec);
     }
+    button.disabled = false; button.textContent = S.thanks.download_again;
   });
 
   /* ------------------------------------------------------------------
