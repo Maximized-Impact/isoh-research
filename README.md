@@ -1,3 +1,4 @@
+
 # isoh-research
 
 The research site of the Institute for The Study Of Humanity, a research initiative of Maximized Impact ry, a Finnish registered association: `research.maximized-impact.org` (Netlify site `maximized-impact-research`). Plain static files, no build step, no serverless functions. Every study is a folder; Study 7 is `study7/`. Built from `HANDOFF_Production_Build_v14.md`.
@@ -11,8 +12,8 @@ The backend (the Firebase function the survey talks to) is the private repo `iso
 | `/` | The masthead (lotus, name, formula), "Research" with the subtitle "Publications and open studies", the index of publications and open studies. |
 | `/papers/hct/` | The white paper's web home, with `The_Case_for_Health_Communications_Technology.pdf` (Version 1.0, the Zenodo file) and `HCT_tiivistelma_suomeksi.pdf` beside it. |
 | `/study7/` | The survey. No bar: its sticky timer owns the top of the screen. |
-| `/study7/data-notice/` | "What this page collects", English baked into the HTML from the strings file; `data-notice.js` adds the OSF link from `config.js` and other languages via `?lang=`. |
-| `/study7/results/` | The placeholder every downloaded PDF points people to. |
+| `/study7/data-notice/` | "What Study 7 - Stage A collects", English baked into the HTML from the strings file; `data-notice.js` fills the OSF line from `config.js` and other languages via `?lang=`. |
+| `/study7/results/` | The Study 7 results page, English and Finnish (`?lang=fi`), with the Institute block; every downloaded answers file links here. |
 
 Canonical URLs: `https://research.maximized-impact.org/papers/hct/` and `https://research.maximized-impact.org/study7/`.
 
@@ -22,7 +23,7 @@ Canonical URLs: `https://research.maximized-impact.org/papers/hct/` and `https:/
 |------|------------|
 | `study7/index.html`, `survey.css`, `app.js`, `net.js`, `pdf.js` | The survey: markup with string keys, the prototype's stylesheet, the behaviour, the network and Turnstile layer, the PDF module (loaded on the download tap). |
 | `study7/config.js` | The four values that differ between environments: `FUNCTION_URL`, `TURNSTILE_SITE_KEY`, `OSF_PREREG_URL`, `PRODUCTION_ORIGIN`. Nothing else is configured anywhere. |
-| `assets/lang/study7/` | `index.json` (the languages offered), `strings_en_v7.json`, `asrs_official_transcriptions_v1.json`. |
+| `assets/lang/study7/` | `index.json` (the languages offered), `strings_en_v8.json` (v7 kept beside it, untouched), `asrs_official_transcriptions_v1.json`. |
 | `assets/audio/study7/` | The six focus sounds as Vorbis (`.ogg`, the app's files; the brown noise FLAC became Vorbis) with MP3 fallbacks for browsers without Vorbis (iOS Safari), and the two chimes as delivered. Loaded only when a sound is switched on or the timer starts. |
 | `assets/fonts/` | DM Sans and DM Mono web fonts; Carlito, Caladea and DM Sans TTFs for the PDF (see `assets/fonts/README.md`). |
 | `assets/lib/` | `pdf-lib.min.js` 1.17.1 and `fontkit.umd.min.js` (@pdf-lib/fontkit 1.1.1), loaded only on the download tap. |
@@ -36,6 +37,7 @@ Site name `maximized-impact-research`; deploy previews on; production deploys lo
 
 ## Study 7 behaviour in brief
 
+- Study 7 - Stage A is preregistered on the Open Science Framework: https://osf.io/8t473 (DOI 10.17605/OSF.IO/8T473), registered 28 September 2026 before any data collection. The item set is frozen as `stage-a-v1`. The address lives only in `study7/config.js` (`OSF_PREREG_URL`); the data notice, the welcome and thank-you screens and the downloadable file read it from there (the strings carry `{url}`).
 - Every word comes from the language file and, for block F, the ASRS file. Blocks render in `_meta.block_order`; option indexes, not labels, are sent. The version tag is `stage-a-v1-<language>` on the production origin and `stage-a-test` anywhere else.
 - Nothing is sent while answering. `start` when the timer starts, `leave` on `pagehide` while no submission has succeeded (a `sendBeacon` string), `under18` from the exit screen, `submit` on Send.
 - Turnstile is injected when Send is pressed, never before; a token within 10 s goes with the submission, otherwise the submission carries `turnstile: "unavailable"`. 204 and 409 mean sent. Anything else shows `thanks.send_failed`, and the retry resets and executes the widget again.
@@ -48,7 +50,7 @@ Site name `maximized-impact-research`; deploy previews on; production deploys lo
 
 ## Adding a language
 
-1. Drop `strings_<code>_v7.json` (the same keys as `strings_en_v7.json`, the same version) into `assets/lang/study7/`. Its `_meta.fonts` names the font family for each PDF role; a language whose script Carlito, Caladea or DM Sans do not cover names Noto families there, and their TTF files must then be added to `assets/fonts/` and to the `FONT_FILES` table in `study7/pdf.js` and `tools/check-font-coverage.mjs`.
+1. Drop `strings_<code>_v8.json` (the same keys as `strings_en_v8.json`, the same version) into `assets/lang/study7/`. Its `_meta.fonts` names the font family for each PDF role; a language whose script Carlito, Caladea or DM Sans do not cover names Noto families there, and their TTF files must then be added to `assets/fonts/` and to the `FONT_FILES` table in `study7/pdf.js` and `tools/check-font-coverage.mjs`.
 2. Add a line to `assets/lang/study7/index.json` with `code`, `label` (the language's own name, shown in the selector) and `file`.
 3. The language appears only if its entry in `asrs_official_transcriptions_v1.json` has a status beginning with `verbatim`. Thai stays hidden until its flag is cleared; Arabic and Urdu stay hidden.
 4. `cd tools && node check-font-coverage.mjs <code>`: every character of the strings and the ASRS entry must have a glyph, or the file is not shipped. Arabic and Urdu need shaping and right-to-left layout that pdf-lib does not do: for them the download is the text file.
@@ -112,7 +114,25 @@ Verified in headless Chrome driven over the DevTools protocol against `python3 -
 
 Observations for Janne, none of them changes to the handoff:
 
-- `white.ogg` (from `white_noise_30s.ogg`) peaks at 4 % of full scale as delivered and is very quiet at the default 17 % volume; the files play at the prototype's gain.
+- `white.ogg` (from `white_noise_30s.ogg`) peaks at 4 % of full scale as delivered and is quiet at the default 17 % volume on purpose (Janne, 28 September 2026): loud white noise hurts the ears, so it is never normalised or lifted; the files play at the prototype's gain.
 - The PDF's "Saved" line uses the language's own date format (`Intl.DateTimeFormat`), so English reads "October 2, 2026 at 2:37 PM", not the mockup's hand-typed "2 October 2026, 14:37".
 - Georgia is not installed on Android, where the serif headings fall back to the system serif.
-- The Finnish strings file has not been delivered, so the selector offers English only.
+- The Finnish strings file has not been delivered, so the selector offers English only. When it arrives, v8 needs these Finnish strings from the registration round: `data_notice.title` and `welcome.data_notice_link` "Mitä Tutkimus 7 - vaihe A kerää"; `institute.prereg_line` "Tutkimus on esirekisteröity Open Science Framework -palvelussa ennen tiedonkeruun alkua: {url}"; `institute.prereg_link` "Esirekisteröity OSF:ssä"; and `file.next_p1` with https://doi.org/10.5281/zenodo.21978705 and https://research.maximized-impact.org/study7/results/?lang=fi.
+
+## Test report (28 September 2026: OSF registration link, results page, white paper header)
+
+Verified in headless Chrome over the DevTools protocol against `python3 -m http.server` at the repo root (no headers), with the function host and challenges.cloudflare.com made unresolvable and every POST answered inside the page with 204, so nothing reached the function; a worktree of the previous commit was served beside it for the before/after comparison of the white paper page. The PDF's link annotations were read with pdf-lib in Node and its pages rendered with Quick Look. Phone checks are marked for Janne.
+
+| Acceptance item | Result |
+|-----------------|--------|
+| `strings_en_v8.json`: items, options, block order and `questionnaire_version` identical to v7; only `_meta.note`, `welcome.data_notice_link`, `data_notice.title` and `file.next_p1` changed, `institute.prereg_line` and `institute.prereg_link` added, `data_notice.prereg_link` removed; v7 untouched | Passed (a script comparing the two files); font coverage for v8 passes. |
+| Welcome: the lotus is a link to the research site in a new tab with the Institute's name as its accessible name, 72 x 65 px and centred as before; "Institute for The Study Of Humanity" in the first sentence is the same link; the data notice link reads "What Study 7 - Stage A collects"; "Preregistered on OSF" beneath it links to the address from `config.js` in a new tab; the rest of the card unchanged | Passed at 412 x 915. Janne: on a phone. |
+| Thank-you: the lotus link as on the welcome screen; under the footer line "Preregistered on OSF" and "research.maximized-impact.org" as links in new tabs, 6 px between the three lines, 29 px above the first as before; nothing else added | Passed. |
+| Data notice: title and heading "What Study 7 - Stage A collects"; the OSF paragraph reads exactly "This study was preregistered on the Open Science Framework before any data were collected: https://osf.io/8t473" with the address as a link (new tab, text and href from `OSF_PREREG_URL`), between the Cloudflare link and Contact, hidden while the address is empty; `?lang=fi` falls back to English without an error; a second `build-data-notice` run changes nothing | Passed. |
+| Answers PDF: the DOI, the results address and the OSF address are link annotations covering the whole address, the email a mailto: link; no address is split across lines (each page rendered and checked; `wrap()` unit-tested with the file's paragraphs from 300 to 482 pt columns); every page's footer carries the credit and page number with the OSF line beneath | Passed (four pages). Janne: open the PDF on Android Chrome and iOS Safari. |
+| Text fallback: "What happens next" carries the full addresses; the file ends with the credit line and the OSF line | Passed (PDF module made to throw). |
+| Nothing new is sent: `start` and `submit` carry exactly the schema fields, `stage-a-test` off production; no request to any host but the site, the function and Cloudflare at Send | Passed. |
+| Results page: the Institute block above "Results" with the same geometry as on the Research page (lotus 88 x 79 centred, 20 px to the name, 48 px from the formula to the heading at 1280 px; 72 x 65, 18 and 38 px at 390 px); English by default, `?lang=fi` shows the Finnish text with the Finnish meta description and `lang="fi"`, the title unchanged, "Suomeksi" / "In English" at the top of the text; an unknown `?lang` shows English; the registration and both DOI links open in a new tab; Follow on Instagram last; no Yapper Phone on the page | Passed at 1280 and 390 px. |
+| Research page: a "Results" link beside "Take part" in the Study 7 entry | Passed. |
+| White paper page: the Institute block is the shared svg and `p.inst`; the lotus sits centred over the name at 88 x 79 px (72 x 65 on phones) with 20 px (18) to the name and 48 px (38) from the formula to the headline, the same as on the Research page; before, a 176 x 158 PNG sat 129 px left of centre at 1280 px (83 px at 390) with the formula at 16.3 px and 64 px (54) to the headline; nothing else on the page changed | Passed with before/after screenshots. |
+| No page exceptions across the runs; `node --check` on the four scripts; no em dash in any changed text | Passed. |

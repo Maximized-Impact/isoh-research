@@ -11,6 +11,7 @@
   const Net = window.Study7Net;
   const LANG_BASE = '/assets/lang/study7/';
   const AUDIO_BASE = '/assets/audio/study7/';
+  const RESEARCH_SITE = 'https://research.maximized-impact.org/';
   const PRESETS = { long: 10 * 60, short: 3 * 60 };
   const INTERVALS = [10, 20, 30, 60];
   const DONE_KEY = 'study7_stageA_done';
@@ -68,6 +69,11 @@
     document.title = `${S.welcome.study} · ${S.institute.name}`;
     document.querySelectorAll('[data-s]').forEach((el) => { const v = get(el.dataset.s); if (typeof v === 'string') el.textContent = v; });
     document.querySelectorAll('[data-s-aria]').forEach((el) => { const v = get(el.dataset.sAria); if (typeof v === 'string') el.setAttribute('aria-label', v); });
+    // The Institute's name inside a paragraph is a link to the research site; it opens a new tab so the answers stay
+    document.querySelectorAll('[data-s-inst]').forEach((el) => { const v = get(el.dataset.sInst); if (typeof v !== 'string') return; const name = S.institute.name, i = v.indexOf(name); el.textContent = '';
+      if (i < 0) { el.textContent = v; return; } const a = document.createElement('a'); a.className = 'notice-link'; a.href = RESEARCH_SITE; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = name; el.append(v.slice(0, i), a, v.slice(i + name.length)); });
+    // The registration links read the address from the site config; their lines are hidden while it is empty
+    document.querySelectorAll('a.prereg').forEach((a) => { if (cfg.OSF_PREREG_URL) a.href = cfg.OSF_PREREG_URL; else a.parentElement.hidden = true; });
     $('fsVol').setAttribute('aria-label', `${S.focus.title}: ${S.focus.volume}`);
     $('tsVol').setAttribute('aria-label', `${S.focus.time_signal}: ${S.focus.volume}`);
     $('tsInt').setAttribute('aria-label', `${S.focus.time_signal}: ${S.focus.interval}`);
@@ -415,7 +421,7 @@
     ];
     let saved;
     try { saved = new Intl.DateTimeFormat(lang, { dateStyle: 'long', timeStyle: 'short' }).format(last.at); } catch (e) { saved = last.at.toISOString().slice(0, 16).replace('T', ' '); }
-    return { strings: S, asrs: ASRS, lang, blocks, tools_rows, saved, date: last.at.toISOString().slice(0, 10) };
+    return { strings: S, asrs: ASRS, lang, blocks, tools_rows, saved, date: last.at.toISOString().slice(0, 10), prereg: cfg.OSF_PREREG_URL || '' };
   }
   function itemMeta(t) {
     if (!t) return '';
@@ -439,6 +445,7 @@
     lines.push(F.tools_title.toUpperCase(), F.tools_p, '');
     rec.tools_rows.forEach(([k, v]) => lines.push(`  ${k}: ${v}`));
     lines.push('', S.survey.credit, '', F.next_title.toUpperCase(), F.next_p1, '', F.next_p2, '', F.footer);
+    if (rec.prereg && S.institute.prereg_line) lines.push(S.institute.prereg_line.replace('{url}', rec.prereg));
     saveBlob(new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' }), `study7-answers-${rec.date}.txt`);
   }
   let pdfModule = null;

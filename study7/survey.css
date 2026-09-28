@@ -139,7 +139,8 @@
   .survey.done .thanks{padding-bottom:0}
   .survey.done .credit{margin-top:18px}
   .thanks-foot{text-align:center;margin-top:29px}
-  .thanks-foot .foot{color:var(--dim);font-size:14px;line-height:1.45;max-width:36ch;margin:0 auto 22px}
+  .thanks-foot .foot{color:var(--dim);font-size:14px;line-height:1.45;max-width:36ch;margin:0 auto 6px}
+  .thanks-foot .foot:last-child{margin-bottom:22px}
   .credit{color:var(--dim2);font-size:12px;text-align:center;margin-top:28px}
 
   /* ---------- tool buttons (app drawer style) ---------- */
@@ -189,3 +190,5 @@
   .block .lead{color:var(--dim2);font-size:14px;line-height:1.45;margin:-2px 0 8px}
   .send-error{color:var(--yellow);font-size:14px;line-height:1.45;text-align:center;margin:10px 0 0}
   .submit[disabled]{opacity:.6;cursor:default}
+  .mark-link{display:block;width:72px;margin:2px auto 12px;border-radius:8px}
+  .mark-link .mark{margin:0}

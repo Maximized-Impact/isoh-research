@@ -42,7 +42,7 @@
   <p class="send-error" id="sendError" role="alert" hidden data-s="thanks.send_failed"></p>
   <p class="send-error" id="unanswered" role="alert" hidden data-s="survey.unanswered"></p>
   <section class="thanks" id="thanks">
-    <svg class="mark" aria-hidden="true" focusable="false"><use href="#lotus"/></svg>
+    <a class="mark-link" href="https://research.maximized-impact.org/" target="_blank" rel="noopener noreferrer" data-s-aria="institute.name"><svg class="mark" aria-hidden="true" focusable="false"><use href="#lotus"/></svg></a>
     <h2 data-s="thanks.title"></h2>
     <p data-s="thanks.sent"></p>
     <p class="intro" data-s="thanks.results"></p>
@@ -54,7 +54,11 @@
     </div>
   </section>
   <p class="credit" data-s="survey.credit"></p>
-  <div class="thanks-foot" id="thanksFoot" hidden><p class="foot" data-s="thanks.footer"></p></div>
+  <div class="thanks-foot" id="thanksFoot" hidden>
+    <p class="foot" data-s="thanks.footer"></p>
+    <p class="foot"><a class="notice-link prereg" target="_blank" rel="noopener noreferrer" data-s="institute.prereg_link"></a></p>
+    <p class="foot"><a class="notice-link" href="https://research.maximized-impact.org/" target="_blank" rel="noopener noreferrer">research.maximized-impact.org</a></p>
+  </div>
 </main>
 <button class="sq fab-open" id="thanksOpen" type="button" hidden data-s-aria="focus.aria_open"><span class="ts"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-watch"/></svg></span><span class="fs"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wave"/></svg></span></button>
 
@@ -67,15 +71,16 @@
 <div class="scrim" id="welcomeScrim" hidden>
   <section class="card welcome" role="dialog" aria-modal="true" aria-labelledby="studyTitle">
     <div class="lang-row" id="langRow"><label for="lang" data-s="welcome.language_label"></label><select id="lang"></select></div>
-    <svg class="mark" aria-hidden="true" focusable="false"><use href="#lotus"/></svg>
+    <a class="mark-link" href="https://research.maximized-impact.org/" target="_blank" rel="noopener noreferrer" data-s-aria="institute.name"><svg class="mark" aria-hidden="true" focusable="false"><use href="#lotus"/></svg></a>
     <div class="inst-name" data-s="institute.name"></div>
     <p class="inst-sub" data-s="institute.formula"></p>
     <h1 class="study-h" id="studyTitle" data-s="welcome.title"></h1>
     <p class="study-s" data-s="welcome.study"></p>
-    <p class="intro-txt" data-s="welcome.p1"></p>
+    <p class="intro-txt" data-s-inst="welcome.p1"></p>
     <p class="intro-txt" data-s="welcome.p2"></p>
     <p class="intro-txt" data-s="welcome.p3"></p>
     <p class="intro-txt"><a class="notice-link" id="dataNoticeLink" href="/study7/data-notice/" target="_blank" rel="noopener" data-s="welcome.data_notice_link"></a></p>
+    <p class="intro-txt"><a class="notice-link prereg" target="_blank" rel="noopener noreferrer" data-s="institute.prereg_link"></a></p>
     <p class="intro-txt" data-s="welcome.p4"></p>
     <p class="repeat-note" id="repeatNote" hidden data-s="welcome.repeat_note"></p>
     <button class="btn cont" id="welcomeContinue" type="button" data-s="welcome.continue_adult"></button>
