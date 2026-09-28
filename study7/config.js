@@ -7,6 +7,6 @@
 window.STUDY7_CONFIG = {
   FUNCTION_URL: 'https://europe-north1-maximized-impact-research.cloudfunctions.net/study7',
   TURNSTILE_SITE_KEY: '0x4AAAAAAFEilqbN-FP6ZU59',
-  OSF_PREREG_URL: '',
+  OSF_PREREG_URL: 'https://osf.io/8t473',
   PRODUCTION_ORIGIN: 'https://research.maximized-impact.org',
 };
