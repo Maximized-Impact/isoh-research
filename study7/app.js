@@ -387,7 +387,7 @@
     sent = true;
     last = { payload, at: new Date() };
     try { window.localStorage.setItem(DONE_KEY, last.at.toISOString()); } catch (e) { /* storage unavailable */ }
-    $('submit').hidden = true; $('sendError').hidden = true; $('unanswered').hidden = true; $('surveyHead').hidden = true; $('items').hidden = true; $('thanks').style.display = 'block'; $('thanksInst').hidden = false;
+    $('submit').hidden = true; $('sendError').hidden = true; $('unanswered').hidden = true; $('surveyHead').hidden = true; $('items').hidden = true; $('thanks').style.display = 'block'; $('thanksFoot').hidden = false; $('survey').classList.add('done');
     timer.active = false; $('topbar').hidden = true; window.scrollTo(0, 0);
   }
   $('submit').addEventListener('click', send);
