@@ -1,7 +1,8 @@
 /* Study 7 Stage A: "Download your answers" as a PDF in the design of Study7_Answers_Download_Mockup_v4.pdf
    (sizes and colours from build_answers_mockup_v4.py, px at 96 dpi converted to pt). Generated on the device with
    pdf-lib and @pdf-lib/fontkit, loaded only when this module is loaded (the button tap). Fonts come from the language
-   file's _meta.fonts: sans = the Carlito role, serif = the Caladea role, institute = the DM Sans role. */
+   file's _meta.fonts: sans = the Carlito role, serif = the Caladea role, institute = the DM Sans role. Web and email
+   addresses are never broken across lines and are clickable. */
 (() => {
   'use strict';
   const LIB = '/assets/lib/';
@@ -26,13 +27,23 @@
   };
   const fetchBytes = async (url) => { const r = await fetch(url); if (!r.ok) throw new Error(`${url}: ${r.status}`); return new Uint8Array(await r.arrayBuffer()); };
 
-  // Word segmentation for line breaking: Intl.Segmenter where available, otherwise spaces, otherwise characters.
-  function segments(text, lang) {
+  // Word segmentation for line breaking: Intl.Segmenter where available, otherwise spaces, otherwise characters. Web and
+  // email addresses never break inside: an address (with a bracket before it and punctuation after it) is one segment, so
+  // when it does not fit it moves whole to the next line and no line ends with a lone opening bracket.
+  const ADDRESS = /\(?(?:https?:\/\/\S+|[^\s@(]+@[^\s@]+\.[^\s@]+)/g;
+  const TRAIL = /[).,;:!?]+$/; // punctuation after an address is not part of it
+  function words(text, lang) {
     if (typeof Intl !== 'undefined' && Intl.Segmenter) {
       try { return Array.from(new Intl.Segmenter(lang, { granularity: 'word' }).segment(text), (s) => s.segment); } catch (e) { /* fall through */ }
     }
     if (text.includes(' ')) return text.split(/(\s+)/).filter(Boolean);
     return Array.from(text);
+  }
+  function segments(text, lang) {
+    const out = []; let last = 0;
+    for (const m of text.matchAll(ADDRESS)) { if (m.index > last) out.push(...words(text.slice(last, m.index), lang)); out.push(m[0]); last = m.index + m[0].length; }
+    if (last < text.length) out.push(...words(text.slice(last), lang));
+    return out;
   }
   function wrap(text, font, size, maxWidth, lang) {
     const lines = [];
@@ -61,7 +72,7 @@
     const S = rec.strings, F = S.file, lang = rec.lang;
     await loadScript(LIB + 'pdf-lib.min.js');
     await loadScript(LIB + 'fontkit.umd.min.js');
-    const { PDFDocument, rgb } = window.PDFLib;
+    const { PDFDocument, PDFString, rgb } = window.PDFLib;
     const roles = S._meta.fonts || { sans: 'Carlito', serif: 'Caladea', institute: 'DM Sans' };
     const files = (family) => { const f = FONT_FILES[family]; if (!f) throw new Error(`no font files for ${family}`); return f; };
     const sansF = files(roles.sans), serifF = files(roles.serif), instF = files(roles.institute);
@@ -87,8 +98,17 @@
     let page = null, y = 0;
     const newPage = () => { page = doc.addPage([PAGE.w, PAGE.h]); pages.push(page); y = PAGE.h - MARGIN.top; };
     const ensure = (h) => { if (page === null || y - h < MARGIN.bottom) newPage(); };
-    const text = (str, x, yTop, f, size, color, lineHeight) => { page.drawText(str, { x, y: yTop - size * 0.8, size, font: f, color: hex(color) }); return lineHeight; };
-    const centred = (str, yTop, f, size, color) => page.drawText(str, { x: MARGIN.left + (width - f.widthOfTextAtSize(str, size)) / 2, y: yTop - size * 0.8, size, font: f, color: hex(color) });
+    // Every web or email address drawn becomes a link annotation covering the whole address (mailto: for an email)
+    const linkAddresses = (str, x, yTop, f, size) => {
+      for (const m of str.matchAll(ADDRESS)) {
+        const lead = m[0].startsWith('(') ? 1 : 0, addr = m[0].slice(lead).replace(TRAIL, '');
+        const x0 = x + f.widthOfTextAtSize(str.slice(0, m.index + lead), size), x1 = x0 + f.widthOfTextAtSize(addr, size);
+        const uri = /^https?:/.test(addr) ? addr : `mailto:${addr}`;
+        page.node.addAnnot(doc.context.register(doc.context.obj({ Type: 'Annot', Subtype: 'Link', Rect: [x0, yTop - size * 1.05, x1, yTop], Border: [0, 0, 0], A: { Type: 'Action', S: 'URI', URI: PDFString.of(uri) } })));
+      }
+    };
+    const text = (str, x, yTop, f, size, color, lineHeight) => { page.drawText(str, { x, y: yTop - size * 0.8, size, font: f, color: hex(color) }); linkAddresses(str, x, yTop, f, size); return lineHeight; };
+    const centred = (str, yTop, f, size, color) => { const x = MARGIN.left + (width - f.widthOfTextAtSize(str, size)) / 2; page.drawText(str, { x, y: yTop - size * 0.8, size, font: f, color: hex(color) }); linkAddresses(str, x, yTop, f, size); };
     // paragraph: wraps, keeps lines together when `together`, returns nothing; advances y
     const para = (str, f, size, color, opts = {}) => {
       const lh = size * (opts.lineHeight || 1.45); const maxW = opts.maxWidth || width;
@@ -195,12 +215,14 @@
     para(S.institute.name, font.sansBold, 11, C.navy, { centre: true });
     para(S.institute.formula, font.serif, 9.5, C.grey, { centre: true });
 
-    // ---- running header and footer, 8 pt grey, centred in the margins
+    // ---- running header and footer, 8 pt grey, centred in the margins; the OSF line under the credit on every page
     const header = `${S.welcome.study} · ${F.title}`;
+    const prereg = rec.prereg && S.institute.prereg_line ? S.institute.prereg_line.replace('{url}', rec.prereg) : '';
     pages.forEach((p, i) => {
       page = p;
       centred(header, PAGE.h - MARGIN.top / 2 + 4, font.sans, 8, C.head);
-      centred(`${F.footer}  ·  ${F.page.replace('{n}', String(i + 1))}`, MARGIN.bottom / 2 + 4, font.sans, 8, C.head);
+      centred(`${F.footer}  ·  ${F.page.replace('{n}', String(i + 1))}`, MARGIN.bottom / 2 + (prereg ? 9.5 : 4), font.sans, 8, C.head);
+      if (prereg) centred(prereg, MARGIN.bottom / 2 - 1.5, font.sans, 8, C.head);
     });
     const bytes = await doc.save();
     return new Blob([bytes], { type: 'application/pdf' });

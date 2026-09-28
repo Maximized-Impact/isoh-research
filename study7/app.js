@@ -2,7 +2,8 @@
    language file (strings_*.json) and, for block F, from asrs_official_transcriptions_v1.json. Differences from the
    prototype, all from handoff v14: answers are option indexes; the per-answer ping is gone; the submission carries the
    schema's field names, item_timing with last_s and the "switched on at any point" tool flags; the six sounds and the two
-   chimes are the app's audio files; the countdown chime plays at 30, 20, 19 and 10 to 0 seconds left. */
+   chimes are the app's audio files; the countdown chime plays at 30 and 25, at 20 and 19, at 15, 14 and 13, then every
+   second from 10 to 0 seconds left. */
 (() => {
   'use strict';
   const $ = (id) => document.getElementById(id);
@@ -10,13 +11,16 @@
   const Net = window.Study7Net;
   const LANG_BASE = '/assets/lang/study7/';
   const AUDIO_BASE = '/assets/audio/study7/';
+  const RESEARCH_SITE = 'https://research.maximized-impact.org/';
   const PRESETS = { long: 10 * 60, short: 3 * 60 };
   const INTERVALS = [10, 20, 30, 60];
   const DONE_KEY = 'study7_stageA_done';
   const AMBER_S = 120, RED_S = 30;
-  const CHIME_MARKS = [30, 20, 19, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]; // call_timeout_chime.mp3, seconds left
+  const CHIME_MARKS = [30, 25, 20, 19, 15, 14, 13, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]; // call_timeout_chime.mp3, seconds left
   const TURNSTILE_WAIT_MS = 10000;
-  const ITEM = 52;
+  const ITEM = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--item')) || 52; // wheel row height, from the stylesheet's --item
+  const GAIN = 1.5, TAU = 500, SLOP = 8, MIN_MS = 120, MAX_MS = 800; // wheel drag: finger gain, fling travel (ms of release speed), tap-or-drag threshold, glide duration bounds
+  const ANDROID = /Android/i.test(navigator.userAgent); // custom touch physics only on Android; iPhone keeps its native scrolling
 
   let S = null;      // the language file
   let ASRS = null;   // this language's ASRS entry
@@ -30,7 +34,7 @@
   const get = (path) => path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), S);
   const pad = (n) => String(n).padStart(2, '0');
   const fmtHuman = (s) => { const U = S.setup.units; const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = s % 60;
-    return [h ? `${h}${U.h}` : '', m ? `${m}${U.m}` : '', x ? `${x}${U.s}` : ''].filter(Boolean).join(' ') || `0${U.s}`; };
+    return [h ? `${h} ${U.h}` : '', m ? `${m} ${U.m}` : '', x ? `${x} ${U.s}` : ''].filter(Boolean).join(' ') || `0 ${U.s}`; };
   const fmtClock = (ms) => { const s = Math.max(0, Math.round(ms / 1000)); const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = s % 60;
     return h ? `${h}:${pad(m)}:${pad(x)}` : `${pad(m)}:${pad(x)}`; };
   const vibrate = (p) => { try { if (navigator.vibrate) navigator.vibrate(p); } catch (e) { /* no vibration */ } };
@@ -65,6 +69,11 @@
     document.title = `${S.welcome.study} · ${S.institute.name}`;
     document.querySelectorAll('[data-s]').forEach((el) => { const v = get(el.dataset.s); if (typeof v === 'string') el.textContent = v; });
     document.querySelectorAll('[data-s-aria]').forEach((el) => { const v = get(el.dataset.sAria); if (typeof v === 'string') el.setAttribute('aria-label', v); });
+    // The Institute's name inside a paragraph is a link to the research site; it opens a new tab so the answers stay
+    document.querySelectorAll('[data-s-inst]').forEach((el) => { const v = get(el.dataset.sInst); if (typeof v !== 'string') return; const name = S.institute.name, i = v.indexOf(name); el.textContent = '';
+      if (i < 0) { el.textContent = v; return; } const a = document.createElement('a'); a.className = 'notice-link'; a.href = RESEARCH_SITE; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = name; el.append(v.slice(0, i), a, v.slice(i + name.length)); });
+    // The registration links read the address from the site config; their lines are hidden while it is empty
+    document.querySelectorAll('a.prereg').forEach((a) => { if (cfg.OSF_PREREG_URL) a.href = cfg.OSF_PREREG_URL; else a.parentElement.hidden = true; });
     $('fsVol').setAttribute('aria-label', `${S.focus.title}: ${S.focus.volume}`);
     $('tsVol').setAttribute('aria-label', `${S.focus.time_signal}: ${S.focus.volume}`);
     $('tsInt').setAttribute('aria-label', `${S.focus.time_signal}: ${S.focus.interval}`);
@@ -75,17 +84,61 @@
      ------------------------------------------------------------------ */
   const wheels = { h: $('wh'), m: $('wm'), s: $('ws') };
   const picked = { h: 0, m: 0, s: 0 };
+  const motion = new Map(); // wheel -> its drag and fling state
+  const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const snapTo = (el, y) => Math.max(0, Math.min(+el.dataset.max * ITEM, Math.round(y / ITEM) * ITEM));
+  if (ANDROID) document.documentElement.classList.add('android');
   function buildWheel(el) {
     const max = +el.dataset.max; const frag = document.createDocumentFragment();
     const padTop = document.createElement('div'); padTop.className = 'pad'; frag.appendChild(padTop);
     for (let i = 0; i <= max; i++) { const d = document.createElement('div'); d.className = 'it'; d.textContent = pad(i); d.dataset.v = i; d.setAttribute('role', 'option'); frag.appendChild(d); }
     const padBot = document.createElement('div'); padBot.className = 'pad'; frag.appendChild(padBot);
     el.appendChild(frag);
-    el.addEventListener('click', (e) => { const it = e.target.closest('.it'); if (it) el.scrollTo({ top: (+it.dataset.v) * ITEM, behavior: 'smooth' }); });
-    el.addEventListener('keydown', (e) => { const cur = Math.round(el.scrollTop / ITEM); if (e.key === 'ArrowDown') { e.preventDefault(); el.scrollTo({ top: Math.min(max, cur + 1) * ITEM }); } if (e.key === 'ArrowUp') { e.preventDefault(); el.scrollTo({ top: Math.max(0, cur - 1) * ITEM }); } });
+    // Drag with gain and a fling: the mouse and pen everywhere, touch on Android (iPhone keeps its native scrolling). A press
+    // stops a spinning wheel; a move beyond SLOP becomes a drag (pointer captured, snap off via .drag); release flings by the
+    // last 100 ms of finger speed and glide() lands on a row. Trackpad, mouse wheel and keyboard stay native.
+    const st = { raf: 0, id: null, moved: false, y0: 0, top0: 0, pos: 0, s: [] }; motion.set(el, st);
+    el.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'mouse' ? e.button !== 0 : !ANDROID) return;
+      cancelAnimationFrame(st.raf);
+      Object.assign(st, { id: e.pointerId, moved: false, y0: e.clientY, top0: el.scrollTop, pos: el.scrollTop, s: [{ t: e.timeStamp, y: e.clientY }] });
+    });
+    el.addEventListener('pointermove', (e) => {
+      if (e.pointerId !== st.id) return;
+      if (!st.moved) { if (Math.abs(e.clientY - st.y0) < SLOP) return; st.moved = true; st.y0 = e.clientY; st.top0 = el.scrollTop; el.classList.add('drag'); try { el.setPointerCapture(e.pointerId); } catch (x) { /* pointer already gone */ } }
+      st.pos = Math.max(0, Math.min(max * ITEM, st.top0 - (e.clientY - st.y0) * GAIN)); el.scrollTop = st.pos;
+      st.s.push({ t: e.timeStamp, y: e.clientY }); while (st.s.length > 1 && e.timeStamp - st.s[0].t > 100) st.s.shift();
+    });
+    const end = (e, fling) => {
+      if (e.pointerId !== st.id) return; st.id = null;
+      if (!st.moved) { if (el.classList.contains('drag')) glide(el, el.scrollTop); return; } // a tap: the click handler may follow
+      const a = st.s[0], b = st.s[st.s.length - 1], dt = b.t - a.t; let v = 0;
+      if (fling && st.s.length > 1 && dt >= 15 && e.timeStamp - b.t < 80) v = Math.max(-5, Math.min(5, (b.y - a.y) / dt)); // finger px per ms; a finger at rest before lifting gives no fling
+      const target = snapTo(el, st.pos - v * GAIN * TAU);
+      glide(el, target, v ? 2 * Math.abs(target - st.pos) / (Math.abs(v) * GAIN) : undefined); // duration matched to the release speed
+      if (e.pointerType !== 'mouse') st.moved = false; // touch drags produce no click to swallow
+    };
+    el.addEventListener('pointerup', (e) => end(e, true)); el.addEventListener('pointercancel', (e) => end(e, false));
+    el.addEventListener('click', (e) => { if (st.moved) { st.moved = false; return; } const it = e.target.closest('.it'); if (it) glide(el, (+it.dataset.v) * ITEM); });
+    el.addEventListener('keydown', (e) => { const cur = Math.round(el.scrollTop / ITEM); if (e.key === 'ArrowDown') { e.preventDefault(); glide(el, Math.min(max, cur + 1) * ITEM, 0); } if (e.key === 'ArrowUp') { e.preventDefault(); glide(el, Math.max(0, cur - 1) * ITEM, 0); } });
     let raf = 0;
     el.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => highlight(el)); }, { passive: true });
     highlight(el);
+  }
+  // Every programmatic move of a wheel: cancels its drag or fling, glides to the nearest row (quadratic ease-out; ms 0, reduced
+  // motion or no distance is instant) with snap off, and lands exactly on the row before snap returns, so nothing jumps.
+  function glide(el, target, ms) {
+    const st = motion.get(el); cancelAnimationFrame(st.raf); st.id = null;
+    target = snapTo(el, target);
+    const from = el.scrollTop, dist = target - from;
+    if (ms === undefined) ms = MIN_MS + Math.abs(dist) / 3;
+    ms = REDUCED.matches || !dist || !ms ? 0 : Math.max(MIN_MS, Math.min(MAX_MS, ms));
+    const land = () => { el.scrollTop = target; el.classList.remove('drag'); highlight(el); };
+    if (!ms) { land(); return; }
+    el.classList.add('drag');
+    const t0 = performance.now();
+    const step = (now) => { const p = Math.min(1, (now - t0) / ms); el.scrollTop = from + dist * (1 - (1 - p) * (1 - p)); if (p < 1) st.raf = requestAnimationFrame(step); else land(); };
+    st.raf = requestAnimationFrame(step);
   }
   function highlight(el) {
     const idx = Math.max(0, Math.min(+el.dataset.max, Math.round(el.scrollTop / ITEM)));
@@ -112,7 +165,7 @@
   function startTimer(sec, preset) {
     audio.unlock(); audio.preloadChimes();
     Object.assign(timer, { active: true, preset, duration: sec, startAt: Date.now(), endAt: Date.now() + sec * 1000, amberFired: false, fired: new Set() });
-    $('setupScrim').hidden = true; $('topbar').hidden = false; $('survey').hidden = false;
+    step = 'call'; $('setupScrim').hidden = true; $('topbar').hidden = false; $('survey').hidden = false;
     paraStart();
     Net.post('start', { preset, duration_s: sec, ...(src ? { src } : {}) }).catch(() => {});
     // Time signal marks the start of the countdown and re-anchors its interval to it
@@ -136,7 +189,7 @@
     } else {
       cd.textContent = `-${fmtClock(-remaining)}`; bar.firstElementChild.style.width = '100%';
     }
-    // Countdown chime: once at 30 s left, at 20 and 19, then every second from 10 to 0. Marks at or above the chosen
+    // Countdown chime: at 30 and 25 s left, at 20 and 19, at 15, 14 and 13, then every second from 10 to 0. Marks at or above the chosen
     // duration never fire; if several marks fall due at once (a tab returning from the background) only the latest sounds.
     const due = CHIME_MARKS.filter((m) => !timer.fired.has(m) && m < timer.duration && remaining <= m * 1000);
     if (due.length) {
@@ -212,7 +265,7 @@
   function syncTools() {
     const fsOn = audio.playing, tsOnNow = ts.on;
     $('fsOn').checked = fsOn; $('tsOn').checked = tsOnNow;
-    ['tbFocus', 'fabFocus'].forEach((id) => { $(id).classList.toggle('on', fsOn); $(id).setAttribute('aria-pressed', String(fsOn)); });
+    $('tbFocus').classList.toggle('on', fsOn); $('tbFocus').setAttribute('aria-pressed', String(fsOn));
     $('tbSignal').classList.toggle('on', tsOnNow); $('tbSignal').setAttribute('aria-pressed', String(tsOnNow));
     document.querySelectorAll('.sq .fs').forEach((el) => el.classList.toggle('on', fsOn));
     document.querySelectorAll('.sq .ts').forEach((el) => el.classList.toggle('on', tsOnNow));
@@ -222,9 +275,9 @@
   const openCard = () => { $('focusScrim').hidden = false; $('focusClose').focus(); syncTools(); };
   $('sounds').addEventListener('change', () => { audio.start(selectedSound()); syncTools(); });
   $('fsOn').addEventListener('change', (e) => { if (e.target.checked) audio.start(selectedSound()); else audio.stop(); syncTools(); });
-  $('tbFocus').addEventListener('click', toggleFocus); $('fabFocus').addEventListener('click', toggleFocus);
+  $('tbFocus').addEventListener('click', toggleFocus);
   $('tbSignal').addEventListener('click', toggleSignal);
-  $('tbOpen').addEventListener('click', openCard); $('fabOpen').addEventListener('click', openCard);
+  $('tbOpen').addEventListener('click', openCard); $('thanksOpen').addEventListener('click', openCard);
   $('focusClose').addEventListener('click', () => { $('focusScrim').hidden = true; });
   $('focusScrim').addEventListener('click', (e) => { if (step !== 'focus' && e.target === e.currentTarget) $('focusScrim').hidden = true; });
   document.addEventListener('keydown', (e) => { if (step !== 'focus' && e.key === 'Escape' && !$('focusScrim').hidden) $('focusScrim').hidden = true; });
@@ -236,17 +289,21 @@
     Net.post('under18', {}).catch(() => {}); // anonymous count only: the common fields, nothing else follows
     $('underScrim').querySelector('.follow-btn').focus();
   });
-  $('welcomeContinue').addEventListener('click', () => {
-    step = 'focus'; $('welcomeScrim').hidden = true;
-    $('fsLead').hidden = false; $('fsContinue').hidden = false; $('focusClose').hidden = true;
+  function openFocusStep(fromScrim) {
+    step = 'focus'; $(fromScrim).hidden = true;
+    $('fsContinue').hidden = false; $('focusClose').hidden = true;
     $('focusScrim').hidden = false; syncTools(); $('fsOn').focus();
-  });
+  }
+  $('welcomeContinue').addEventListener('click', () => openFocusStep('welcomeScrim'));
   $('fsContinue').addEventListener('click', () => {
     step = 'setup'; $('focusScrim').hidden = true;
-    $('fsLead').hidden = true; $('fsContinue').hidden = true; $('focusClose').hidden = false;
-    $('setupScrim').hidden = false; $('cluster').hidden = false; $('btnShort').focus();
+    $('fsContinue').hidden = true; $('focusClose').hidden = false;
+    $('setupScrim').hidden = false; $('btnShort').focus();
+    history.pushState({ step: 'setup' }, ''); // so the back gesture or button returns to the focus card
   });
-  $('reset').addEventListener('click', () => { Object.values(wheels).forEach((w) => w.scrollTo({ top: 0, behavior: 'smooth' })); });
+  // Back (gesture, Android button, browser) while the setup card is open reopens the focus card; Continue comes forward again.
+  window.addEventListener('popstate', () => { if (step === 'setup' && !timer.active) openFocusStep('setupScrim'); });
+  $('reset').addEventListener('click', () => { Object.values(wheels).forEach((w) => glide(w, 0, MIN_MS)); });
   $('btnLong').addEventListener('click', () => startTimer(PRESETS.long, 'long'));
   $('btnShort').addEventListener('click', () => startTimer(PRESETS.short, 'short'));
   $('btnCall').addEventListener('click', () => startTimer(customSeconds(), 'custom'));
@@ -275,6 +332,8 @@
     const wrap = $('items');
     wrap.addEventListener('change', (e) => { if (!e.target.name || !para.startedAt) return; const id = e.target.name, t = activeNow();
       const r = para.items[id] || (para.items[id] = { first: t, last: t, changes: 0, order: ++para.order }); r.last = t; r.changes++; para.lastItem = id; });
+    // An answered question loses its red mark; the notice goes once none is left
+    wrap.addEventListener('change', (e) => { const q = e.target.closest('.q.missing'); if (q) { q.classList.remove('missing'); if (!wrap.querySelector('.q.missing')) $('unanswered').hidden = true; } });
     S._meta.block_order.forEach((letter) => {
       const b = S.blocks[letter];
       const block = document.createElement('section'); block.className = 'block'; const h = document.createElement('h2'); h.textContent = b.title; block.appendChild(h);
@@ -283,11 +342,11 @@
         if (b.lead) { const lead = document.createElement('p'); lead.className = 'lead'; lead.textContent = b.lead; block.appendChild(lead); }
         entries = ASRS.items.map((text, i) => [`asrs${i + 1}`, text, ASRS.scale]);
       } else {
-        entries = Object.entries(b.items).map(([id, item]) => [id, item.text, S.options[item.options]]);
+        entries = Object.entries(b.items).map(([id, item]) => [id, item.text, S.options[item.options], item.optional === true]);
       }
-      entries.forEach(([id, text, opts]) => {
+      entries.forEach(([id, text, opts, optional]) => {
         QTEXT[id] = text; OPTS[id] = opts;
-        const q = document.createElement('div'); q.className = 'q'; const p = document.createElement('p'); p.textContent = text; q.appendChild(p);
+        const q = document.createElement('div'); q.className = 'q'; if (optional) q.dataset.optional = '1'; const p = document.createElement('p'); p.textContent = text; q.appendChild(p);
         const numeric = opts.length === 11, wide = Math.max(...opts.map((o) => o.length)) > 14;
         const sc = document.createElement('div'); sc.className = 'scale' + (numeric ? ' numeric' : wide ? ' wide' : opts.length === 5 ? ' five' : ''); sc.setAttribute('role', 'radiogroup'); sc.setAttribute('aria-label', text);
         opts.forEach((o, index) => { const l = document.createElement('label'); const i = document.createElement('input'); i.type = 'radio'; i.name = id; i.value = String(index); l.appendChild(i); l.appendChild(document.createTextNode(o)); sc.appendChild(l); });
@@ -313,8 +372,13 @@
       active_time_s: Math.round(activeNow() / 1000), item_timing: paraSummary(), ...(src ? { src } : {}),
     };
   }
+  // Required answers: every question except those the language file marks optional. Send refuses while any is open,
+  // marks them in red, scrolls to the first and says why; nothing is sent and Turnstile is not loaded.
+  const unanswered = () => [...document.querySelectorAll('#items .q:not([data-optional])')].filter((q) => !q.querySelector('input:checked'));
   async function send() {
     const button = $('submit'); if (button.disabled) return;
+    const missing = unanswered(); document.querySelectorAll('#items .q.missing').forEach((q) => q.classList.remove('missing'));
+    if (missing.length) { missing.forEach((q) => q.classList.add('missing')); $('unanswered').hidden = false; missing[0].scrollIntoView({ block: 'center', behavior: REDUCED.matches ? 'auto' : 'smooth' }); return; }
     button.disabled = true; button.textContent = S.thanks.sending; $('sendError').hidden = true;
     const payload = buildSubmission(Date.now());
     let token = null;
@@ -329,8 +393,8 @@
     sent = true;
     last = { payload, at: new Date() };
     try { window.localStorage.setItem(DONE_KEY, last.at.toISOString()); } catch (e) { /* storage unavailable */ }
-    $('submit').hidden = true; $('sendError').hidden = true; $('items').hidden = true; $('thanks').style.display = 'block';
-    timer.active = false; $('topbar').hidden = true; window.scrollTo(0, 0);
+    $('submit').hidden = true; $('sendError').hidden = true; $('unanswered').hidden = true; $('surveyHead').hidden = true; $('items').hidden = true; $('thanks').style.display = 'block'; $('thanksFoot').hidden = false; $('survey').classList.add('done');
+    timer.active = false; $('topbar').hidden = true; $('thanksOpen').hidden = false; window.scrollTo(0, 0); // the floating pill keeps the Focus Sound card reachable
   }
   $('submit').addEventListener('click', send);
 
@@ -357,7 +421,7 @@
     ];
     let saved;
     try { saved = new Intl.DateTimeFormat(lang, { dateStyle: 'long', timeStyle: 'short' }).format(last.at); } catch (e) { saved = last.at.toISOString().slice(0, 16).replace('T', ' '); }
-    return { strings: S, asrs: ASRS, lang, blocks, tools_rows, saved, date: last.at.toISOString().slice(0, 10) };
+    return { strings: S, asrs: ASRS, lang, blocks, tools_rows, saved, date: last.at.toISOString().slice(0, 10), prereg: cfg.OSF_PREREG_URL || '' };
   }
   function itemMeta(t) {
     if (!t) return '';
@@ -381,6 +445,7 @@
     lines.push(F.tools_title.toUpperCase(), F.tools_p, '');
     rec.tools_rows.forEach(([k, v]) => lines.push(`  ${k}: ${v}`));
     lines.push('', S.survey.credit, '', F.next_title.toUpperCase(), F.next_p1, '', F.next_p2, '', F.footer);
+    if (rec.prereg && S.institute.prereg_line) lines.push(S.institute.prereg_line.replace('{url}', rec.prereg));
     saveBlob(new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' }), `study7-answers-${rec.date}.txt`);
   }
   let pdfModule = null;
@@ -390,7 +455,8 @@
     return pdfModule;
   }
   $('download').addEventListener('click', async () => {
-    if (!last) return;
+    const button = $('download'); if (!last || button.disabled) return;
+    button.disabled = true; button.textContent = S.thanks.preparing; // the file takes a moment to build
     const rec = record();
     try {
       const pdf = await loadPdfModule();
@@ -399,6 +465,7 @@
     } catch (e) {
       downloadText(rec);
     }
+    button.disabled = false; button.textContent = S.thanks.download_again;
   });
 
   /* ------------------------------------------------------------------

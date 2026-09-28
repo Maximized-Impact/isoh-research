@@ -1,0 +1,369 @@
+{
+ "_meta": {
+  "lang": "en",
+  "dir": "ltr",
+  "questionnaire_version": "stage-a-v1",
+  "fonts": {
+   "sans": "Carlito",
+   "serif": "Caladea",
+   "institute": "DM Sans"
+  },
+  "note": "Source of truth for all user-facing text of Study 7 Stage A. Keys are stable; translations must return the same keys. Blocks render in the order given in block_order; block letters and item IDs are internal and never shown. Strings in 'asrs' are NEVER translated here: they come verbatim from asrs_official_transcriptions_v1.json. v5 (2026-09-26): thanks.sent shortened; welcome.data_notice_link added (the welcome screen links to /study7/data-notice/); data_notice p1, p2 and p3 rewritten and shortened, p3_link kept, prereg_link added (link text only: its address comes from the site config once the OSF registration exists). v6 (2026-09-26): _meta.fonts added (the font family for each role of the downloadable file: sans, serif, institute; a language whose script these do not cover names Noto families instead; translators copy the object as is); thanks.download_note shortened; file.tools_p no longer claims an effect of the tools, only what people prefer. Questionnaire unchanged, so questionnaire_version stays stage-a-v1. v7 (2026-09-27): survey.unanswered, thanks.results, setup.subtitle, thanks.footer, setup.tap_hint, thanks.preparing and thanks.download_again added; setup.units.m is min; focus.lead removed; thanks.title and thanks.follow_text reworded; an item may carry optional: true (g2); questionnaire_version stays stage-a-v1. v8 (2026-09-28): data_notice.title and welcome.data_notice_link name the study; institute.prereg_line (the OSF line; {url} is OSF_PREREG_URL from the site config, shown by the data notice, the PDF and the text file) and institute.prereg_link (the short link label on the welcome and thank-you screens) added; data_notice.prereg_link removed, superseded by institute.prereg_line; file.next_p1 gives the white paper DOI and the results page as full web addresses. Questionnaire unchanged, so questionnaire_version stays stage-a-v1.",
+  "block_order": [
+   "B",
+   "C",
+   "D",
+   "H",
+   "E",
+   "F",
+   "A",
+   "G"
+  ]
+ },
+ "institute": {
+  "name": "Institute for The Study Of Humanity",
+  "formula": "A research initiative of Maximized Impact ry, a Finnish registered association. Helsinki.",
+  "short": "a research initiative of Maximized Impact ry",
+  "prereg_line": "This study was preregistered on the Open Science Framework before any data were collected: {url}",
+  "prereg_link": "Preregistered on OSF"
+ },
+ "welcome": {
+  "title": "How do phone calls feel to you?",
+  "study": "Study 7 - Stage A",
+  "p1": "Welcome. You are about to take part in the first study of the Institute for The Study Of Humanity: Study 7, Stage A.",
+  "p2": "It measures how common phone anxiety and other phone-related difficulties are, both overall and in different groups, including people with and without ADHD or autism. We need answers from everyone, including people who find phone calls easy. First results will be published in October.",
+  "p3": "It takes about three minutes. It is anonymous: no name, email or account. The page notes how long each question takes and how far you get, even if you stop; your answers are sent only when you press Send.",
+  "p4": "Next, choose a focus sound and a time signal if you want them, then tap Continue. After that, set your timer: pick a short or long call, or set your own duration with the picker.",
+  "data_notice_link": "What Study 7 - Stage A collects",
+  "repeat_note": "This device has sent answers before. You are welcome to continue; please answer the last question honestly.",
+  "continue_adult": "I am 18 or older, continue",
+  "under18": "I am under 18",
+  "language_label": "Language"
+ },
+ "under18": {
+  "title": "Thank you for wanting to take part.",
+  "p1": "This questionnaire is for adults, so it ends here. Nothing about you was recorded, only that someone under 18 visited.",
+  "p2": "A version for people under 18 is planned. Maximized Impact ry announces the Institute's studies and results on Instagram, so following is the way to hear when it opens.",
+  "follow": "Follow on Instagram"
+ },
+ "focus": {
+  "title": "Focus Sound",
+  "volume": "Volume",
+  "sound": "Sound",
+  "sounds": {
+   "brown": "Brown Noise",
+   "white": "White Noise",
+   "pink": "Pink Noise",
+   "rain": "Rain",
+   "ocean": "Ocean Waves",
+   "forest": "Forest"
+  },
+  "time_signal": "Time Signal",
+  "system_wide": "System-Wide",
+  "interval": "Interval",
+  "interval_values": {
+   "10": "10 s",
+   "20": "20 s",
+   "30": "30 s",
+   "60": "1 min"
+  },
+  "continue": "Continue",
+  "close": "Close",
+  "aria_focus_toggle": "Focus sound on or off",
+  "aria_signal_toggle": "Time signal on or off",
+  "aria_open": "Open Focus Sound settings"
+ },
+ "setup": {
+  "study": "Study 7 - Stage A",
+  "subtitle": "Set your time limit",
+  "hours": "Hours",
+  "minutes": "Minutes",
+  "seconds": "Seconds",
+  "set_duration": "Set duration",
+  "reset": "Reset",
+  "long_label": "Long: {duration}",
+  "short_label": "Short: {duration}",
+  "custom_label": "Custom: {duration}",
+  "long_call": "Long Call",
+  "short_call": "Short Call",
+  "call": "Call",
+  "tap_hint": "Tap to start questionnaire",
+  "units": {
+   "h": "h",
+   "m": "min",
+   "s": "s"
+  }
+ },
+ "timer": {
+  "plenty": "Plenty of time",
+  "keep_going": "Keep going",
+  "last30": "Last 30 seconds",
+  "overtime": "Overtime",
+  "elapsed": "Elapsed {time}",
+  "remaining": "Remaining {time} · agreed {duration}"
+ },
+ "survey": {
+  "title": "How do phone calls feel to you?",
+  "intro1": "Anonymous, about three minutes. No names, no email, no account. Run by the Institute for The Study Of Humanity, a research initiative of Maximized Impact ry.",
+  "intro2": "As you answer, the page records how long each question takes and how far you get, even if you stop before the end. Your answers themselves are only sent when you press Send answers.",
+  "send": "Send answers",
+  "credit": "Timer and focus tools adapted from Yapper Phone.",
+  "scale_anchor_none": "none",
+  "scale_anchor_extreme": "extreme",
+  "unanswered": "Please answer the questions marked in red before sending. The one marked optional can stay open."
+ },
+ "options": {
+  "freq": [
+   "Never",
+   "Rarely",
+   "Sometimes",
+   "Often",
+   "Always"
+  ],
+  "status": [
+   "Yes, diagnosed",
+   "In assessment",
+   "Not diagnosed, but I identify or suspect",
+   "No"
+  ],
+  "presentation": [
+   "Inattentive",
+   "Hyperactive-impulsive",
+   "Combined",
+   "Don't know",
+   "Not diagnosed"
+  ],
+  "yesno": [
+   "Yes",
+   "No"
+  ],
+  "noyes": [
+   "No",
+   "Yes"
+  ],
+  "scale11": [
+   "0",
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "age": [
+   "18–24",
+   "25–34",
+   "35–44",
+   "45–54",
+   "55–64",
+   "65+"
+  ],
+  "gender": [
+   "Woman",
+   "Man",
+   "Non-binary",
+   "Prefer not to say"
+  ],
+  "regions": [
+   "Finland",
+   "Other Nordic countries",
+   "Rest of Europe",
+   "North America",
+   "Latin America and the Caribbean",
+   "Middle East and North Africa",
+   "Sub-Saharan Africa",
+   "South and Central Asia",
+   "East and Southeast Asia",
+   "Oceania"
+  ]
+ },
+ "blocks": {
+  "B": {
+   "title": "When the phone rings",
+   "items": {
+    "b1": {
+     "text": "When my phone rings, I feel tense or anxious.",
+     "options": "freq"
+    },
+    "b2": {
+     "text": "Before a call I need to make, I feel anxious.",
+     "options": "freq"
+    },
+    "b3": {
+     "text": "Overall, how much anxiety do phone calls cause you? (0 = none, 10 = extreme)",
+     "options": "scale11"
+    }
+   }
+  },
+  "C": {
+   "title": "What you do about it",
+   "items": {
+    "c1": {
+     "text": "I let calls from people I know go unanswered because of how calls make me feel.",
+     "options": "freq"
+    },
+    "c2": {
+     "text": "I put off returning calls for a day or more.",
+     "options": "freq"
+    },
+    "c3": {
+     "text": "In the past year I have avoided something important (an appointment, a bill, a job, a health matter) because it required a phone call.",
+     "options": "yesno"
+    },
+    "c4": {
+     "text": "I answer calls from unknown numbers.",
+     "options": "freq"
+    }
+   }
+  },
+  "D": {
+   "title": "Time and ending",
+   "items": {
+    "d1": {
+     "text": "During calls I lose track of how long the call has lasted.",
+     "options": "freq"
+    },
+    "d2": {
+     "text": "I find it hard to end a call even when I want to.",
+     "options": "freq"
+    }
+   }
+  },
+  "H": {
+   "title": "Not knowing what to expect",
+   "items": {
+    "h1": {
+     "text": "When I don't know why someone is calling, I feel anxious.",
+     "options": "freq"
+    },
+    "h2": {
+     "text": "When I don't know how long a call will last, I feel anxious.",
+     "options": "freq"
+    }
+   }
+  },
+  "E": {
+   "title": "Preference",
+   "items": {
+    "e1": {
+     "text": "Given the choice, I prefer messaging to calling.",
+     "options": "freq"
+    }
+   }
+  },
+  "F": {
+   "title": "Attention and activity",
+   "lead": "The next six questions are the WHO adult ADHD screener, reproduced word for word. Think about the past six months.",
+   "items": "ASRS: six items and five labels come verbatim from asrs_official_transcriptions_v1.json for this language",
+   "notice": "ASRS-V1.1 Screener © World Health Organization 2003; © New York University and the President and Fellows of Harvard College. All rights reserved. Used unaltered (electronic version). Kessler et al. (2005).",
+   "notice_language_line": "the copyright line printed on this language's official PDF, appended after the notice"
+  },
+  "A": {
+   "title": "ADHD, autism and anxiety",
+   "items": {
+    "a1": {
+     "text": "ADHD",
+     "options": "status"
+    },
+    "a2": {
+     "text": "If diagnosed with ADHD: which presentation?",
+     "options": "presentation"
+    },
+    "a3": {
+     "text": "Autism",
+     "options": "status"
+    },
+    "a4": {
+     "text": "Anxiety (for example social anxiety or generalised anxiety)",
+     "options": "status"
+    }
+   }
+  },
+  "G": {
+   "title": "Briefly about you",
+   "items": {
+    "g1": {
+     "text": "Age",
+     "options": "age"
+    },
+    "g2": {
+     "text": "Gender (optional)",
+     "options": "gender",
+     "optional": true
+    },
+    "g3": {
+     "text": "Where do you live?",
+     "options": "regions"
+    },
+    "g4": {
+     "text": "Have you answered this survey before?",
+     "options": "noyes"
+    }
+   }
+  }
+ },
+ "thanks": {
+  "title": "Thank you!",
+  "sent": "Your answers were sent anonymously.",
+  "results": "First results will be published in October, ADHD awareness month, during Finnish ADHD week on 5 to 11 October.",
+  "footer": "Study 7 - Stage A, Phone Anxiety Questionnaire, Institute for The Study Of Humanity 2026",
+  "download": "Download your answers",
+  "download_note": "A copy of your answers and the tools you chose.",
+  "preparing": "Preparing your file…",
+  "download_again": "Download again",
+  "follow_text": "Maximized Impact ry announces the Institute for The Study Of Humanity's studies and results on Instagram.",
+  "follow": "Follow on Instagram",
+  "sending": "Sending…",
+  "send_failed": "Sending failed. Check your connection and try again; your answers are still here."
+ },
+ "file": {
+  "title": "Your answers",
+  "study_line": "Study 7: telephone anxiety and call avoidance",
+  "saved": "Saved {datetime}",
+  "created_on_device": "Created on your device",
+  "no_identifiers": "This file contains no name, email, device or account identifier. Nothing in it links to you.",
+  "thank_you_p1": "You have just helped put a number on how phone calls feel, for people with and without ADHD or autism. As far as we know, no one has measured this before. Every answer in this file is part of that number.",
+  "thank_you_p2": "The Institute for The Study Of Humanity received your answers anonymously. This copy is yours: keep it, share it, or delete it. The Institute cannot connect it to you, and it holds nothing that could.",
+  "what_you_answered": "What you answered",
+  "question": "Question",
+  "your_answer": "Your answer",
+  "not_answered": "(not answered)",
+  "answered_after": "answered after {seconds} s",
+  "changed_times": "changed {n}x",
+  "tools_title": "The tools you used",
+  "tools_p": "The survey page offered the same call-length timer, focus sounds and time signals that Yapper Phone uses inside a call. What you chose is recorded here for you and, without any identifier, alongside your answers, so the Institute can see which tools people prefer.",
+  "setting": "Setting",
+  "what_you_chose": "What you chose",
+  "tool_rows": {
+   "call_length": "Call length you chose",
+   "time_taken": "Time you took",
+   "overtime": "Overtime",
+   "focus_sound": "Focus sound",
+   "time_signal": "Time signal",
+   "none": "none",
+   "on_every": "On, every {interval}",
+   "off": "Off"
+  },
+  "next_title": "What happens next",
+  "next_p1": "The results are published open access under Creative Commons Attribution 4.0, with a summary in Finnish and English, as an addendum to the white paper \"The Case for Health Communications Technology\" (https://doi.org/10.5281/zenodo.21978705). You will find them at https://research.maximized-impact.org/study7/results. The anonymised dataset is published with the results so that anyone can check the numbers.",
+  "next_p2": "If you have a question about the study, write to janne@maximized-impact.org. Because the Institute holds no identifiers, it cannot find or remove an individual submission after it has been sent; this file is your record.",
+  "footer": "Institute for The Study Of Humanity · Maximized Impact ry · Helsinki, Finland",
+  "page": "Page {n}"
+ },
+ "data_notice": {
+  "title": "What Study 7 - Stage A collects",
+  "p1": "When you press Send, your answers are sent to the Institute for The Study Of Humanity with no name, email, account, phone number or device identifier. The Institute does not store IP addresses. A random session code links the parts of one visit together and nothing else.",
+  "p2": "While you answer, the page sends two small progress signals, when you start and if you leave, so the Institute can see where people stop. They contain no answers.",
+  "p3": "Your browser keeps one flag saying this device has answered, so the page can remind you. The page sets no cookies and uses no analytics. When you press Send, an invisible bot check by Cloudflare Turnstile confirms that a person is sending the answers; it is the only third-party service on the page.",
+  "p3_link": {
+   "text": "Cloudflare's Turnstile Privacy Addendum",
+   "url": "https://www.cloudflare.com/turnstile-privacy-policy/"
+  },
+  "p4": "Results are published open access with the anonymised dataset. Because no identifier exists, a submission cannot be found or removed afterwards.",
+  "contact": "Questions: janne@maximized-impact.org"
+ }
+}
