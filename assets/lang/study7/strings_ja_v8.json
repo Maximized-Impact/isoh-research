@@ -8,7 +8,7 @@
    "serif": "Noto Serif JP",
    "institute": "Noto Sans JP"
   },
-  "note": "Japanese (ja) translation of strings_en_v8.json, made 2026-09-28 under HANDOFF_Translations_v6. Same keys, structure and order as the English source; placeholders unchanged; _meta.fonts, _meta.block_order and blocks.G.items.g2.optional copied as is (the listed fonts do not cover Japanese: the PDF build needs a Japanese font such as Noto Sans JP / Noto Serif JP, set by the build). Block F: the six ASRS items and five labels are never in this file; the build takes them verbatim from the ja entry of asrs_official_transcriptions_v1.json (6Q_Japanese_final.pdf, polite desu/masu register); blocks.F.notice stays in English; blocks.F.notice_language_line carries the line printed on the Japanese PDF. Register elsewhere: polite desu/masu, the standard survey register, so there is no register shift at block F. options.freq uses the Japanese ASRS labels for the first four values; the fifth is itsumo. Age bands rendered as Japanese ranges with sai. Questionnaire unchanged, so questionnaire_version stays stage-a-v1. v8 (2026-09-28): institute.prereg_line and institute.prereg_link added; welcome.data_notice_link and data_notice.title name the study; data_notice.prereg_link removed; file.next_p1 gives the DOI and the results page as full web addresses. Keys match strings_en_v8.json.",
+  "note": "Japanese (ja) translation of strings_en_v8.json, made 2026-09-28 under HANDOFF_Translations_v6. Same keys, structure and order as the English source; placeholders unchanged; _meta.fonts, _meta.block_order and blocks.G.items.g2.optional copied as is (the listed fonts do not cover Japanese: the PDF build needs a Japanese font such as Noto Sans JP / Noto Serif JP, set by the build). Block F: the six ASRS items and five labels are never in this file; the build takes them verbatim from the ja entry of asrs_official_transcriptions_v1.json (6Q_Japanese_final.pdf, polite desu/masu register); blocks.F.notice stays in English; blocks.F.notice_language_line carries the line printed on the Japanese PDF. Register elsewhere: polite desu/masu, the standard survey register, so there is no register shift at block F. options.freq uses the Japanese ASRS labels for the first four values; the fifth is itsumo. Age bands rendered as Japanese ranges with sai. Questionnaire unchanged, so questionnaire_version stays stage-a-v1. v8 (2026-09-28): institute.prereg_line and institute.prereg_link added; welcome.data_notice_link and data_notice.title name the study; data_notice.prereg_link removed; file.next_p1 gives the DOI and the results page as full web addresses. Keys match strings_en_v8.json. 2026-10-05: welcome.p1 writes the study label as Study 7 - Stage A (was Study 7, Stage A); keys and version unchanged.",
   "block_order": [
    "B",
    "C",
@@ -30,7 +30,7 @@
  "welcome": {
   "title": "電話について、あなたはどう感じますか？",
   "study": "Study 7 - Stage A",
-  "p1": "ようこそ。あなたはInstitute for The Study Of Humanityの最初の研究、Study 7, Stage Aに参加しようとしています。",
+  "p1": "ようこそ。あなたはInstitute for The Study Of Humanityの最初の研究、Study 7 - Stage Aに参加しようとしています。",
   "p2": "この研究は、電話への不安やその他の電話に関する困りごとが、全体として、またADHDや自閉スペクトラム症のある人とない人などのさまざまなグループで、どのくらい一般的かを測ります。電話が苦にならない人も含め、すべての人の回答が必要です。最初の結果は10月に公開されます。",
   "p3": "所要時間は約3分です。匿名で、名前もメールアドレスもアカウントも不要です。このページは、各質問にかかった時間と、途中でやめた場合も含めてどこまで進んだかを記録します。回答が送信されるのは、「送信」を押したときだけです。",
   "p4": "次に、必要であればフォーカスサウンドとタイムシグナルを選び、「続ける」をタップしてください。その後、タイマーを設定します。短い通話か長い通話を選ぶか、ピッカーで自分の時間を設定してください。",

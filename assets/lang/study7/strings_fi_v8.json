@@ -8,7 +8,7 @@
    "serif": "Caladea",
    "institute": "DM Sans"
   },
-  "note": "Finnish (fi) translation of strings_en_v8.json, made 2026-09-28 under HANDOFF_Translations_v6. Same keys, structure and order as the English source; placeholders unchanged; _meta.fonts, _meta.block_order and blocks.G.items.g2.optional copied as is. Block F: the six ASRS items and five labels are never in this file; the build takes them verbatim from the fi entry of asrs_official_transcriptions_v1.json (6Q_Finnish_final.pdf, formal Te register kept); blocks.F.notice stays in English; blocks.F.notice_language_line carries the line printed on the Finnish PDF. Register elsewhere: informal sinä, as ADHD-liitto and Autismiliitto use with adults. options.freq uses the Finnish ASRS words for the first four labels; the fifth is Aina. Questionnaire unchanged, so questionnaire_version stays stage-a-v1. v8 (2026-09-28): institute.prereg_line and institute.prereg_link added; welcome.data_notice_link and data_notice.title name the study; data_notice.prereg_link removed; file.next_p1 gives the DOI and the results page as full web addresses. Keys match strings_en_v8.json.",
+  "note": "Finnish (fi) translation of strings_en_v8.json, made 2026-09-28 under HANDOFF_Translations_v6. Same keys, structure and order as the English source; placeholders unchanged; _meta.fonts, _meta.block_order and blocks.G.items.g2.optional copied as is. Block F: the six ASRS items and five labels are never in this file; the build takes them verbatim from the fi entry of asrs_official_transcriptions_v1.json (6Q_Finnish_final.pdf, formal Te register kept); blocks.F.notice stays in English; blocks.F.notice_language_line carries the line printed on the Finnish PDF. Register elsewhere: informal sinä, as ADHD-liitto and Autismiliitto use with adults. options.freq uses the Finnish ASRS words for the first four labels; the fifth is Aina. Questionnaire unchanged, so questionnaire_version stays stage-a-v1. v8 (2026-09-28): institute.prereg_line and institute.prereg_link added; welcome.data_notice_link and data_notice.title name the study; data_notice.prereg_link removed; file.next_p1 gives the DOI and the results page as full web addresses. Keys match strings_en_v8.json. 2026-10-05: welcome.p1 writes the study label as Study 7 - Stage A (was Study 7, Stage A); keys and version unchanged.",
   "block_order": [
    "B",
    "C",
@@ -30,7 +30,7 @@
  "welcome": {
   "title": "Miltä puhelut sinusta tuntuvat?",
   "study": "Study 7 - Stage A",
-  "p1": "Tervetuloa. Olet osallistumassa Institute for The Study Of Humanity -tutkimusohjelman ensimmäiseen tutkimukseen: Study 7, Stage A.",
+  "p1": "Tervetuloa. Olet osallistumassa Institute for The Study Of Humanity -tutkimusohjelman ensimmäiseen tutkimukseen: Study 7 - Stage A.",
   "p2": "Se mittaa, kuinka yleisiä puhelinkammo ja muut puheluihin liittyvät vaikeudet ovat, sekä yleisesti että eri ryhmissä, kuten ihmisillä, joilla on ADHD tai autismi, ja ihmisillä, joilla ei ole kumpaakaan. Tarvitsemme vastauksia kaikilta, myös niiltä, joille puhelut ovat helppoja. Ensimmäiset tulokset julkaistaan lokakuussa.",
   "p3": "Vastaaminen kestää noin kolme minuuttia. Kysely on anonyymi: ei nimeä, sähköpostia eikä tiliä. Sivu kirjaa, kuinka kauan kuhunkin kysymykseen menee ja kuinka pitkälle etenet, myös jos lopetat kesken; vastauksesi lähetetään vain, kun painat Lähetä.",
   "p4": "Valitse seuraavaksi halutessasi keskittymisääni ja aikamerkki ja napauta sitten Jatka. Aseta sen jälkeen ajastin: valitse lyhyt tai pitkä puhelu tai aseta oma kestosi valitsimella.",
