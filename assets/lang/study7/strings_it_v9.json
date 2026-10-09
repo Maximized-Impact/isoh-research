@@ -1,0 +1,375 @@
+{
+ "_meta": {
+  "lang": "it",
+  "dir": "ltr",
+  "questionnaire_version": "stage-a-v1",
+  "fonts": {
+   "sans": "Carlito",
+   "serif": "Caladea",
+   "institute": "DM Sans"
+  },
+  "note": "Italian (it) translation of strings_en_v8.json, made 2026-09-28 under HANDOFF_Translations_v6. Same keys, structure and order as the English source; placeholders unchanged; _meta.fonts, _meta.block_order and blocks.G.items.g2.optional copied as is. Block F: the six ASRS items and five labels are never in this file; the build takes them verbatim from the it entry of asrs_official_transcriptions_v1.json (6Q_Italian_final.pdf, formal Lei register kept); blocks.F.notice stays in English; blocks.F.notice_language_line carries the line printed on the Italian PDF. Register elsewhere: informal tu, as AIFA APS, Italian adult ADHD services and peer communities use with adults. options.freq uses the Italian ASRS words for the first four labels; the fifth is Sempre. data_notice.p3_link points to Cloudflare's Italian page (it-it), whose heading keeps the English title Turnstile Privacy Addendum. Yapper Phone tool names (focus.title, focus.time_signal, focus.system_wide, file.tool_rows.*) are literal translations (Suono di concentrazione, Segnale del tempo, A livello di sistema) to be aligned with the app's Italian UI if it uses different words. Questionnaire unchanged, so questionnaire_version stays stage-a-v1. v8 (2026-09-28): institute.prereg_line and institute.prereg_link added; welcome.data_notice_link and data_notice.title name the study; data_notice.prereg_link removed; file.next_p1 gives the DOI and the results page as full web addresses. Keys match strings_en_v8.json. 2026-10-05: welcome.p1 writes the study label as Study 7 - Stage A (was Study 7, Stage A); keys and version unchanged. v9 (2026-10-09): thanks.share, thanks.share_copied and thanks.share_text added (the Share button on the thank-you screen and the invitation it shares, without the link, which the page adds for the language with src=share); timer.hide, timer.show and timer.show_hint added (the eye that hides the timers). Questionnaire unchanged, so questionnaire_version stays stage-a-v1.",
+  "block_order": [
+   "B",
+   "C",
+   "D",
+   "H",
+   "E",
+   "F",
+   "A",
+   "G"
+  ]
+ },
+ "institute": {
+  "name": "Institute for The Study Of Humanity",
+  "formula": "Un'iniziativa di ricerca di Maximized Impact ry, un'associazione registrata finlandese. Helsinki.",
+  "short": "un'iniziativa di ricerca di Maximized Impact ry",
+  "prereg_line": "Questo studio è stato preregistrato sull'Open Science Framework prima di qualsiasi raccolta di dati: {url}",
+  "prereg_link": "Preregistrato su OSF"
+ },
+ "welcome": {
+  "title": "Come ti fanno sentire le telefonate?",
+  "study": "Study 7 - Stage A",
+  "p1": "Ti diamo il benvenuto. Stai per partecipare al primo studio dell'Institute for The Study Of Humanity: Study 7 - Stage A.",
+  "p2": "Misura quanto siano comuni l'ansia da telefono e altre difficoltà legate alle telefonate, sia in generale sia in gruppi diversi, comprese le persone con e senza ADHD o autismo. Abbiamo bisogno delle risposte di tutti, anche di chi trova facili le telefonate. I primi risultati saranno pubblicati in ottobre.",
+  "p3": "Richiede circa tre minuti. È anonimo: niente nome, email o account. La pagina registra quanto tempo richiede ogni domanda e fino a dove arrivi, anche se ti fermi; le tue risposte vengono inviate solo quando premi Invia.",
+  "p4": "Ora scegli, se vuoi, un suono di concentrazione e un segnale del tempo, poi tocca Continua. Dopodiché imposta il timer: scegli una chiamata breve o lunga, oppure imposta una durata personalizzata con il selettore.",
+  "data_notice_link": "Cosa raccoglie Study 7 - Stage A",
+  "repeat_note": "Da questo dispositivo sono già state inviate delle risposte. Puoi continuare; ti chiediamo di rispondere con sincerità all'ultima domanda.",
+  "continue_adult": "Ho almeno 18 anni, continua",
+  "under18": "Ho meno di 18 anni",
+  "language_label": "Lingua"
+ },
+ "under18": {
+  "title": "Grazie per aver voluto partecipare.",
+  "p1": "Questo questionario è per adulti, quindi finisce qui. Non è stato registrato nulla su di te, solo che qualcuno sotto i 18 anni ha visitato la pagina.",
+  "p2": "È prevista una versione per chi ha meno di 18 anni. Maximized Impact ry annuncia gli studi e i risultati dell'Istituto su Instagram, quindi seguire il profilo è il modo per sapere quando sarà disponibile.",
+  "follow": "Segui su Instagram"
+ },
+ "focus": {
+  "title": "Suono di concentrazione",
+  "volume": "Volume",
+  "sound": "Suono",
+  "sounds": {
+   "brown": "Rumore marrone",
+   "white": "Rumore bianco",
+   "pink": "Rumore rosa",
+   "rain": "Pioggia",
+   "ocean": "Onde del mare",
+   "forest": "Foresta"
+  },
+  "time_signal": "Segnale del tempo",
+  "system_wide": "A livello di sistema",
+  "interval": "Intervallo",
+  "interval_values": {
+   "10": "10 s",
+   "20": "20 s",
+   "30": "30 s",
+   "60": "1 min"
+  },
+  "continue": "Continua",
+  "close": "Chiudi",
+  "aria_focus_toggle": "Attiva o disattiva il suono di concentrazione",
+  "aria_signal_toggle": "Attiva o disattiva il segnale del tempo",
+  "aria_open": "Apri le impostazioni del suono di concentrazione"
+ },
+ "setup": {
+  "study": "Study 7 - Stage A",
+  "subtitle": "Imposta il limite di tempo",
+  "hours": "Ore",
+  "minutes": "Minuti",
+  "seconds": "Secondi",
+  "set_duration": "Imposta durata",
+  "reset": "Azzera",
+  "long_label": "Lunga: {duration}",
+  "short_label": "Breve: {duration}",
+  "custom_label": "Personalizzata: {duration}",
+  "long_call": "Chiamata lunga",
+  "short_call": "Chiamata breve",
+  "call": "Chiama",
+  "tap_hint": "Tocca per iniziare il questionario",
+  "units": {
+   "h": "h",
+   "m": "min",
+   "s": "s"
+  }
+ },
+ "timer": {
+  "plenty": "C'è tempo",
+  "keep_going": "Continua così",
+  "last30": "Ultimi 30 secondi",
+  "overtime": "Tempo superato",
+  "elapsed": "Trascorso {time}",
+  "remaining": "Rimanente {time} · concordato {duration}",
+  "hide": "Nascondi i timer",
+  "show": "Mostra i timer",
+  "show_hint": "Tocca per mostrare i timer"
+ },
+ "survey": {
+  "title": "Come ti fanno sentire le telefonate?",
+  "intro1": "Anonimo, circa tre minuti. Niente nomi, niente email, niente account. A cura dell'Institute for The Study Of Humanity, un'iniziativa di ricerca di Maximized Impact ry.",
+  "intro2": "Mentre rispondi, la pagina registra quanto tempo richiede ogni domanda e fino a dove arrivi, anche se ti fermi prima della fine. Le risposte in sé vengono inviate solo quando premi Invia risposte.",
+  "send": "Invia risposte",
+  "credit": "Timer e strumenti di concentrazione adattati da Yapper Phone.",
+  "scale_anchor_none": "nessuna",
+  "scale_anchor_extreme": "estrema",
+  "unanswered": "Rispondi alle domande segnate in rosso prima di inviare. Quella segnata come opzionale può restare senza risposta."
+ },
+ "options": {
+  "freq": [
+   "Mai",
+   "Raramente",
+   "Talvolta",
+   "Spesso",
+   "Sempre"
+  ],
+  "status": [
+   "Sì, con diagnosi",
+   "In valutazione",
+   "Nessuna diagnosi, ma mi ci riconosco o lo sospetto",
+   "No"
+  ],
+  "presentation": [
+   "Disattenzione predominante",
+   "Iperattività-impulsività predominanti",
+   "Combinata",
+   "Non lo so",
+   "Nessuna diagnosi"
+  ],
+  "yesno": [
+   "Sì",
+   "No"
+  ],
+  "noyes": [
+   "No",
+   "Sì"
+  ],
+  "scale11": [
+   "0",
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "age": [
+   "18–24",
+   "25–34",
+   "35–44",
+   "45–54",
+   "55–64",
+   "65+"
+  ],
+  "gender": [
+   "Donna",
+   "Uomo",
+   "Non binario",
+   "Preferisco non dirlo"
+  ],
+  "regions": [
+   "Finlandia",
+   "Altri Paesi nordici",
+   "Resto d'Europa",
+   "America del Nord",
+   "America Latina e Caraibi",
+   "Medio Oriente e Nord Africa",
+   "Africa subsahariana",
+   "Asia meridionale e centrale",
+   "Asia orientale e sud-orientale",
+   "Oceania"
+  ]
+ },
+ "blocks": {
+  "B": {
+   "title": "Quando squilla il telefono",
+   "items": {
+    "b1": {
+     "text": "Quando il mio telefono squilla, mi sento in tensione o in ansia.",
+     "options": "freq"
+    },
+    "b2": {
+     "text": "Prima di una chiamata che devo fare, mi sento in ansia.",
+     "options": "freq"
+    },
+    "b3": {
+     "text": "Nel complesso, quanta ansia ti provocano le telefonate? (0 = nessuna, 10 = estrema)",
+     "options": "scale11"
+    }
+   }
+  },
+  "C": {
+   "title": "Cosa fai al riguardo",
+   "items": {
+    "c1": {
+     "text": "Non rispondo alle chiamate di persone che conosco per via di come mi fanno sentire le telefonate.",
+     "options": "freq"
+    },
+    "c2": {
+     "text": "Rimando di un giorno o più il momento di richiamare.",
+     "options": "freq"
+    },
+    "c3": {
+     "text": "Nell'ultimo anno ho evitato qualcosa di importante (un appuntamento, una bolletta, un lavoro, una questione di salute) perché richiedeva una telefonata.",
+     "options": "yesno"
+    },
+    "c4": {
+     "text": "Rispondo alle chiamate da numeri sconosciuti.",
+     "options": "freq"
+    }
+   }
+  },
+  "D": {
+   "title": "Tempo e conclusione",
+   "items": {
+    "d1": {
+     "text": "Durante le chiamate perdo la cognizione di quanto sta durando la chiamata.",
+     "options": "freq"
+    },
+    "d2": {
+     "text": "Faccio fatica a chiudere una chiamata anche quando vorrei.",
+     "options": "freq"
+    }
+   }
+  },
+  "H": {
+   "title": "Non sapere cosa aspettarsi",
+   "items": {
+    "h1": {
+     "text": "Quando non so perché qualcuno mi chiama, mi sento in ansia.",
+     "options": "freq"
+    },
+    "h2": {
+     "text": "Quando non so quanto durerà una chiamata, mi sento in ansia.",
+     "options": "freq"
+    }
+   }
+  },
+  "E": {
+   "title": "Preferenza",
+   "items": {
+    "e1": {
+     "text": "Potendo scegliere, preferisco i messaggi alle chiamate.",
+     "options": "freq"
+    }
+   }
+  },
+  "F": {
+   "title": "Attenzione e attività",
+   "lead": "Le prossime sei domande sono il questionario di screening dell'OMS per l'ADHD negli adulti, riprodotto parola per parola. Pensa agli ultimi sei mesi.",
+   "items": "ASRS: six items and five labels come verbatim from asrs_official_transcriptions_v1.json for this language",
+   "notice": "ASRS-V1.1 Screener © World Health Organization 2003; © New York University and the President and Fellows of Harvard College. All rights reserved. Used unaltered (electronic version). Kessler et al. (2005).",
+   "notice_language_line": "© New York University and Ronald C. Kessler, PhD. All rights reserved."
+  },
+  "A": {
+   "title": "ADHD, autismo e ansia",
+   "items": {
+    "a1": {
+     "text": "ADHD",
+     "options": "status"
+    },
+    "a2": {
+     "text": "Se hai una diagnosi di ADHD: quale presentazione?",
+     "options": "presentation"
+    },
+    "a3": {
+     "text": "Autismo",
+     "options": "status"
+    },
+    "a4": {
+     "text": "Ansia (per esempio ansia sociale o ansia generalizzata)",
+     "options": "status"
+    }
+   }
+  },
+  "G": {
+   "title": "In breve su di te",
+   "items": {
+    "g1": {
+     "text": "Età",
+     "options": "age"
+    },
+    "g2": {
+     "text": "Genere (opzionale)",
+     "options": "gender",
+     "optional": true
+    },
+    "g3": {
+     "text": "Dove vivi?",
+     "options": "regions"
+    },
+    "g4": {
+     "text": "Hai già risposto a questo questionario?",
+     "options": "noyes"
+    }
+   }
+  }
+ },
+ "thanks": {
+  "title": "Grazie!",
+  "sent": "Risposte inviate in forma anonima.",
+  "results": "I primi risultati saranno pubblicati in ottobre, mese della consapevolezza sull'ADHD, durante la settimana finlandese dell'ADHD, dal 5 all'11 ottobre.",
+  "footer": "Study 7 - Stage A, Questionario sull'ansia da telefono, Institute for The Study Of Humanity 2026",
+  "download": "Scarica le tue risposte",
+  "download_note": "Una copia delle tue risposte e degli strumenti che hai scelto.",
+  "preparing": "Stiamo preparando il tuo file…",
+  "download_again": "Scarica di nuovo",
+  "follow_text": "Maximized Impact ry annuncia su Instagram gli studi e i risultati dell'Institute for The Study Of Humanity.",
+  "follow": "Segui su Instagram",
+  "sending": "Invio in corso…",
+  "send_failed": "Invio non riuscito. Controlla la connessione e riprova; le tue risposte sono ancora qui.",
+  "share": "Condividi",
+  "share_copied": "Copiato",
+  "share_text": "Come ti fanno sentire le telefonate? Un sondaggio anonimo di circa 3 minuti, per chi ha almeno 18 anni. Abbiamo bisogno delle risposte di tutti, anche di chi non è neurodivergente e di chi trova facili le telefonate.\n\nCondividi, grazie!\n\n#ADHD #autismo #neurodivergenza #ricerca #instituteforthestudyofhumanity"
+ },
+ "file": {
+  "title": "Le tue risposte",
+  "study_line": "Study 7: ansia da telefono ed evitamento delle chiamate",
+  "saved": "Salvato il {datetime}",
+  "created_on_device": "Creato sul tuo dispositivo",
+  "no_identifiers": "Questo file non contiene nome, email né identificativi del dispositivo o dell'account. Nulla al suo interno è collegabile a te.",
+  "thank_you_p1": "Hai appena contribuito a dare un numero a come ci fanno sentire le telefonate, per le persone con e senza ADHD o autismo. Per quanto ne sappiamo, nessuno l'aveva mai misurato prima. Ogni risposta in questo file è parte di quel numero.",
+  "thank_you_p2": "L'Institute for The Study Of Humanity ha ricevuto le tue risposte in forma anonima. Questa copia è tua: conservala, condividila o eliminala. L'Istituto non può collegarla a te e non contiene nulla che potrebbe farlo.",
+  "what_you_answered": "Cosa hai risposto",
+  "question": "Domanda",
+  "your_answer": "La tua risposta",
+  "not_answered": "(senza risposta)",
+  "answered_after": "risposto dopo {seconds} s",
+  "changed_times": "modifiche: {n}",
+  "tools_title": "Gli strumenti che hai usato",
+  "tools_p": "La pagina del questionario offriva lo stesso timer per la durata della chiamata, gli stessi suoni di concentrazione e gli stessi segnali del tempo che Yapper Phone usa durante una chiamata. Ciò che hai scelto è registrato qui per te e, senza alcun identificativo, accanto alle tue risposte, così che l'Istituto possa vedere quali strumenti le persone preferiscono.",
+  "setting": "Impostazione",
+  "what_you_chose": "Cosa hai scelto",
+  "tool_rows": {
+   "call_length": "Durata scelta per la chiamata",
+   "time_taken": "Tempo impiegato",
+   "overtime": "Sforamento",
+   "focus_sound": "Suono di concentrazione",
+   "time_signal": "Segnale del tempo",
+   "none": "nessuno",
+   "on_every": "Attivo, ogni {interval}",
+   "off": "Disattivato"
+  },
+  "next_title": "Cosa succede adesso",
+  "next_p1": "I risultati sono pubblicati ad accesso aperto con licenza Creative Commons Attribuzione 4.0, con una sintesi in finlandese e in inglese, come supplemento alla pubblicazione \"The Case for Health Communications Technology\" (https://doi.org/10.5281/zenodo.21978705). Li troverai su https://research.maximized-impact.org/study7/results. Il set di dati anonimizzato è pubblicato insieme ai risultati, così che chiunque possa verificare i numeri.",
+  "next_p2": "Se hai una domanda sullo studio, scrivi a janne@maximized-impact.org. Poiché l'Istituto non conserva identificativi, non può trovare né rimuovere una singola risposta dopo l'invio; questo file è la tua copia.",
+  "footer": "Institute for The Study Of Humanity · Maximized Impact ry · Helsinki, Finlandia",
+  "page": "Pagina {n}"
+ },
+ "data_notice": {
+  "title": "Cosa raccoglie Study 7 - Stage A",
+  "p1": "Quando premi Invia, le tue risposte sono inviate all'Institute for The Study Of Humanity senza nome, email, account, numero di telefono o identificativo del dispositivo. L'Istituto non conserva gli indirizzi IP. Un codice di sessione casuale collega le parti di una stessa visita, e nient'altro.",
+  "p2": "Mentre rispondi, la pagina invia due piccoli segnali di avanzamento, quando inizi e se esci, così l'Istituto vede dove le persone si fermano. Non contengono risposte.",
+  "p3": "Il tuo browser conserva un solo contrassegno: questo dispositivo ha risposto. Così la pagina può ricordartelo. La pagina non imposta cookie e non usa analytics. Quando premi Invia, un controllo anti-bot invisibile di Cloudflare Turnstile conferma che a inviare è una persona; è l'unico servizio di terze parti sulla pagina.",
+  "p3_link": {
+   "text": "Turnstile Privacy Addendum di Cloudflare",
+   "url": "https://www.cloudflare.com/it-it/turnstile-privacy-policy/"
+  },
+  "p4": "I risultati sono pubblicati ad accesso aperto con i dati anonimizzati. Poiché non esiste alcun identificativo, una risposta non può essere trovata né rimossa in seguito.",
+  "contact": "Domande: janne@maximized-impact.org"
+ }
+}

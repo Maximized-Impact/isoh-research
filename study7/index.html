@@ -26,7 +26,11 @@
       <button class="sq" id="tbOpen" type="button" data-s-aria="focus.aria_open"><span class="ts"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-watch"/></svg></span><span class="fs"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wave"/></svg></span></button>
     </div>
   </div>
-  <div class="row2"><div class="el" id="el"></div><div class="el" id="rem"></div></div>
+  <div class="row2">
+    <div class="el" id="el"></div>
+    <div class="mid"><button class="eye" id="tbEye" type="button" aria-pressed="false" data-s-aria="timer.hide"><svg class="off" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-eye-off"/></svg><svg class="on" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-eye"/></svg></button><span class="el eye-hint" id="eyeHint" hidden data-s="timer.show_hint"></span></div>
+    <div class="el" id="rem"></div>
+  </div>
   <div class="bar" id="bar"><i></i></div>
 </header>
 
@@ -48,6 +52,7 @@
     <p class="intro" data-s="thanks.results"></p>
     <button class="submit secondary" id="download" type="button" data-s="thanks.download"></button>
     <p class="intro" data-s="thanks.download_note"></p>
+    <button class="submit secondary" id="share" type="button" data-s="thanks.share"></button>
     <div class="follow">
       <p data-s="thanks.follow_text"></p>
       <a class="follow-btn" href="https://www.instagram.com/maximized_impact_ry" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span data-s="thanks.follow"></span></a>
@@ -65,6 +70,8 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-wave" viewBox="0 0 24 24"><rect x="2" y="9" width="2.4" height="6" rx="1.2"/><rect x="6.4" y="5" width="2.4" height="14" rx="1.2"/><rect x="10.8" y="2" width="2.4" height="20" rx="1.2"/><rect x="15.2" y="6" width="2.4" height="12" rx="1.2"/><rect x="19.6" y="9" width="2.4" height="6" rx="1.2"/></symbol>
   <symbol id="i-watch" viewBox="0 0 24 24"><path d="M9 1h6v2H9zM12 5a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 2a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm-1 2h2v5h-2zM19 4.5l1.5 1.5-1.8 1.8-1.5-1.5z"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M12 5C7.2 5 3.2 8 1.5 12c1.7 4 5.7 7 10.5 7s8.8-3 10.5-7C20.8 8 16.8 5 12 5zm0 11.5a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9zm0-7a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M12 5C7.2 5 3.2 8 1.5 12c.8 1.9 2.1 3.5 3.7 4.8l1.6-1.6A9.6 9.6 0 0 1 3.9 12C5.4 9.2 8.5 7 12 7c1 0 2 .2 2.9.5l1.6-1.6A11.3 11.3 0 0 0 12 5zm8.8 2.2-1.6 1.6c.9.9 1.6 2 2.1 3.2-1.5 2.8-4.6 5-8.1 5-.6 0-1.2-.1-1.8-.2l-1.7 1.7c1.1.3 2.3.5 3.5.5 4.8 0 8.8-3 10.5-7a11.9 11.9 0 0 0-2.9-4.8zM12 7.5a4.5 4.5 0 0 0-4.5 4.5c0 .6.1 1.2.4 1.8l5.9-5.9A4.5 4.5 0 0 0 12 7.5zm4.1 2.7-5.9 5.9c.6.3 1.2.4 1.8.4a4.5 4.5 0 0 0 4.1-6.3zM3.3 2 2 3.3l18.7 18.7 1.3-1.3z"/></symbol>
 </svg>
 
 <!-- ============ overlay 0: welcome ============ -->

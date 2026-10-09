@@ -1,0 +1,375 @@
+{
+ "_meta": {
+  "lang": "fr",
+  "dir": "ltr",
+  "questionnaire_version": "stage-a-v1",
+  "fonts": {
+   "sans": "Carlito",
+   "serif": "Caladea",
+   "institute": "DM Sans"
+  },
+  "note": "French (fr) translation of strings_en_v8.json, made 2026-09-28 under HANDOFF_Translations_v6. Same keys, structure and order as the English source; placeholders unchanged; _meta.fonts, _meta.block_order and blocks.G.items.g2.optional copied as is. Block F: the six ASRS items and five labels are never in this file; the build takes them verbatim from the fr entry of asrs_official_transcriptions_v1.json (6Q_French_final.pdf, vous register); blocks.F.notice stays in English; blocks.F.notice_language_line carries the line printed on the French PDF. Register elsewhere: vous, as TDAH France and French surveys use with adults, so there is no register shift at block F. options.freq uses the French ASRS words for the first four labels; the fifth is Toujours. French typography: U+00A0 no-break space before ? ! : ; and inside guillemets. Questionnaire unchanged, so questionnaire_version stays stage-a-v1. v8 (2026-09-28): institute.prereg_line and institute.prereg_link added; welcome.data_notice_link and data_notice.title name the study; data_notice.prereg_link removed; file.next_p1 gives the DOI and the results page as full web addresses. Keys match strings_en_v8.json. 2026-10-05: welcome.p1 writes the study label as Study 7 - Stage A (was Study 7, Stage A); keys and version unchanged. v9 (2026-10-09): thanks.share, thanks.share_copied and thanks.share_text added (the Share button on the thank-you screen and the invitation it shares, without the link, which the page adds for the language with src=share); timer.hide, timer.show and timer.show_hint added (the eye that hides the timers). Questionnaire unchanged, so questionnaire_version stays stage-a-v1.",
+  "block_order": [
+   "B",
+   "C",
+   "D",
+   "H",
+   "E",
+   "F",
+   "A",
+   "G"
+  ]
+ },
+ "institute": {
+  "name": "Institute for The Study Of Humanity",
+  "formula": "Une initiative de recherche de Maximized Impact ry, association enregistrée finlandaise. Helsinki.",
+  "short": "une initiative de recherche de Maximized Impact ry",
+  "prereg_line": "Cette étude a été préenregistrée sur l'Open Science Framework avant toute collecte de données : {url}",
+  "prereg_link": "Préenregistrée sur OSF"
+ },
+ "welcome": {
+  "title": "Comment vivez-vous les appels téléphoniques ?",
+  "study": "Study 7 - Stage A",
+  "p1": "Bienvenue. Vous êtes sur le point de participer à la première étude de l'Institute for The Study Of Humanity : Study 7 - Stage A.",
+  "p2": "Elle mesure à quel point l'anxiété face au téléphone et les autres difficultés liées aux appels sont fréquentes, dans l'ensemble et dans différents groupes, notamment chez les personnes concernées ou non par le TDAH ou l'autisme. Nous avons besoin des réponses de tout le monde, y compris des personnes pour qui téléphoner est facile. Les premiers résultats seront publiés en octobre.",
+  "p3": "Cela prend environ trois minutes. C'est anonyme : ni nom, ni e-mail, ni compte. La page note le temps que prend chaque question et jusqu'où vous allez, même si vous arrêtez ; vos réponses ne sont envoyées que lorsque vous appuyez sur Envoyer.",
+  "p4": "Ensuite, choisissez si vous le souhaitez un son de concentration et un signal de temps, puis appuyez sur Continuer. Réglez ensuite votre minuteur : choisissez un appel court ou long, ou définissez votre propre durée avec le sélecteur.",
+  "data_notice_link": "Ce que Study 7 - Stage A collecte",
+  "repeat_note": "Cet appareil a déjà envoyé des réponses. Vous pouvez continuer ; merci de répondre honnêtement à la dernière question.",
+  "continue_adult": "J'ai 18 ans ou plus, continuer",
+  "under18": "J'ai moins de 18 ans",
+  "language_label": "Langue"
+ },
+ "under18": {
+  "title": "Merci de vouloir participer.",
+  "p1": "Ce questionnaire s'adresse aux adultes, il s'arrête donc ici. Rien vous concernant n'a été enregistré, seulement le fait qu'une personne de moins de 18 ans est passée par ici.",
+  "p2": "Une version pour les moins de 18 ans est prévue. Maximized Impact ry annonce les études et les résultats de l'Institut sur Instagram : s'y abonner est le moyen de savoir quand elle ouvrira.",
+  "follow": "Suivre sur Instagram"
+ },
+ "focus": {
+  "title": "Son de concentration",
+  "volume": "Volume",
+  "sound": "Son",
+  "sounds": {
+   "brown": "Bruit brun",
+   "white": "Bruit blanc",
+   "pink": "Bruit rose",
+   "rain": "Pluie",
+   "ocean": "Vagues de l'océan",
+   "forest": "Forêt"
+  },
+  "time_signal": "Signal de temps",
+  "system_wide": "À l'échelle du système",
+  "interval": "Intervalle",
+  "interval_values": {
+   "10": "10 s",
+   "20": "20 s",
+   "30": "30 s",
+   "60": "1 min"
+  },
+  "continue": "Continuer",
+  "close": "Fermer",
+  "aria_focus_toggle": "Son de concentration activé ou désactivé",
+  "aria_signal_toggle": "Signal de temps activé ou désactivé",
+  "aria_open": "Ouvrir les réglages du son de concentration"
+ },
+ "setup": {
+  "study": "Study 7 - Stage A",
+  "subtitle": "Définissez votre limite de temps",
+  "hours": "Heures",
+  "minutes": "Minutes",
+  "seconds": "Secondes",
+  "set_duration": "Définir la durée",
+  "reset": "Réinitialiser",
+  "long_label": "Long : {duration}",
+  "short_label": "Court : {duration}",
+  "custom_label": "Personnalisé : {duration}",
+  "long_call": "Appel long",
+  "short_call": "Appel court",
+  "call": "Appeler",
+  "tap_hint": "Appuyez pour commencer le questionnaire",
+  "units": {
+   "h": "h",
+   "m": "min",
+   "s": "s"
+  }
+ },
+ "timer": {
+  "plenty": "Largement le temps",
+  "keep_going": "Continuez",
+  "last30": "30 dernières secondes",
+  "overtime": "Temps dépassé",
+  "elapsed": "Écoulé {time}",
+  "remaining": "Restant {time} · convenu {duration}",
+  "hide": "Masquer les minuteurs",
+  "show": "Afficher les minuteurs",
+  "show_hint": "Touchez pour afficher les minuteurs"
+ },
+ "survey": {
+  "title": "Comment vivez-vous les appels téléphoniques ?",
+  "intro1": "Anonyme, environ trois minutes. Ni nom, ni e-mail, ni compte. Mené par l'Institute for The Study Of Humanity, une initiative de recherche de Maximized Impact ry.",
+  "intro2": "Pendant que vous répondez, la page enregistre le temps que prend chaque question et jusqu'où vous allez, même si vous arrêtez avant la fin. Vos réponses elles-mêmes ne sont envoyées que lorsque vous appuyez sur Envoyer les réponses.",
+  "send": "Envoyer les réponses",
+  "credit": "Minuteur et outils de concentration adaptés de Yapper Phone.",
+  "scale_anchor_none": "aucune",
+  "scale_anchor_extreme": "extrême",
+  "unanswered": "Merci de répondre aux questions marquées en rouge avant d'envoyer. Celle marquée facultative peut rester vide."
+ },
+ "options": {
+  "freq": [
+   "Jamais",
+   "Rarement",
+   "Quelquefois",
+   "Souvent",
+   "Toujours"
+  ],
+  "status": [
+   "Oui, avec diagnostic",
+   "En cours de diagnostic",
+   "Pas de diagnostic, mais je me reconnais ou je le soupçonne",
+   "Non"
+  ],
+  "presentation": [
+   "Inattentive",
+   "Hyperactive-impulsive",
+   "Combinée",
+   "Je ne sais pas",
+   "Pas de diagnostic"
+  ],
+  "yesno": [
+   "Oui",
+   "Non"
+  ],
+  "noyes": [
+   "Non",
+   "Oui"
+  ],
+  "scale11": [
+   "0",
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "age": [
+   "18–24",
+   "25–34",
+   "35–44",
+   "45–54",
+   "55–64",
+   "65+"
+  ],
+  "gender": [
+   "Femme",
+   "Homme",
+   "Non-binaire",
+   "Je préfère ne pas répondre"
+  ],
+  "regions": [
+   "Finlande",
+   "Autres pays nordiques",
+   "Reste de l'Europe",
+   "Amérique du Nord",
+   "Amérique latine et Caraïbes",
+   "Moyen-Orient et Afrique du Nord",
+   "Afrique subsaharienne",
+   "Asie du Sud et Asie centrale",
+   "Asie de l'Est et du Sud-Est",
+   "Océanie"
+  ]
+ },
+ "blocks": {
+  "B": {
+   "title": "Quand le téléphone sonne",
+   "items": {
+    "b1": {
+     "text": "Quand mon téléphone sonne, je ressens de la tension ou de l'anxiété.",
+     "options": "freq"
+    },
+    "b2": {
+     "text": "Avant un appel que je dois passer, je ressens de l'anxiété.",
+     "options": "freq"
+    },
+    "b3": {
+     "text": "Dans l'ensemble, quel niveau d'anxiété les appels téléphoniques vous causent-ils ? (0 = aucune, 10 = extrême)",
+     "options": "scale11"
+    }
+   }
+  },
+  "C": {
+   "title": "Comment vous y faites face",
+   "items": {
+    "c1": {
+     "text": "Je ne réponds pas aux appels de personnes que je connais à cause de ce que les appels me font ressentir.",
+     "options": "freq"
+    },
+    "c2": {
+     "text": "Je remets à plus tard le fait de rappeler, d'un jour ou plus.",
+     "options": "freq"
+    },
+    "c3": {
+     "text": "Au cours de l'année écoulée, j'ai évité quelque chose d'important (un rendez-vous, une facture, un emploi, une question de santé) parce qu'il fallait téléphoner.",
+     "options": "yesno"
+    },
+    "c4": {
+     "text": "Je réponds aux appels de numéros inconnus.",
+     "options": "freq"
+    }
+   }
+  },
+  "D": {
+   "title": "Le temps et la fin de l'appel",
+   "items": {
+    "d1": {
+     "text": "Pendant les appels, je perds la notion de la durée de l'appel.",
+     "options": "freq"
+    },
+    "d2": {
+     "text": "J'ai du mal à mettre fin à un appel même quand je le veux.",
+     "options": "freq"
+    }
+   }
+  },
+  "H": {
+   "title": "Ne pas savoir à quoi s'attendre",
+   "items": {
+    "h1": {
+     "text": "Quand je ne sais pas pourquoi quelqu'un m'appelle, je ressens de l'anxiété.",
+     "options": "freq"
+    },
+    "h2": {
+     "text": "Quand je ne sais pas combien de temps un appel va durer, je ressens de l'anxiété.",
+     "options": "freq"
+    }
+   }
+  },
+  "E": {
+   "title": "Préférence",
+   "items": {
+    "e1": {
+     "text": "Si j'ai le choix, je préfère les messages aux appels.",
+     "options": "freq"
+    }
+   }
+  },
+  "F": {
+   "title": "Attention et activité",
+   "lead": "Les six questions suivantes sont le questionnaire de dépistage du TDAH de l'adulte de l'OMS, reproduit mot pour mot. Pensez aux six derniers mois.",
+   "items": "ASRS: six items and five labels come verbatim from asrs_official_transcriptions_v1.json for this language",
+   "notice": "ASRS-V1.1 Screener © World Health Organization 2003; © New York University and the President and Fellows of Harvard College. All rights reserved. Used unaltered (electronic version). Kessler et al. (2005).",
+   "notice_language_line": "© New York University and Ronald C. Kessler, PhD. All rights reserved."
+  },
+  "A": {
+   "title": "TDAH, autisme et anxiété",
+   "items": {
+    "a1": {
+     "text": "TDAH",
+     "options": "status"
+    },
+    "a2": {
+     "text": "Si vous avez un diagnostic de TDAH : quelle présentation ?",
+     "options": "presentation"
+    },
+    "a3": {
+     "text": "Autisme",
+     "options": "status"
+    },
+    "a4": {
+     "text": "Anxiété (par exemple anxiété sociale ou anxiété généralisée)",
+     "options": "status"
+    }
+   }
+  },
+  "G": {
+   "title": "Quelques mots sur vous",
+   "items": {
+    "g1": {
+     "text": "Âge",
+     "options": "age"
+    },
+    "g2": {
+     "text": "Genre (facultatif)",
+     "options": "gender",
+     "optional": true
+    },
+    "g3": {
+     "text": "Où habitez-vous ?",
+     "options": "regions"
+    },
+    "g4": {
+     "text": "Avez-vous déjà répondu à ce questionnaire ?",
+     "options": "noyes"
+    }
+   }
+  }
+ },
+ "thanks": {
+  "title": "Merci !",
+  "sent": "Vos réponses ont été envoyées anonymement.",
+  "results": "Les premiers résultats seront publiés en octobre, mois de sensibilisation au TDAH, pendant la semaine finlandaise du TDAH, du 5 au 11 octobre.",
+  "footer": "Study 7 - Stage A, Questionnaire sur l'anxiété face au téléphone, Institute for The Study Of Humanity 2026",
+  "download": "Télécharger vos réponses",
+  "download_note": "Une copie de vos réponses et des outils que vous avez choisis.",
+  "preparing": "Préparation de votre fichier…",
+  "download_again": "Télécharger à nouveau",
+  "follow_text": "Maximized Impact ry annonce les études et les résultats de l'Institute for The Study Of Humanity sur Instagram.",
+  "follow": "Suivre sur Instagram",
+  "sending": "Envoi…",
+  "send_failed": "L'envoi a échoué. Vérifiez votre connexion et réessayez ; vos réponses sont toujours là.",
+  "share": "Partager",
+  "share_copied": "Copié",
+  "share_text": "Comment vivez-vous les appels téléphoniques ? Un sondage anonyme d'environ 3 minutes, à partir de 18 ans. Nous avons besoin des réponses de tout le monde, y compris des personnes qui ne sont pas neurodivergentes et de celles pour qui téléphoner est facile.\n\nPartagez, merci !\n\n#TDAH #autisme #neurodivergence #recherche #instituteforthestudyofhumanity"
+ },
+ "file": {
+  "title": "Vos réponses",
+  "study_line": "Study 7 : anxiété face au téléphone et évitement des appels",
+  "saved": "Enregistré le {datetime}",
+  "created_on_device": "Créé sur votre appareil",
+  "no_identifiers": "Ce fichier ne contient ni nom, ni e-mail, ni identifiant d'appareil ou de compte. Rien en lui ne mène à vous.",
+  "thank_you_p1": "Vous venez d'aider à mettre un chiffre sur ce que les appels téléphoniques font ressentir, chez les personnes concernées ou non par le TDAH ou l'autisme. À notre connaissance, personne ne l'avait mesuré auparavant. Chaque réponse de ce fichier fait partie de ce chiffre.",
+  "thank_you_p2": "L'Institute for The Study Of Humanity a reçu vos réponses anonymement. Cette copie est à vous : gardez-la, partagez-la ou supprimez-la. L'Institut ne peut pas la relier à vous, et elle ne contient rien qui le permettrait.",
+  "what_you_answered": "Ce que vous avez répondu",
+  "question": "Question",
+  "your_answer": "Votre réponse",
+  "not_answered": "(sans réponse)",
+  "answered_after": "répondu après {seconds} s",
+  "changed_times": "modifié {n} fois",
+  "tools_title": "Les outils que vous avez utilisés",
+  "tools_p": "La page du questionnaire proposait le même minuteur de durée d'appel, les mêmes sons de concentration et les mêmes signaux de temps que Yapper Phone utilise pendant un appel. Ce que vous avez choisi est noté ici pour vous et, sans aucun identifiant, à côté de vos réponses, pour que l'Institut voie quels outils les gens préfèrent.",
+  "setting": "Réglage",
+  "what_you_chose": "Ce que vous avez choisi",
+  "tool_rows": {
+   "call_length": "Durée d'appel choisie",
+   "time_taken": "Temps mis",
+   "overtime": "Dépassement",
+   "focus_sound": "Son de concentration",
+   "time_signal": "Signal de temps",
+   "none": "aucun",
+   "on_every": "Activé, intervalle {interval}",
+   "off": "Désactivé"
+  },
+  "next_title": "Et ensuite",
+  "next_p1": "Les résultats sont publiés en libre accès sous licence Creative Commons Attribution 4.0, avec un résumé en finnois et en anglais, en complément du livre blanc « The Case for Health Communications Technology » (https://doi.org/10.5281/zenodo.21978705). Vous les trouverez sur https://research.maximized-impact.org/study7/results. Le jeu de données anonymisé est publié avec les résultats pour que chacun puisse vérifier les chiffres.",
+  "next_p2": "Si vous avez une question sur l'étude, écrivez à janne@maximized-impact.org. Comme l'Institut ne détient aucun identifiant, il ne peut ni retrouver ni supprimer une réponse individuelle une fois envoyée ; ce fichier est votre trace.",
+  "footer": "Institute for The Study Of Humanity · Maximized Impact ry · Helsinki, Finlande",
+  "page": "Page {n}"
+ },
+ "data_notice": {
+  "title": "Ce que Study 7 - Stage A collecte",
+  "p1": "Quand vous appuyez sur Envoyer, vos réponses sont envoyées à l'Institute for The Study Of Humanity sans nom, e-mail, compte, numéro de téléphone ni identifiant d'appareil. L'Institut ne conserve pas les adresses IP. Un code de session aléatoire relie entre elles les parties d'une même visite, et rien d'autre.",
+  "p2": "Pendant que vous répondez, la page envoie deux petits signaux de progression, au début et si vous quittez, pour que l'Institut voie où les gens s'arrêtent. Ils ne contiennent aucune réponse.",
+  "p3": "Votre navigateur garde un seul repère indiquant que cet appareil a répondu, pour que la page puisse vous le rappeler. La page ne dépose aucun cookie et n'utilise aucun outil d'analyse. Quand vous appuyez sur Envoyer, une vérification anti-bot invisible de Cloudflare Turnstile confirme qu'une personne envoie les réponses ; c'est le seul service tiers de la page.",
+  "p3_link": {
+   "text": "Avenant relatif à la confidentialité de Turnstile de Cloudflare",
+   "url": "https://www.cloudflare.com/fr-fr/turnstile-privacy-policy/"
+  },
+  "p4": "Les résultats sont publiés en libre accès avec le jeu de données anonymisé. Sans identifiant, une réponse ne peut être ni retrouvée ni supprimée par la suite.",
+  "contact": "Questions : janne@maximized-impact.org"
+ }
+}

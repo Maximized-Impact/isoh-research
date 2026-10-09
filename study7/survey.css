@@ -101,6 +101,14 @@
   .green .cd,.green .status{color:var(--t-green)} .green .bar i{background:var(--t-green)}
   .amber .cd,.amber .status{color:var(--t-amber)} .amber .bar i{background:var(--t-amber)}
   .red .cd,.red .status{color:var(--t-red)} .red .bar i{background:var(--t-red)}
+  /* Eye: hides the clock, phase text, timers and the bar's progress without moving anything; the countdown runs on */
+  .mid{position:relative;display:flex;align-items:center}
+  .eye{display:flex;align-items:center;justify-content:center;width:44px;height:36px;margin:-9px 0;padding:0;border:0;border-radius:10px;background:none;color:var(--dim);cursor:pointer}
+  .eye svg{width:22px;height:22px;fill:currentColor}
+  .eye .on,.timers-hidden .eye .off{display:none}
+  .timers-hidden .eye .on{display:block}
+  .eye-hint{position:absolute;left:100%;top:50%;transform:translateY(-50%);margin-left:6px;white-space:nowrap}
+  .timers-hidden .cd,.timers-hidden .status,.timers-hidden .row2>.el,.timers-hidden .bar i{visibility:hidden}
   .asrs-note{color:var(--dim2);font-size:11px;margin:2px 0 0}
 
   /* ---------- survey ---------- */
@@ -155,7 +163,7 @@
   .sq .ts.on svg,.sq .fs.on svg{opacity:1}
   .fab-open{position:fixed;top:14px;right:16px;z-index:40;background:rgba(14,14,14,.92);box-shadow:0 8px 24px rgba(0,0,0,.55)} /* after Send: the one floating way to the Focus Sound card */
   .tools{display:flex;align-items:center;gap:10px}
-  .topbar .row2{display:flex;justify-content:space-between;align-items:baseline;max-width:640px;margin:6px auto 0}
+  .topbar .row2{display:flex;justify-content:space-between;align-items:center;max-width:640px;margin:6px auto 0}
   .toggle.green input:checked + span{background:#1E4A2E}
   .toggle.green input:checked + span::after{background:var(--green)}
   .head-right{display:flex;align-items:center;gap:14px}

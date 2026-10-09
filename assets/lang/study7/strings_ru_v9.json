@@ -1,0 +1,375 @@
+{
+ "_meta": {
+  "lang": "ru",
+  "dir": "ltr",
+  "questionnaire_version": "stage-a-v1",
+  "fonts": {
+   "sans": "Carlito",
+   "serif": "Carlito",
+   "institute": "Carlito"
+  },
+  "note": "Russian (ru) translation of strings_en_v8.json, made 2026-09-28 under HANDOFF_Translations_v6. Same keys, structure and order as the English source; placeholders unchanged; _meta.fonts, _meta.block_order and blocks.G.items.g2.optional copied as is. Block F: the six ASRS items and five labels are never in this file; the build takes them verbatim from the ru entry of asrs_official_transcriptions_v1.json (6Q_Russian_final.pdf, lowercase vy register); blocks.F.notice stays in English; blocks.F.notice_language_line carries the WHO 2004 line printed on the Russian PDF. Register elsewhere: lowercase vy, the standard survey register, so there is no register shift at block F. options.freq uses the Russian ASRS words for the first four labels; the fifth is Vsegda. No em dashes anywhere, by the handoff, so Russian dash typography is replaced by commas, colons and restructured sentences. Questionnaire unchanged, so questionnaire_version stays stage-a-v1. v8 (2026-09-28): institute.prereg_line and institute.prereg_link added; welcome.data_notice_link and data_notice.title name the study; data_notice.prereg_link removed; file.next_p1 gives the DOI and the results page as full web addresses. Keys match strings_en_v8.json. 2026-10-05: welcome.p1 writes the study label as Study 7 - Stage A (was Study 7, Stage A); keys and version unchanged. v9 (2026-10-09): thanks.share, thanks.share_copied and thanks.share_text added (the Share button on the thank-you screen and the invitation it shares, without the link, which the page adds for the language with src=share); timer.hide, timer.show and timer.show_hint added (the eye that hides the timers). Questionnaire unchanged, so questionnaire_version stays stage-a-v1.",
+  "block_order": [
+   "B",
+   "C",
+   "D",
+   "H",
+   "E",
+   "F",
+   "A",
+   "G"
+  ]
+ },
+ "institute": {
+  "name": "Institute for The Study Of Humanity",
+  "formula": "Исследовательская инициатива Maximized Impact ry, финской зарегистрированной ассоциации. Хельсинки.",
+  "short": "исследовательская инициатива Maximized Impact ry",
+  "prereg_line": "Это исследование было предварительно зарегистрировано на Open Science Framework до начала сбора данных: {url}",
+  "prereg_link": "Предварительно зарегистрировано на OSF"
+ },
+ "welcome": {
+  "title": "Как вам даются телефонные звонки?",
+  "study": "Study 7 - Stage A",
+  "p1": "Добро пожаловать. Вы участвуете в первом исследовании Institute for The Study Of Humanity: Study 7 - Stage A.",
+  "p2": "Оно измеряет, насколько распространены страх телефонных звонков и другие трудности, связанные со звонками, в целом и в разных группах, включая людей с СДВГ или аутизмом и без них. Нам нужны ответы всех, в том числе тех, кому звонить легко. Первые результаты будут опубликованы в октябре.",
+  "p3": "Это займёт около трёх минут. Опрос анонимный: без имени, электронной почты и аккаунта. Страница отмечает, сколько времени занимает каждый вопрос и как далеко вы дошли, даже если вы прервётесь; ваши ответы отправляются только когда вы нажимаете «Отправить».",
+  "p4": "Дальше выберите, если хотите, звук для концентрации и сигнал времени, затем нажмите «Продолжить». После этого установите таймер: выберите короткий или длинный звонок или задайте свою длительность с помощью переключателя.",
+  "data_notice_link": "Что собирает Study 7 - Stage A",
+  "repeat_note": "С этого устройства уже отправляли ответы. Вы можете продолжить; пожалуйста, честно ответьте на последний вопрос.",
+  "continue_adult": "Мне 18 лет или больше, продолжить",
+  "under18": "Мне меньше 18 лет",
+  "language_label": "Язык"
+ },
+ "under18": {
+  "title": "Спасибо, что хотите участвовать.",
+  "p1": "Этот опрос для взрослых, поэтому он заканчивается здесь. О вас ничего не записано, только то, что заходил кто-то младше 18 лет.",
+  "p2": "Версия для людей младше 18 лет планируется. Maximized Impact ry сообщает об исследованиях и результатах Института в Instagram, поэтому подписка позволит узнать, когда она откроется.",
+  "follow": "Подписаться в Instagram"
+ },
+ "focus": {
+  "title": "Звук для концентрации",
+  "volume": "Громкость",
+  "sound": "Звук",
+  "sounds": {
+   "brown": "Коричневый шум",
+   "white": "Белый шум",
+   "pink": "Розовый шум",
+   "rain": "Дождь",
+   "ocean": "Волны океана",
+   "forest": "Лес"
+  },
+  "time_signal": "Сигнал времени",
+  "system_wide": "Для всей системы",
+  "interval": "Интервал",
+  "interval_values": {
+   "10": "10 с",
+   "20": "20 с",
+   "30": "30 с",
+   "60": "1 мин"
+  },
+  "continue": "Продолжить",
+  "close": "Закрыть",
+  "aria_focus_toggle": "Звук для концентрации включён или выключен",
+  "aria_signal_toggle": "Сигнал времени включён или выключен",
+  "aria_open": "Открыть настройки звука для концентрации"
+ },
+ "setup": {
+  "study": "Study 7 - Stage A",
+  "subtitle": "Установите лимит времени",
+  "hours": "Часы",
+  "minutes": "Минуты",
+  "seconds": "Секунды",
+  "set_duration": "Задать длительность",
+  "reset": "Сбросить",
+  "long_label": "Длинный: {duration}",
+  "short_label": "Короткий: {duration}",
+  "custom_label": "Свой: {duration}",
+  "long_call": "Длинный звонок",
+  "short_call": "Короткий звонок",
+  "call": "Позвонить",
+  "tap_hint": "Нажмите, чтобы начать опрос",
+  "units": {
+   "h": "ч",
+   "m": "мин",
+   "s": "с"
+  }
+ },
+ "timer": {
+  "plenty": "Времени достаточно",
+  "keep_going": "Продолжайте",
+  "last30": "Последние 30 секунд",
+  "overtime": "Время вышло",
+  "elapsed": "Прошло {time}",
+  "remaining": "Осталось {time} · договорено {duration}",
+  "hide": "Скрыть таймеры",
+  "show": "Показать таймеры",
+  "show_hint": "Нажмите, чтобы показать таймеры"
+ },
+ "survey": {
+  "title": "Как вам даются телефонные звонки?",
+  "intro1": "Анонимно, около трёх минут. Без имён, электронной почты и аккаунта. Проводит Institute for The Study Of Humanity, исследовательская инициатива Maximized Impact ry.",
+  "intro2": "Пока вы отвечаете, страница записывает, сколько времени занимает каждый вопрос и как далеко вы дошли, даже если вы остановитесь раньше конца. Сами ответы отправляются только когда вы нажимаете «Отправить ответы».",
+  "send": "Отправить ответы",
+  "credit": "Таймер и инструменты для концентрации адаптированы из Yapper Phone.",
+  "scale_anchor_none": "нет",
+  "scale_anchor_extreme": "крайняя",
+  "unanswered": "Пожалуйста, ответьте на вопросы, отмеченные красным, прежде чем отправлять. Вопрос с пометкой «необязательно» можно оставить без ответа."
+ },
+ "options": {
+  "freq": [
+   "Никогда",
+   "Редко",
+   "Иногда",
+   "Часто",
+   "Всегда"
+  ],
+  "status": [
+   "Да, есть диагноз",
+   "Прохожу диагностику",
+   "Диагноза нет, но я узнаю себя или подозреваю",
+   "Нет"
+  ],
+  "presentation": [
+   "Невнимательный",
+   "Гиперактивно-импульсивный",
+   "Комбинированный",
+   "Не знаю",
+   "Нет диагноза"
+  ],
+  "yesno": [
+   "Да",
+   "Нет"
+  ],
+  "noyes": [
+   "Нет",
+   "Да"
+  ],
+  "scale11": [
+   "0",
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "age": [
+   "18–24",
+   "25–34",
+   "35–44",
+   "45–54",
+   "55–64",
+   "65+"
+  ],
+  "gender": [
+   "Женщина",
+   "Мужчина",
+   "Небинарный человек",
+   "Предпочитаю не отвечать"
+  ],
+  "regions": [
+   "Финляндия",
+   "Другие страны Северной Европы",
+   "Остальная Европа",
+   "Северная Америка",
+   "Латинская Америка и Карибский бассейн",
+   "Ближний Восток и Северная Африка",
+   "Африка к югу от Сахары",
+   "Южная и Центральная Азия",
+   "Восточная и Юго-Восточная Азия",
+   "Океания"
+  ]
+ },
+ "blocks": {
+  "B": {
+   "title": "Когда звонит телефон",
+   "items": {
+    "b1": {
+     "text": "Когда звонит мой телефон, я напрягаюсь или тревожусь.",
+     "options": "freq"
+    },
+    "b2": {
+     "text": "Перед звонком, который мне нужно сделать, я тревожусь.",
+     "options": "freq"
+    },
+    "b3": {
+     "text": "В целом, насколько сильную тревогу вызывают у вас телефонные звонки? (0 = нет, 10 = крайняя)",
+     "options": "scale11"
+    }
+   }
+  },
+  "C": {
+   "title": "Что вы с этим делаете",
+   "items": {
+    "c1": {
+     "text": "Я не отвечаю на звонки знакомых людей из-за того, что я чувствую при звонках.",
+     "options": "freq"
+    },
+    "c2": {
+     "text": "Я откладываю ответный звонок на день или дольше.",
+     "options": "freq"
+    },
+    "c3": {
+     "text": "За последний год я избегал(а) чего-то важного (записи на приём, счёта, работы, вопроса здоровья), потому что для этого нужно было позвонить.",
+     "options": "yesno"
+    },
+    "c4": {
+     "text": "Я отвечаю на звонки с незнакомых номеров.",
+     "options": "freq"
+    }
+   }
+  },
+  "D": {
+   "title": "Время и завершение",
+   "items": {
+    "d1": {
+     "text": "Во время звонка я теряю счёт времени и не понимаю, сколько он уже длится.",
+     "options": "freq"
+    },
+    "d2": {
+     "text": "Мне трудно завершить звонок, даже когда я этого хочу.",
+     "options": "freq"
+    }
+   }
+  },
+  "H": {
+   "title": "Когда не знаешь, чего ждать",
+   "items": {
+    "h1": {
+     "text": "Когда я не знаю, зачем мне звонят, я тревожусь.",
+     "options": "freq"
+    },
+    "h2": {
+     "text": "Когда я не знаю, сколько продлится звонок, я тревожусь.",
+     "options": "freq"
+    }
+   }
+  },
+  "E": {
+   "title": "Предпочтение",
+   "items": {
+    "e1": {
+     "text": "Если есть выбор, я предпочитаю переписку звонкам.",
+     "options": "freq"
+    }
+   }
+  },
+  "F": {
+   "title": "Внимание и активность",
+   "lead": "Следующие шесть вопросов взяты из скринингового опросника ВОЗ на СДВГ у взрослых и воспроизведены слово в слово. Подумайте о последних шести месяцах.",
+   "items": "ASRS: six items and five labels come verbatim from asrs_official_transcriptions_v1.json for this language",
+   "notice": "ASRS-V1.1 Screener © World Health Organization 2003; © New York University and the President and Fellows of Harvard College. All rights reserved. Used unaltered (electronic version). Kessler et al. (2005).",
+   "notice_language_line": "© World Health Organization 2004. All rights reserved. Based on the Composite International Diagnostic Interview © 2001 World Health Organization."
+  },
+  "A": {
+   "title": "СДВГ, аутизм и тревожность",
+   "items": {
+    "a1": {
+     "text": "СДВГ",
+     "options": "status"
+    },
+    "a2": {
+     "text": "Если у вас есть диагноз СДВГ: какой тип?",
+     "options": "presentation"
+    },
+    "a3": {
+     "text": "Аутизм",
+     "options": "status"
+    },
+    "a4": {
+     "text": "Тревожное расстройство (например социальная тревожность или генерализованное тревожное расстройство)",
+     "options": "status"
+    }
+   }
+  },
+  "G": {
+   "title": "Коротко о вас",
+   "items": {
+    "g1": {
+     "text": "Возраст",
+     "options": "age"
+    },
+    "g2": {
+     "text": "Пол (необязательно)",
+     "options": "gender",
+     "optional": true
+    },
+    "g3": {
+     "text": "Где вы живёте?",
+     "options": "regions"
+    },
+    "g4": {
+     "text": "Вы уже отвечали на этот опрос раньше?",
+     "options": "noyes"
+    }
+   }
+  }
+ },
+ "thanks": {
+  "title": "Спасибо!",
+  "sent": "Ваши ответы отправлены анонимно.",
+  "results": "Первые результаты будут опубликованы в октябре, в месяц осведомлённости о СДВГ, во время финской недели СДВГ с 5 по 11 октября.",
+  "footer": "Study 7 - Stage A, опросник о страхе телефонных звонков, Institute for The Study Of Humanity 2026",
+  "download": "Скачать ваши ответы",
+  "download_note": "Копия ваших ответов и выбранных вами инструментов.",
+  "preparing": "Готовим ваш файл…",
+  "download_again": "Скачать ещё раз",
+  "follow_text": "Maximized Impact ry сообщает об исследованиях и результатах Institute for The Study Of Humanity в Instagram.",
+  "follow": "Подписаться в Instagram",
+  "sending": "Отправка…",
+  "send_failed": "Не удалось отправить. Проверьте соединение и попробуйте снова; ваши ответы всё ещё здесь.",
+  "share": "Поделиться",
+  "share_copied": "Скопировано",
+  "share_text": "Как вам даются телефонные звонки? Анонимный опрос, около 3 минут, для участников от 18 лет. Нам нужны ответы всех, в том числе тех, кто не нейроотличен, и тех, кому звонить легко.\n\nПоделитесь, пожалуйста!\n\n#СДВГ #аутизм #нейроотличия #исследование #instituteforthestudyofhumanity"
+ },
+ "file": {
+  "title": "Ваши ответы",
+  "study_line": "Study 7: страх телефонных звонков и избегание звонков",
+  "saved": "Сохранено {datetime}",
+  "created_on_device": "Создано на вашем устройстве",
+  "no_identifiers": "Этот файл не содержит имени, электронной почты, идентификатора устройства или аккаунта. Ничто в нём не связывает его с вами.",
+  "thank_you_p1": "Вы только что помогли выразить в цифрах, как ощущаются телефонные звонки, для людей с СДВГ или аутизмом и без них. Насколько нам известно, этого раньше никто не измерял. Каждый ответ в этом файле является частью этой цифры.",
+  "thank_you_p2": "Institute for The Study Of Humanity получил ваши ответы анонимно. Эта копия ваша: сохраните её, поделитесь ею или удалите. Институт не может связать её с вами, и в ней нет ничего, что могло бы это сделать.",
+  "what_you_answered": "Что вы ответили",
+  "question": "Вопрос",
+  "your_answer": "Ваш ответ",
+  "not_answered": "(нет ответа)",
+  "answered_after": "ответ через {seconds} с",
+  "changed_times": "изменён {n} раз",
+  "tools_title": "Инструменты, которыми вы пользовались",
+  "tools_p": "Страница опроса предлагала тот же таймер длительности звонка, те же звуки для концентрации и сигналы времени, которые Yapper Phone использует во время звонка. Ваш выбор записан здесь для вас и, без какого-либо идентификатора, рядом с вашими ответами, чтобы Институт видел, какие инструменты люди предпочитают.",
+  "setting": "Настройка",
+  "what_you_chose": "Что вы выбрали",
+  "tool_rows": {
+   "call_length": "Выбранная длительность звонка",
+   "time_taken": "Затраченное время",
+   "overtime": "Превышение",
+   "focus_sound": "Звук для концентрации",
+   "time_signal": "Сигнал времени",
+   "none": "нет",
+   "on_every": "Вкл., интервал {interval}",
+   "off": "Выкл."
+  },
+  "next_title": "Что дальше",
+  "next_p1": "Результаты публикуются в открытом доступе по лицензии Creative Commons Attribution 4.0, с кратким изложением на финском и английском, как дополнение к докладу «The Case for Health Communications Technology» (https://doi.org/10.5281/zenodo.21978705). Вы найдёте их по адресу https://research.maximized-impact.org/study7/results. Анонимизированный набор данных публикуется вместе с результатами, чтобы любой мог проверить цифры.",
+  "next_p2": "Если у вас есть вопрос об исследовании, напишите на janne@maximized-impact.org. Поскольку у Института нет идентификаторов, он не может найти или удалить отдельный ответ после отправки; этот файл и есть ваша запись.",
+  "footer": "Institute for The Study Of Humanity · Maximized Impact ry · Хельсинки, Финляндия",
+  "page": "Страница {n}"
+ },
+ "data_notice": {
+  "title": "Что собирает Study 7 - Stage A",
+  "p1": "Когда вы нажимаете «Отправить», ваши ответы отправляются в Institute for The Study Of Humanity без имени, электронной почты, аккаунта, номера телефона и идентификатора устройства. Институт не хранит IP-адреса. Случайный код сессии связывает части одного посещения, и больше ничего.",
+  "p2": "Пока вы отвечаете, страница отправляет два небольших сигнала о продвижении, когда вы начинаете и если уходите, чтобы Институт видел, где люди останавливаются. Ответов в них нет.",
+  "p3": "Ваш браузер хранит одну отметку о том, что с этого устройства уже отвечали, чтобы страница могла вам напомнить. Страница не ставит cookie и не использует аналитику. Когда вы нажимаете «Отправить», невидимая проверка на бота от Cloudflare Turnstile подтверждает, что ответы отправляет человек; это единственный сторонний сервис на странице.",
+  "p3_link": {
+   "text": "Turnstile Privacy Addendum от Cloudflare",
+   "url": "https://www.cloudflare.com/ru-ru/turnstile-privacy-policy/"
+  },
+  "p4": "Результаты публикуются в открытом доступе вместе с анонимизированным набором данных. Поскольку идентификатора нет, ответ нельзя найти или удалить после отправки.",
+  "contact": "Вопросы: janne@maximized-impact.org"
+ }
+}

@@ -278,6 +278,12 @@
   $('tbFocus').addEventListener('click', toggleFocus);
   $('tbSignal').addEventListener('click', toggleSignal);
   $('tbOpen').addEventListener('click', openCard); $('thanksOpen').addEventListener('click', openCard);
+  // Eye: hides the clock, the phase text, both timers and the bar's progress; the countdown, chimes and sounds run on
+  let timersHidden = false;
+  $('tbEye').addEventListener('click', () => {
+    timersHidden = !timersHidden; $('topbar').classList.toggle('timers-hidden', timersHidden); $('eyeHint').hidden = !timersHidden;
+    $('tbEye').setAttribute('aria-pressed', String(timersHidden)); $('tbEye').setAttribute('aria-label', timersHidden ? S.timer.show : S.timer.hide);
+  });
   $('focusClose').addEventListener('click', () => { $('focusScrim').hidden = true; });
   $('focusScrim').addEventListener('click', (e) => { if (step !== 'focus' && e.target === e.currentTarget) $('focusScrim').hidden = true; });
   document.addEventListener('keydown', (e) => { if (step !== 'focus' && e.key === 'Escape' && !$('focusScrim').hidden) $('focusScrim').hidden = true; });
@@ -466,6 +472,22 @@
       downloadText(rec);
     }
     button.disabled = false; button.textContent = S.thanks.download_again;
+  });
+
+  /* ------------------------------------------------------------------
+     Share: the device's share sheet with the invitation text and this language's survey link (tagged src=share).
+     Without a share sheet, or if sharing fails for any reason but the person closing the sheet, the link and text
+     are copied and the button says so for two seconds.
+     ------------------------------------------------------------------ */
+  let sharing = false;
+  $('share').addEventListener('click', () => {
+    if (sharing) return;
+    const button = $('share'); const text = S.thanks.share_text; const url = `${RESEARCH_SITE}study7/?lang=${encodeURIComponent(lang)}&src=share`;
+    const copied = () => { button.textContent = S.thanks.share_copied; setTimeout(() => { button.textContent = S.thanks.share; }, 2000); };
+    const copy = () => { if (navigator.clipboard) navigator.clipboard.writeText(`${url}\n${text}`).then(copied).catch(() => {}); };
+    if (!navigator.share) { copy(); return; }
+    sharing = true;
+    navigator.share({ title: S.welcome.title, text, url }).catch((e) => { if (!e || e.name !== 'AbortError') copy(); }).finally(() => { sharing = false; });
   });
 
   /* ------------------------------------------------------------------
