@@ -13,7 +13,7 @@ The backend (the Firebase function the survey talks to) is the private repo `iso
 | `/papers/hct/` | The white paper's web home, with `The_Case_for_Health_Communications_Technology.pdf` (Version 1.0, the Zenodo file) and `HCT_tiivistelma_suomeksi.pdf` beside it. |
 | `/study7/` | The survey. No bar: its sticky timer owns the top of the screen. |
 | `/study7/data-notice/` | "What Study 7 - Stage A collects", English baked into the HTML from the strings file; `data-notice.js` fills the OSF line from `config.js` and other languages via `?lang=`. |
-| `/study7/results/` | The Study 7 results page, English and Finnish (`?lang=fi`), with the Institute block; every downloaded answers file links here. |
+| `/study7/results/` | The Study 7 results page, English and Finnish (`?lang=fi`), with the Institute block: the first look of Study 7 - Stage A (the report in English and Finnish, the anonymized dataset, its codebook and the analysis code, all under `first-look/`) and the description of the study; every downloaded answers file links here. |
 
 Canonical URLs: `https://research.maximized-impact.org/papers/hct/` and `https://research.maximized-impact.org/study7/`.
 
@@ -23,6 +23,7 @@ Canonical URLs: `https://research.maximized-impact.org/papers/hct/` and `https:/
 |------|------------|
 | `study7/index.html`, `survey.css`, `app.js`, `net.js`, `pdf.js` | The survey: markup with string keys, the prototype's stylesheet, the behaviour, the network and Turnstile layer, the PDF module (loaded on the download tap). |
 | `study7/config.js` | The four values that differ between environments: `FUNCTION_URL`, `TURNSTILE_SITE_KEY`, `OSF_PREREG_URL`, `PRODUCTION_ORIGIN`. Nothing else is configured anywhere. |
+| `study7/results/first-look/` | The first look of Study 7 - Stage A, published October 9, 2026: `Study7_StageA_First_Look_EN.pdf` and `Study7_StageA_Valiraportti_FI.pdf` (the report, 6 pages each), `Study7_StageA_first_look_dataset_v1.csv` (the anonymized dataset), `Study7_StageA_first_look_codebook_v1.md` and `Study7_StageA_first_look_tables_v1.py`, which recomputes every figure of the report from the dataset (`python3 <the script> <the csv>`, standard library only, writes no file). CC BY 4.0. |
 | `assets/lang/study7/` | `index.json` (the languages offered), `strings_<code>_v9.json` for en, de, fi, fr, it, ja, ru and sv (v7 and v8 kept beside them, untouched), `asrs_official_transcriptions_v1.json`. |
 | `assets/audio/study7/` | The six focus sounds as Vorbis (`.ogg`, the app's files; the brown noise FLAC became Vorbis) with MP3 fallbacks for browsers without Vorbis (iOS Safari), and the two chimes as delivered. Loaded only when a sound is switched on or the timer starts. |
 | `assets/fonts/` | DM Sans and DM Mono web fonts; Carlito, Caladea and DM Sans TTFs for the PDF (see `assets/fonts/README.md`). |
@@ -162,3 +163,19 @@ Verified in headless Chrome over the DevTools protocol against `python3 -m http.
 | Eye does not touch the timer: the clock keeps counting while hidden; a 20 s custom call hidden from the start played all 15 countdown chimes (19, 15, 14, 13, 10 to 0), the time signal kept ticking (4 ticks at 10 s) and the focus sound kept looping | Passed with the doubled clock. Janne: hearing them on a phone. |
 | Share button: between the download note and the divider, 18 px above it (as above the download button) and 22 px below, the same computed style as the download button; the share payload is the language's title, `thanks.share_text` and `https://research.maximized-impact.org/study7/?lang=<code>&src=share`; closing the sheet changes nothing; a refused share, and a browser without `navigator.share`, copy the link and the text and show `thanks.share_copied` for two seconds; three taps during a pending share give one share; nothing is posted to the function | Passed in Finnish and English. Janne: the real share sheets on Android Chrome and iPhone Safari, and the Instagram caption paste. |
 | A link with `src=share` opens in the language asked for and its `start` record carries `src: "share"` | Passed. |
+
+## Test report (October 9, 2026: the first look of Study 7 - Stage A)
+
+Checked against `python3 -m http.server` at the repo root in headless Chrome over the DevTools protocol at 1280 and 390 px, with the served files compared byte for byte with the files on disk, and the analysis script run from the repo root.
+
+| Acceptance item | Result |
+|-----------------|--------|
+| The five files in `study7/results/first-look/` match the SHA-256 list: `f57897893b02fb29106f0a7d05fddb7516d7e352ae06fa06101e873e92f13a73` `Study7_StageA_First_Look_EN.pdf`, `b9bbff781c95a2c3ad3d46faf9ac6ee16e672759ba2e305932e3bfff0cdc4e05` `Study7_StageA_Valiraportti_FI.pdf`, `1c4abac06dcb47f9d4db671172f401268d2369e4ff759f0d8114cc4d332b0e6a` `Study7_StageA_first_look_dataset_v1.csv`, `8793ae1d717d1b62ee8e6cb8a3b72ef34f6fe49356710250caf25bacfff80b4d` `Study7_StageA_first_look_codebook_v1.md`, `92d1141321e5de464d37e1415ecec7b076d47802a76b5e9c2e8cb44a6ddf4801` `Study7_StageA_first_look_tables_v1.py` | Passed (`shasum -a 256 -c`). |
+| `python3 study7/results/first-look/Study7_StageA_first_look_tables_v1.py study7/results/first-look/Study7_StageA_first_look_dataset_v1.csv` prints "Responses analysed: 464" and an "All respondents" line of 331/464 71.3%, 235/464 50.6% and 370/464 79.7%, and leaves no new file in the repo | Passed (standard library only; `git status` unchanged by the run). |
+| `study7/results/index.html` contains none of "Study 7, Stage A", "Tutkimus 7, vaihe A", "puhelinahdistus", "Phase 2", "vaihe 2", "Miltä puhelut tuntuvat sinusta" | Passed. |
+| Home page: the first look is the first entry under Publications, dated October 9, 2026, with Report, Väliraportti (FI) and Data and code on one line at 390 px; the white paper entry dated August 18, 2026; the Open studies entry unchanged | Passed at 1280 and 390 px. |
+| Results page: the `<h2>` is "Study 7: telephone anxiety and call avoidance" and the first-look block (`h3#first-look`, the paragraph, the two entries) is the first thing under it, then "About the study"; in Finnish "Study 7: puhelinkammo ja puhelujen välttely", `h3#valiraportti` and "Tietoa tutkimuksesta"; the Finnish section shows only with `?lang=fi`, with the Finnish meta description | Passed at 1280 and 390 px. |
+| `/study7/results/#first-look` and `/study7/results/?lang=fi#valiraportti` land on the block | Passed: both scroll to the heading, in Finnish too, because Chrome re-runs the fragment scroll after `results.js` shows the section. The heading sits under the floating bar by the bar's height on arrival, as every anchor on the site does (the shared stylesheet has no scroll margin). |
+| Every new link returns 200 with the same bytes as the file on disk; both PDFs open with 6 pages | Passed (five links compared byte for byte; 6 pages each, read with pdf-lib). |
+| No console errors and no horizontal scrolling on `/`, `/study7/results/` and `?lang=fi` at 1280 and 390 px | Passed. |
+| `git status` shows only `index.html`, `study7/results/index.html`, `README.md` and the five new files | Passed. |
